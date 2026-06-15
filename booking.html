@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book Driving Lessons</title>
+  <meta name="description" content="Step-by-step booking wizard for Ontario driving school lessons.">
+  <meta property="og:title" content="Book Driving Lessons">
+  <meta property="og:description" content="Step-by-step booking wizard for Ontario driving school lessons.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;600;700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"DrivingSchool","name":"GTA Driving Academy","areaServed":"Toronto and GTA, Ontario","telephone":"[Phone]","email":"[Email]","slogan":"Drive Safe. Keep Families Safe. Keep Roads Safe.","address":{"@type":"PostalAddress","addressLocality":"Toronto","addressRegion":"ON","addressCountry":"CA"}}</script>
+</head>
+<body>
+<div class="top-alert">🚗 Safe Driving Starts Here — Book Your First Lesson Today</div>
+<header class="navbar">
+  <div class="container nav-inner">
+    <a class="logo" href="index.html" aria-label="GTA Driving Academy home"><img src="images/logo.png" alt="GTA Driving Academy logo"></a>
+    <button class="mobile-toggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+    <nav class="nav-menu" aria-label="Main navigation">
+      <a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="about.html">Instructors</a><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions"><button id="darkModeToggle" class="icon-link" title="Dark mode"><i class="fa-solid fa-moon"></i></button><a class="icon-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a><a class="book-btn" href="booking.html">Book Now</a></div>
+  </div>
+</header>
+<main><section class="page-hero"><div class="container"><div class="breadcrumbs">Home / Booking</div><h1>Book Your Driving Lesson</h1><p>Demo booking wizard. Connect Calendly, SimplyBook, AppointmentPlus, Formspree, or your CRM for live booking.</p></div></section><section class="section"><div class="container"><form class="form-card wizard" data-validate="true" action="mailto:admin@example.com" method="post"><div class="progress"><span></span><span></span><span></span><span></span><span></span></div><div class="step"><h2>Step 1: Select Service</h2><select id="bookingService" class="form-control" name="service" required><option value="single">Single Lesson - $85</option><option value="five">5-Lesson Package - $400</option><option value="ten">10-Lesson Package - $750</option><option value="twenty">20-Lesson Package - $1400</option><option value="bde">BDE Course - Confirm price</option></select><p><strong>Selected price:</strong> <span id="dynamicPrice"></span></p><div class="step-actions"><span></span><button type="button" class="btn btn-secondary" data-next>Next</button></div></div><div class="step"><h2>Step 2: Select Instructor</h2><select class="form-control" name="instructor" required><option>Instructor 1 - Patient beginner coach</option><option>Instructor 2 - G2 road test specialist</option><option>Instructor 3 - Highway and Full G trainer</option></select><div class="step-actions"><button type="button" class="btn btn-outline" data-prev>Back</button><button type="button" class="btn btn-secondary" data-next>Next</button></div></div><div class="step"><h2>Step 3: Select Date and Time</h2><div class="form-grid"><input class="form-control" type="date" name="date" required><input class="form-control" type="time" name="time" required></div><div class="step-actions"><button type="button" class="btn btn-outline" data-prev>Back</button><button type="button" class="btn btn-secondary" data-next>Next</button></div></div><div class="step"><h2>Step 4: Student Information</h2><div class="form-grid"><input class="form-control" name="name" required placeholder="Student name"><input class="form-control" type="email" name="email" required placeholder="Email"><input class="form-control" name="phone" required placeholder="Phone"><input class="form-control" name="g1" placeholder="G1 licence number"><input class="form-control" name="address" placeholder="Pickup address"><input class="form-control" name="goals" placeholder="Learning goals"></div><div class="step-actions"><button type="button" class="btn btn-outline" data-prev>Back</button><button type="button" class="btn btn-secondary" data-next>Next</button></div></div><div class="step"><h2>Step 5: Review and Confirm</h2><p>Please review your selected service, instructor, date/time, and student information before submitting.</p><div class="alert-box">For a live website, replace this mailto action with Formspree, Calendly, SimplyBook, AppointmentPlus, or a custom backend.</div><div class="step-actions"><button type="button" class="btn btn-outline" data-prev>Back</button><button class="btn btn-secondary" type="submit">Confirm Booking</button></div></div></form></div></section></main><script src="js/booking.js"></script><script src="js/contact-form.js"></script><a class="whatsapp" aria-label="WhatsApp chat" href="https://wa.me/10000000000?text=Hi%2C%20I'm%20interested%20in%20driving%20lessons" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><a class="footer-logo" href="index.html" aria-label="GTA Driving Academy home"><img src="images/logo.png" alt="GTA Driving Academy logo"></a><p>Drive Safe. Keep Families Safe. Keep Roads Safe. Professional driving lessons for G1, G2, Full G, newcomers, parents, and seniors across the GTA.</p></div>
+    <div><h4>Pages</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="booking.html">Booking</a></div>
+    <div><h4>Learning</h4><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a></div>
+    <div><h4>Newsletter</h4><form id="newsletterForm"><input class="form-control" name="email" type="email" placeholder="Email address" required><br><button class="btn btn-secondary" type="submit">Subscribe</button></form></div>
+  </div><div class="container copyright">© 2026 GTA Driving Academy. Demo website. Replace placeholders before publishing.</div>
+</footer>
+<script src="js/main.js"></script>
+</body></html>
