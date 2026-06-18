@@ -1,42 +1,421 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Book Driving Lessons</title>
-  <meta name="description" content="Step-by-step booking wizard for Ontario driving school lessons.">
-  <meta property="og:title" content="Book Driving Lessons">
-  <meta property="og:description" content="Step-by-step booking wizard for Ontario driving school lessons.">
-  <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;600;700" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/dark-mode.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"DrivingSchool","name":"GTA Driving Academy","areaServed":"Toronto and GTA, Ontario","telephone":"[Phone]","email":"[Email]","slogan":"Drive Safe. Keep Families Safe. Keep Roads Safe.","address":{"@type":"PostalAddress","addressLocality":"Toronto","addressRegion":"ON","addressCountry":"CA"}}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Lesson | Your Driving School Ontario</title>
+  <meta name="description" content="Book your driving lesson online in minutes. Choose your service, instructor, date and time. Available across Toronto, Mississauga, Brampton and all GTA." />
+  <meta property="og:title" content="Book a Driving Lesson | Your Driving School Ontario" />
+  <meta property="og:description" content="Easy online booking for G2 lessons, Full G training, refresher courses and more. Choose your instructor and time slot." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/dark-mode.css" />
+  <link rel="icon" href="images/favicon.ico" />
+  <style>
+    .booking-container { max-width:760px; margin:0 auto; }
+    .booking-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); padding:48px; box-shadow:var(--shadow-md); }
+
+    /* Service selection cards */
+    .service-select-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; margin-top:16px; }
+    .service-select-card { border:2px solid var(--border); border-radius:var(--radius-md); padding:20px 16px; cursor:pointer; transition:var(--transition); text-align:center; background:var(--white); }
+    .service-select-card:hover { border-color:var(--primary); background:var(--accent2); }
+    .service-select-card.selected { border-color:var(--secondary); background:rgba(232,93,4,0.05); }
+    .service-select-card i { font-size:1.8rem; color:var(--primary); margin-bottom:10px; display:block; transition:var(--transition); }
+    .service-select-card.selected i { color:var(--secondary); }
+    .service-select-card h4 { font-size:0.88rem; margin-bottom:4px; }
+    .service-select-card p { font-size:0.78rem; color:var(--text-muted); margin:0; }
+    #servicePriceDisplay { display:none; align-items:center; flex-wrap:wrap; background:var(--accent2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 16px; margin-top:16px; gap:4px; }
+
+    /* Instructor selection */
+    .instructor-select-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; margin-top:16px; }
+    .instructor-select-card { border:2px solid var(--border); border-radius:var(--radius-md); padding:20px; cursor:pointer; transition:var(--transition); text-align:center; background:var(--white); }
+    .instructor-select-card:hover { border-color:var(--primary); background:var(--accent2); }
+    .instructor-select-card.selected { border-color:var(--secondary); background:rgba(232,93,4,0.05); }
+    .instructor-select-card .inst-avatar { width:60px; height:60px; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--primary-light)); display:flex; align-items:center; justify-content:center; color:#fff; font-family:var(--font-heading); font-weight:700; font-size:1.1rem; margin:0 auto 12px; transition:var(--transition); }
+    .instructor-select-card.selected .inst-avatar { background:linear-gradient(135deg,var(--secondary),var(--secondary-dark)); }
+    .instructor-select-card h4 { font-size:0.9rem; margin-bottom:4px; }
+    .instructor-select-card p { font-size:0.78rem; color:var(--text-muted); margin:0; }
+
+    /* Time slots */
+    .time-slots-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:10px; margin-top:16px; }
+    .time-slot { border:2px solid var(--border); border-radius:var(--radius-sm); padding:10px; text-align:center; cursor:pointer; font-family:var(--font-heading); font-weight:600; font-size:0.85rem; color:var(--text); transition:var(--transition); background:var(--white); }
+    .time-slot:hover { border-color:var(--primary); background:var(--accent2); }
+    .time-slot.selected { border-color:var(--secondary); background:rgba(232,93,4,0.08); color:var(--secondary); }
+    .time-slot.unavailable { opacity:0.4; cursor:not-allowed; text-decoration:line-through; }
+    .time-slot:disabled { opacity:0.4; cursor:not-allowed; }
+
+    /* Review table */
+    .review-table { width:100%; border-collapse:collapse; }
+    .review-table td { padding:12px 16px; border-bottom:1px solid var(--border); font-size:0.9rem; }
+    .review-table td:first-child { font-weight:600; color:var(--text); width:40%; }
+    .review-table td:last-child { color:var(--text-light); }
+    .review-table tr:last-child td { border-bottom:none; }
+
+    /* Navigation buttons */
+    .booking-nav { display:flex; justify-content:space-between; align-items:center; margin-top:36px; padding-top:24px; border-top:1px solid var(--border); }
+    .booking-nav-left { display:flex; gap:12px; }
+
+    @media(max-width:640px) {
+      .booking-card { padding:24px 16px; }
+      .service-select-grid { grid-template-columns:1fr 1fr; }
+      .instructor-select-grid { grid-template-columns:1fr; }
+      .time-slots-grid { grid-template-columns:repeat(3,1fr); }
+      .booking-nav { flex-direction:column; gap:12px; }
+      .booking-nav .btn { width:100%; justify-content:center; }
+    }
+  </style>
 </head>
 <body>
-<div class="top-alert">🚗 Safe Driving Starts Here — Book Your First Lesson Today</div>
-<header class="navbar">
-  <div class="container nav-inner">
-    <a class="logo" href="index.html" aria-label="GTA Driving Academy home"><img src="images/logo.png" alt="GTA Driving Academy logo"></a>
-    <button class="mobile-toggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
-    <nav class="nav-menu" aria-label="Main navigation">
-      <a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="about.html">Instructors</a><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a>
-    </nav>
-    <div class="nav-actions"><button id="darkModeToggle" class="icon-link" title="Dark mode"><i class="fa-solid fa-moon"></i></button><a class="icon-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a><a class="book-btn" href="booking.html">Book Now</a></div>
+
+<nav class="navbar" role="navigation" aria-label="Main Navigation">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a>
+    <ul class="nav-menu" role="menubar">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="pricing.html">Pricing</a></li><li><a href="videos.html">Videos</a></li><li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li><li><a href="booking.html" class="btn btn-primary btn-sm active">Book a Lesson</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i></button>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero" role="banner">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Book a Lesson</span></nav>
+    <h1>Book Your Driving Lesson</h1>
+    <p>Complete the 5 steps below and we'll confirm your lesson within 1 hour by email and SMS.</p>
   </div>
 </header>
-<main><section class="page-hero"><div class="container"><div class="breadcrumbs">Home / Booking</div><h1>Book Your Driving Lesson</h1><p>Demo booking wizard. Connect Calendly, SimplyBook, AppointmentPlus, Formspree, or your CRM for live booking.</p></div></section><section class="section"><div class="container"><form class="form-card wizard" data-validate="true" action="mailto:admin@example.com" method="post"><div class="progress"><span></span><span></span><span></span><span></span><span></span></div><div class="step"><h2>Step 1: Select Service</h2><select id="bookingService" class="form-control" name="service" required><option value="single">Single Lesson - $85</option><option value="five">5-Lesson Package - $400</option><option value="ten">10-Lesson Package - $750</option><option value="twenty">20-Lesson Package - $1400</option><option value="bde">BDE Course - Confirm price</option></select><p><strong>Selected price:</strong> <span id="dynamicPrice"></span></p><div class="step-actions"><span></span><button type="button" class="btn btn-secondary" data-next>Next</button></div></div><div class="step"><h2>Step 2: Select Instructor</h2><select class="form-control" name="instructor" required><option>Instructor 1 - Patient beginner coach</option><option>Instructor 2 - G2 road test specialist</option><option>Instructor 3 - Highway and Full G trainer</option></select><div class="step-actions"><button type="button" class="btn btn-outline" data-prev>Back</button><button type="button" class="btn btn-secondary" data-next>Next</button></div></div><div class="step"><h2>Step 3: Select Date and Time</h2><div class="form-grid"><input class="form-control" type="date" name="date" required><input class="form-control" type="time" name="time" required></div><div class="step-actions"><button type="button" class="btn btn-outline" data-prev>Back</button><button type="button" class="btn btn-secondary" data-next>Next</button></div></div><div class="step"><h2>Step 4: Student Information</h2><div class="form-grid"><input class="form-control" name="name" required placeholder="Student name"><input class="form-control" type="email" name="email" required placeholder="Email"><input class="form-control" name="phone" required placeholder="Phone"><input class="form-control" name="g1" placeholder="G1 licence number"><input class="form-control" name="address" placeholder="Pickup address"><input class="form-control" name="goals" placeholder="Learning goals"></div><div class="step-actions"><button type="button" class="btn btn-outline" data-prev>Back</button><button type="button" class="btn btn-secondary" data-next>Next</button></div></div><div class="step"><h2>Step 5: Review and Confirm</h2><p>Please review your selected service, instructor, date/time, and student information before submitting.</p><div class="alert-box">For a live website, replace this mailto action with Formspree, Calendly, SimplyBook, AppointmentPlus, or a custom backend.</div><div class="step-actions"><button type="button" class="btn btn-outline" data-prev>Back</button><button class="btn btn-secondary" type="submit">Confirm Booking</button></div></div></form></div></section></main><script src="js/booking.js"></script><script src="js/contact-form.js"></script><a class="whatsapp" aria-label="WhatsApp chat" href="https://wa.me/10000000000?text=Hi%2C%20I'm%20interested%20in%20driving%20lessons" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-<footer class="footer">
-  <div class="container footer-grid">
-    <div><a class="footer-logo" href="index.html" aria-label="GTA Driving Academy home"><img src="images/logo.png" alt="GTA Driving Academy logo"></a><p>Drive Safe. Keep Families Safe. Keep Roads Safe. Professional driving lessons for G1, G2, Full G, newcomers, parents, and seniors across the GTA.</p></div>
-    <div><h4>Pages</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="booking.html">Booking</a></div>
-    <div><h4>Learning</h4><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a></div>
-    <div><h4>Newsletter</h4><form id="newsletterForm"><input class="form-control" name="email" type="email" placeholder="Email address" required><br><button class="btn btn-secondary" type="submit">Subscribe</button></form></div>
-  </div><div class="container copyright">© 2026 GTA Driving Academy. Demo website. Replace placeholders before publishing.</div>
+
+<section class="section">
+  <div class="container">
+    <div class="booking-container">
+
+      <!-- PROGRESS INDICATOR -->
+      <div class="booking-progress" role="progressbar" aria-label="Booking steps" aria-valuenow="1" aria-valuemin="1" aria-valuemax="5">
+        <div class="progress-step active">
+          <div class="step-circle active">1</div>
+          <span class="step-label">Service</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="progress-step">
+          <div class="step-circle">2</div>
+          <span class="step-label">Instructor</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="progress-step">
+          <div class="step-circle">3</div>
+          <span class="step-label">Date &amp; Time</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="progress-step">
+          <div class="step-circle">4</div>
+          <span class="step-label">Your Info</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="progress-step">
+          <div class="step-circle">5</div>
+          <span class="step-label">Confirm</span>
+        </div>
+      </div>
+
+      <div class="booking-card" aria-live="polite">
+
+        <!-- =================== STEP 1: SELECT SERVICE =================== -->
+        <div class="booking-step active" id="step1" role="region" aria-labelledby="step1-heading">
+          <div class="booking-step-title">
+            <div class="section-tag">Step 1 of 5</div>
+            <h2 id="step1-heading">Select Your Service</h2>
+            <p style="color:var(--text-light)">Choose the driving program that fits your current licence stage and goals.</p>
+          </div>
+
+          <input type="hidden" id="selectedService" />
+          <span class="form-error" id="serviceError" role="alert"></span>
+
+          <div class="service-select-grid" role="radiogroup" aria-label="Select driving service">
+            <div class="service-select-card" data-service="g1-prep" role="radio" aria-checked="false" tabindex="0" aria-label="G1 Test Coaching - Free online resources">
+              <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+              <h4>G1 Test Coaching</h4>
+              <p>$45 · 1 hour</p>
+            </div>
+            <div class="service-select-card" data-service="g2-single" role="radio" aria-checked="false" tabindex="0" aria-label="G2 Single Lesson - $85 per hour">
+              <i class="fa-solid fa-car" aria-hidden="true"></i>
+              <h4>G2 Single Lesson</h4>
+              <p>$85 · 1 hour</p>
+            </div>
+            <div class="service-select-card" data-service="g2-5pack" role="radio" aria-checked="false" tabindex="0" aria-label="G2 Five Lesson Package - $400">
+              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+              <h4>G2 — 5-Pack</h4>
+              <p>$400 · 5 hours</p>
+            </div>
+            <div class="service-select-card" data-service="g2-10pack" role="radio" aria-checked="false" tabindex="0" aria-label="G2 Ten Lesson Package - $750 Most Popular">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <h4>G2 — 10-Pack ⭐</h4>
+              <p>$750 · 10 hours</p>
+            </div>
+            <div class="service-select-card" data-service="g2-20pack" role="radio" aria-checked="false" tabindex="0" aria-label="G2 Twenty Lesson Package - $1400 Best Value">
+              <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+              <h4>G2 — 20-Pack</h4>
+              <p>$1,400 · Best Value</p>
+            </div>
+            <div class="service-select-card" data-service="full-g" role="radio" aria-checked="false" tabindex="0" aria-label="Full G Highway Training - $185">
+              <i class="fa-solid fa-road" aria-hidden="true"></i>
+              <h4>Full G Highway</h4>
+              <p>$185 · 1.5 hours</p>
+            </div>
+            <div class="service-select-card" data-service="refresher" role="radio" aria-checked="false" tabindex="0" aria-label="Refresher Lesson - $85">
+              <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
+              <h4>Refresher Lesson</h4>
+              <p>$85 · 1 hour</p>
+            </div>
+            <div class="service-select-card" data-service="winter-clinic" role="radio" aria-checked="false" tabindex="0" aria-label="Winter Driving Clinic - $120">
+              <i class="fa-solid fa-snowflake" aria-hidden="true"></i>
+              <h4>Winter Clinic</h4>
+              <p>$120 · 3 hours</p>
+            </div>
+          </div>
+
+          <div id="servicePriceDisplay" aria-live="polite"></div>
+        </div>
+
+        <!-- =================== STEP 2: SELECT INSTRUCTOR =================== -->
+        <div class="booking-step" id="step2" role="region" aria-labelledby="step2-heading">
+          <div class="booking-step-title">
+            <div class="section-tag">Step 2 of 5</div>
+            <h2 id="step2-heading">Choose Your Instructor</h2>
+            <p style="color:var(--text-light)">All instructors are MTO-certified, background-checked, and highly rated. Pick who feels right for you.</p>
+          </div>
+
+          <span class="form-error" id="instructorError" role="alert"></span>
+
+          <div class="instructor-select-grid" role="radiogroup" aria-label="Select instructor">
+            <div class="instructor-select-card" data-instructor="James Downing" role="radio" aria-checked="false" tabindex="0">
+              <div class="inst-avatar" aria-hidden="true">JD</div>
+              <h4>James Downing</h4>
+              <p>Senior Instructor · 15+ yrs</p>
+              <p style="margin-top:6px">G1, G2, Full G, Winter</p>
+              <div style="margin-top:8px;font-size:0.75rem;color:#fbbf24">★★★★★ 4.9</div>
+            </div>
+            <div class="instructor-select-card" data-instructor="Maria Chen" role="radio" aria-checked="false" tabindex="0">
+              <div class="inst-avatar" aria-hidden="true">MC</div>
+              <h4>Maria Chen</h4>
+              <p>Lead Instructor · 8 yrs</p>
+              <p style="margin-top:6px">G2, Refresher, Seniors</p>
+              <div style="margin-top:8px;font-size:0.75rem;color:#fbbf24">★★★★★ 4.9</div>
+            </div>
+            <div class="instructor-select-card" data-instructor="Arjun Singh" role="radio" aria-checked="false" tabindex="0">
+              <div class="inst-avatar" aria-hidden="true">AS</div>
+              <h4>Arjun Singh</h4>
+              <p>Instructor · 6 yrs</p>
+              <p style="margin-top:6px">G2, Full G Highway</p>
+              <div style="margin-top:8px;font-size:0.75rem;color:#fbbf24">★★★★★ 4.8</div>
+            </div>
+            <div class="instructor-select-card" data-instructor="No Preference" role="radio" aria-checked="false" tabindex="0">
+              <div class="inst-avatar" aria-hidden="true"><i class="fa-solid fa-shuffle" style="font-size:1.2rem"></i></div>
+              <h4>No Preference</h4>
+              <p>Assign me the next available instructor</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- =================== STEP 3: DATE & TIME =================== -->
+        <div class="booking-step" id="step3" role="region" aria-labelledby="step3-heading">
+          <div class="booking-step-title">
+            <div class="section-tag">Step 3 of 5</div>
+            <h2 id="step3-heading">Select Date &amp; Time</h2>
+            <p style="color:var(--text-light)">Choose your preferred lesson date and a time slot. Grey slots are unavailable.</p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="bookingDate">Preferred Date <span aria-hidden="true">*</span></label>
+              <input type="date" class="form-control" id="bookingDate" aria-required="true" />
+              <span class="form-error" id="dateError" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Preferred Time <span aria-hidden="true">*</span></label>
+              <span class="form-error" id="timeError" role="alert"></span>
+              <div class="time-slots-grid" role="radiogroup" aria-label="Available time slots">
+                <button class="time-slot" type="button" aria-label="8:00 AM">8:00 AM</button>
+                <button class="time-slot" type="button" aria-label="9:00 AM">9:00 AM</button>
+                <button class="time-slot" type="button" aria-label="10:00 AM">10:00 AM</button>
+                <button class="time-slot" type="button" aria-label="11:00 AM">11:00 AM</button>
+                <button class="time-slot unavailable" type="button" disabled aria-label="12:00 PM - unavailable">12:00 PM</button>
+                <button class="time-slot" type="button" aria-label="1:00 PM">1:00 PM</button>
+                <button class="time-slot" type="button" aria-label="2:00 PM">2:00 PM</button>
+                <button class="time-slot unavailable" type="button" disabled aria-label="3:00 PM - unavailable">3:00 PM</button>
+                <button class="time-slot" type="button" aria-label="4:00 PM">4:00 PM</button>
+                <button class="time-slot" type="button" aria-label="5:00 PM">5:00 PM</button>
+                <button class="time-slot" type="button" aria-label="6:00 PM">6:00 PM</button>
+                <button class="time-slot" type="button" aria-label="7:00 PM">7:00 PM</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-info" style="margin-top:16px">
+            <i class="fa-solid fa-circle-info" aria-hidden="true"></i> Grey time slots are already booked. For live availability, connect this booking to <a href="https://calendly.com" target="_blank" rel="noopener">Calendly</a> or <a href="https://simplybook.me" target="_blank" rel="noopener">SimplyBook.me</a> (see README for setup instructions).
+          </div>
+        </div>
+
+        <!-- =================== STEP 4: STUDENT INFO =================== -->
+        <div class="booking-step" id="step4" role="region" aria-labelledby="step4-heading">
+          <div class="booking-step-title">
+            <div class="section-tag">Step 4 of 5</div>
+            <h2 id="step4-heading">Your Information</h2>
+            <p style="color:var(--text-light)">We need a few details to prepare your lesson and send you confirmation.</p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="bName">Full Name <span aria-hidden="true">*</span></label>
+              <input type="text" class="form-control" id="bName" placeholder="Jane Smith" required aria-required="true" autocomplete="name" />
+              <span class="form-error" id="bNameError" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="bEmail">Email Address <span aria-hidden="true">*</span></label>
+              <input type="email" class="form-control" id="bEmail" placeholder="jane@email.com" required aria-required="true" autocomplete="email" />
+              <span class="form-error" id="bEmailError" role="alert"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="bPhone">Phone Number <span aria-hidden="true">*</span></label>
+              <input type="tel" class="form-control" id="bPhone" placeholder="+1 (416) 555-0000" required aria-required="true" autocomplete="tel" />
+              <span class="form-error" id="bPhoneError" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="bLicence">Ontario Licence Number</label>
+              <input type="text" class="form-control" id="bLicence" placeholder="e.g. S9999-99999-99901" aria-describedby="licenceHelp" />
+              <small id="licenceHelp" style="color:var(--text-muted);font-size:0.78rem">Optional — helps instructor prepare your lesson</small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="bAddress">Pickup Address <span aria-hidden="true">*</span></label>
+            <input type="text" class="form-control" id="bAddress" placeholder="123 Main St, Toronto, ON M1A 1A1" autocomplete="street-address" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="bGoals">Learning Goals / Special Notes</label>
+            <textarea class="form-control" id="bGoals" rows="3" placeholder="e.g. Preparing for G2 test in 6 weeks. Nervous about parallel parking and 3-point turns. First lesson ever."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-check">
+              <input type="checkbox" id="smsBkOptin" />
+              <span>Send me SMS lesson reminders (highly recommended — free service)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- =================== STEP 5: REVIEW & CONFIRM =================== -->
+        <div class="booking-step" id="step5" role="region" aria-labelledby="step5-heading">
+          <div class="booking-step-title">
+            <div class="section-tag">Step 5 of 5</div>
+            <h2 id="step5-heading">Review &amp; Confirm</h2>
+            <p style="color:var(--text-light)">Please double-check your booking details below before confirming.</p>
+          </div>
+
+          <div style="background:var(--accent);border-radius:var(--radius-md);overflow:hidden;margin-bottom:24px">
+            <table class="review-table" role="table" aria-label="Booking summary">
+              <tbody>
+                <tr><td>Service</td><td id="reviewService">—</td></tr>
+                <tr><td>Price</td><td id="reviewPrice" style="font-weight:700;color:var(--secondary)">—</td></tr>
+                <tr><td>Instructor</td><td id="reviewInstructor">—</td></tr>
+                <tr><td>Date &amp; Time</td><td id="reviewDateTime">—</td></tr>
+                <tr><td>Student Name</td><td id="reviewName">—</td></tr>
+                <tr><td>Email</td><td id="reviewEmail">—</td></tr>
+                <tr><td>Phone</td><td id="reviewPhone">—</td></tr>
+                <tr><td>Licence #</td><td id="reviewLicence">—</td></tr>
+                <tr><td>Learning Goals</td><td id="reviewGoals" style="font-style:italic">—</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert alert-warning">
+            <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+            <strong>Payment:</strong> Payment is collected at the start of your first lesson. We accept cash, e-Transfer, Visa, Mastercard, and Amex.
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+            <strong>Demo mode:</strong> This form currently sends via email. To accept live bookings with real-time scheduling, connect to <a href="https://calendly.com" target="_blank" rel="noopener">Calendly</a> or <a href="https://simplybook.me" target="_blank" rel="noopener">SimplyBook.me</a>. See the README for setup instructions.
+          </div>
+
+          <div class="form-group" style="margin-top:20px">
+            <label class="form-check">
+              <input type="checkbox" id="confirmTerms" required aria-required="true" />
+              <span>I have read and agree to the <a href="pricing.html#refund-heading">cancellation policy</a> and <a href="#">terms of service</a>. <span aria-hidden="true">*</span></span>
+            </label>
+          </div>
+
+          <p style="font-size:0.8rem;color:var(--text-muted);margin-top:12px"><i class="fa-solid fa-lock" aria-hidden="true"></i> Your personal information is securely encrypted and never shared.</p>
+        </div>
+
+        <!-- NAVIGATION BUTTONS -->
+        <div class="booking-nav">
+          <div class="booking-nav-left">
+            <button class="btn btn-outline-primary" id="bookingPrev" style="display:none" aria-label="Go to previous step">
+              <i class="fa-solid fa-chevron-left" aria-hidden="true"></i> Back
+            </button>
+          </div>
+          <button class="btn btn-primary btn-lg" id="bookingNext" aria-label="Go to next step">
+            Continue <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+          </button>
+          <button class="btn btn-primary btn-lg" id="bookingSubmit" style="display:none" aria-label="Confirm booking">
+            <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Confirm My Booking
+          </button>
+        </div>
+
+      </div><!-- /.booking-card -->
+
+      <!-- TRUST SIGNALS BELOW FORM -->
+      <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-top:32px;text-align:center">
+        <div class="trust-badge"><i class="fa-solid fa-lock" aria-hidden="true"></i><span>Secure Booking</span></div>
+        <div class="trust-badge"><i class="fa-solid fa-certificate" aria-hidden="true"></i><span>MTO Approved</span></div>
+        <div class="trust-badge"><i class="fa-solid fa-star" aria-hidden="true"></i><span>5-Star Rated</span></div>
+        <div class="trust-badge"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i><span>Fully Insured</span></div>
+      </div>
+
+      <!-- CALENDLY ALTERNATIVE EMBED (optional) -->
+      <!--
+      <div style="margin-top:48px">
+        <div class="section-header">
+          <div class="section-tag">Or Book Instantly</div>
+          <h3>Use Our Live Booking Calendar</h3>
+          <p>Pick any available slot in real-time via Calendly.</p>
+        </div>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR_CALENDLY_LINK" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      </div>
+      -->
+
+    </div><!-- /.booking-container -->
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo" style="margin-bottom:16px;display:inline-flex"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a><p>Ontario's most trusted MTO-approved driving school.</p><div class="footer-socials"><a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
+      <div><h4>Quick Links</h4><ul class="footer-links"><li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li><li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li><li><a href="pricing.html"><i class="fa-solid fa-chevron-right"></i> Pricing</a></li><li><a href="booking.html"><i class="fa-solid fa-chevron-right"></i> Book a Lesson</a></li></ul></div>
+      <div><h4>Resources</h4><ul class="footer-links"><li><a href="videos.html"><i class="fa-solid fa-chevron-right"></i> Free Videos</a></li><li><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog &amp; Tips</a></li><li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li></ul></div>
+      <div><h4>Contact</h4><div class="footer-contact-item"><i class="fa-solid fa-phone"></i><div><a href="tel:+14165550100" style="color:rgba(255,255,255,0.65)">+1 (416) 555-0100</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><div><a href="mailto:info@yourdrivingschool.ca" style="color:rgba(255,255,255,0.65)">info@yourdrivingschool.ca</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-clock"></i><div>Mon–Sat: 8am–7pm · Sun: 9am–5pm</div></div></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; <span id="year">2025</span> [Your Driving School]. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></div></div>
+  </div>
 </footer>
+
+<a href="https://wa.me/1XXXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20driving%20lessons!" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat on WhatsApp</span></a>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 <script src="js/main.js"></script>
-</body></html>
+<script src="js/booking.js"></script>
+</body>
+</html>

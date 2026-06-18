@@ -1,99 +1,368 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pricing & Packages | GTA Driving Academy</title>
-  <meta name="description" content="Transparent pricing for G1, G2, Full G, and refresher driving lessons at GTA Driving Academy.">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/responsive.css"><link rel="stylesheet" href="css/dark-mode.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing &amp; Packages | Your Driving School Ontario</title>
+  <meta name="description" content="Transparent driving lesson pricing in Ontario. Single lessons from $85, packages up to 20 lessons. BDE courses, referral discounts, and flexible payment options." />
+  <meta property="og:title" content="Pricing &amp; Packages | Your Driving School Ontario" />
+  <meta property="og:description" content="Single lessons from $85. 5, 10, and 20-lesson packages with big savings. No hidden fees." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/dark-mode.css" />
+  <link rel="icon" href="images/favicon.ico" />
+  <style>
+    .comparison-table { width:100%; border-collapse:collapse; background:var(--white); border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); }
+    .comparison-table th { background:var(--primary); color:#fff; font-family:var(--font-heading); font-size:0.9rem; padding:16px 20px; text-align:center; }
+    .comparison-table th:first-child { text-align:left; }
+    .comparison-table td { padding:14px 20px; border-bottom:1px solid var(--border); font-size:0.9rem; text-align:center; }
+    .comparison-table td:first-child { font-weight:600; text-align:left; color:var(--text); }
+    .comparison-table tr:last-child td { border-bottom:none; }
+    .comparison-table tr:nth-child(even) td { background:var(--accent); }
+    .comparison-table .featured-col { background:rgba(232,93,4,0.06); }
+    .comparison-table th.featured-col { background:var(--secondary); }
+    .check { color:#22c55e; font-size:1rem; }
+    .cross { color:#ef4444; font-size:1rem; }
+    .payment-icons { display:flex; gap:12px; flex-wrap:wrap; margin-top:16px; }
+    .payment-icon { background:var(--accent); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 18px; font-size:0.85rem; font-weight:600; font-family:var(--font-heading); color:var(--text); display:flex; align-items:center; gap:8px; }
+    .payment-icon i { color:var(--primary); font-size:1.1rem; }
+    .referral-card { background:linear-gradient(135deg,var(--secondary),var(--secondary-dark)); border-radius:var(--radius-lg); padding:40px; text-align:center; color:#fff; }
+    .referral-card h3 { color:#fff; font-size:1.5rem; margin-bottom:12px; }
+    .referral-card p { color:rgba(255,255,255,0.85); margin-bottom:0; }
+    .refund-table { width:100%; border-collapse:collapse; }
+    .refund-table th { background:var(--primary); color:#fff; padding:12px 16px; text-align:left; font-family:var(--font-heading); font-size:0.88rem; }
+    .refund-table td { padding:12px 16px; border-bottom:1px solid var(--border); font-size:0.88rem; }
+    .refund-table tr:nth-child(even) td { background:var(--accent); }
+    .calc-widget { background:var(--white); border:2px solid var(--border); border-radius:var(--radius-lg); padding:36px; box-shadow:var(--shadow-md); }
+  </style>
 </head>
 <body>
-<div class="top-alert">🚗 &nbsp;Limited spots available this month — <strong>Book your first lesson today!</strong></div>
-<header class="navbar"><div class="container nav-inner">
-  <a class="logo" href="index.html"><img src="images/logo.png" alt="GTA Driving Academy logo"></a>
-  <button class="mobile-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('open')"><i class="fa-solid fa-bars"></i></button>
-  <nav class="nav-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html" class="active">Pricing</a><a href="about.html">Instructors</a><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a></nav>
-  <div class="nav-actions"><button id="darkModeToggle" class="icon-link"><i class="fa-solid fa-moon"></i></button><a class="book-btn" href="booking.html">Book Now</a></div>
-</div></header>
-<main>
-<section class="page-hero"><div class="container"><div class="breadcrumbs">Home / Pricing</div><h1>Simple, Transparent Pricing</h1><p>No hidden fees. Flexible packages for students, families, newcomers, and seniors.</p></div></section>
 
-<section class="section"><div class="container">
-  <div class="section-title"><div class="eyebrow">Lesson Packages</div><h2>Choose Your Package</h2><p>Every lesson is with a certified, patient instructor in a dual-brake vehicle.</p></div>
-  <div class="price-grid">
-    <article class="price-card">
-      <div class="price-card-body">
-        <h3>Single Lesson</h3>
-        <div class="price">$85</div>
-        <p>Perfect for trying your first lesson or a quick refresher before your test.</p>
-        <ul class="check-list" style="margin-bottom:20px"><li><i class="fa-regular fa-circle-check"></i>1 hour in-car lesson</li><li><i class="fa-regular fa-circle-check"></i>Certified instructor</li><li><i class="fa-regular fa-circle-check"></i>Dual-brake vehicle</li></ul>
-        <a class="btn btn-outline" href="booking.html" style="width:100%;justify-content:center">Book Now</a>
-      </div>
-    </article>
-    <article class="price-card">
-      <div class="price-card-body">
-        <h3>5-Lesson Package</h3>
-        <div class="price">$400</div>
-        <p>Save $25 compared to single lessons. Great for G2 prep or refreshers.</p>
-        <ul class="check-list" style="margin-bottom:20px"><li><i class="fa-regular fa-circle-check"></i>5 one-hour lessons</li><li><i class="fa-regular fa-circle-check"></i>Progress tracking</li><li><i class="fa-regular fa-circle-check"></i>Flexible scheduling</li></ul>
-        <a class="btn btn-outline" href="booking.html" style="width:100%;justify-content:center">Book Now</a>
-      </div>
-    </article>
-    <article class="price-card featured">
-      <div class="featured-badge">⭐ Most Popular</div>
-      <div class="price-card-body">
-        <h3>10-Lesson Package</h3>
-        <div class="price">$750</div>
-        <p>Best choice for G2 and Full G preparation. Our most popular package.</p>
-        <ul class="check-list" style="margin-bottom:20px"><li><i class="fa-regular fa-circle-check"></i>10 one-hour lessons</li><li><i class="fa-regular fa-circle-check"></i>Mock road test included</li><li><i class="fa-regular fa-circle-check"></i>Save $100 vs singles</li></ul>
-        <a class="btn btn-secondary" href="booking.html" style="width:100%;justify-content:center">Book Now</a>
-      </div>
-    </article>
-    <article class="price-card">
-      <div class="price-card-body">
-        <h3>20-Lesson Package</h3>
-        <div class="price">$1,400</div>
-        <p>Best value for nervous beginners or those starting from zero experience.</p>
-        <ul class="check-list" style="margin-bottom:20px"><li><i class="fa-regular fa-circle-check"></i>20 one-hour lessons</li><li><i class="fa-regular fa-circle-check"></i>Full curriculum covered</li><li><i class="fa-regular fa-circle-check"></i>Save $300 vs singles</li></ul>
-        <a class="btn btn-outline" href="booking.html" style="width:100%;justify-content:center">Book Now</a>
-      </div>
-    </article>
-  </div>
-</div></section>
-
-<section class="section section-light"><div class="container">
-  <div class="section-title"><div class="eyebrow">Good to Know</div><h2>Policies &amp; Payment Info</h2></div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>Item</th><th>Details</th></tr></thead>
-    <tbody>
-      <tr><td>BDE Course</td><td>Available — confirm MTO approval status before advertising BDE.</td></tr>
-      <tr><td>Referral Discount</td><td>Bring a friend — both receive $10 off their next lesson.</td></tr>
-      <tr><td>Refund Policy</td><td>Unused prepaid lessons may be refunded per written school policy, less completed lessons and admin fees.</td></tr>
-      <tr><td>Payment Methods</td><td>Visa, Mastercard, Amex, Interac e-Transfer, Cash, Stripe / Square.</td></tr>
-    </tbody>
-  </table></div>
-</div></section>
-
-<section class="section"><div class="container">
-  <div class="cta-banner">
-    <h2>Not Sure Which Package Is Right for You?</h2>
-    <p>Contact us and we'll help you choose the perfect plan for your experience level and goals.</p>
-    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a class="btn btn-navy" href="contact.html"><i class="fa-solid fa-envelope"></i> Ask Us Anything</a>
-      <a class="btn" href="booking.html" style="background:rgba(6,21,43,.12);color:var(--navy)">Book Now</a>
+<nav class="navbar" role="navigation" aria-label="Main Navigation">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a>
+    <ul class="nav-menu" role="menubar">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="pricing.html" class="active">Pricing</a></li><li><a href="videos.html">Videos</a></li><li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li><li><a href="booking.html" class="btn btn-primary btn-sm">Book a Lesson</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i></button>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
-</div></section>
-</main>
+</nav>
 
-<a class="whatsapp" href="https://wa.me/10000000000?text=Hi%2C%20I'm%20interested%20in%20driving%20lessons" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-<footer class="footer"><div class="container"><div class="footer-grid">
-  <div><a class="footer-logo" href="index.html"><img src="images/logo.png" alt="GTA Driving Academy"></a><p>Drive Safe. Keep Families Safe. Keep Roads Safe.</p></div>
-  <div><h4>Pages</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="booking.html">Booking</a></div>
-  <div><h4>Learning</h4><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a></div>
-  <div><h4>Newsletter</h4><input class="form-control" type="email" placeholder="Email address" style="margin-bottom:10px"><button class="btn btn-secondary" style="width:100%;justify-content:center">Subscribe</button></div>
-</div><hr class="footer-divider"><div class="copyright">© 2026 GTA Driving Academy. All rights reserved.</div></div></footer>
-<script src="js/main.js"></script><script src="js/booking.js"></script>
-</body></html>
+<header class="page-hero" role="banner">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Pricing</span></nav>
+    <h1>Simple, Transparent Pricing</h1>
+    <p>No hidden fees. No surprises. Just honest pricing built around your goals and budget.</p>
+  </div>
+</header>
+
+<!-- PRICING CARDS -->
+<section class="section" aria-labelledby="pricing-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">G2 In-Car Lessons</div>
+      <h2 id="pricing-heading">Choose Your Package</h2>
+      <p>The more lessons you book upfront, the more you save. All packages include the same certified instructor and dual-brake safety vehicle.</p>
+    </div>
+
+    <div class="pricing-grid" itemscope itemtype="https://schema.org/ItemList">
+
+      <article class="pricing-card fade-in" itemprop="itemListElement" itemscope itemtype="https://schema.org/Product">
+        <p class="pricing-name" itemprop="name">Single Lesson</p>
+        <div class="pricing-amount"><sup>$</sup><span itemprop="price">85</span></div>
+        <p class="pricing-per">per 1-hour lesson</p>
+        <ul class="pricing-features" aria-label="Single lesson features">
+          <li><i class="fa-solid fa-check"></i> 1 hour in-car training</li>
+          <li><i class="fa-solid fa-check"></i> Certified instructor</li>
+          <li><i class="fa-solid fa-check"></i> Dual-brake vehicle</li>
+          <li><i class="fa-solid fa-check"></i> Pickup &amp; drop-off</li>
+          <li><i class="fa-solid fa-check"></i> Progress notes</li>
+        </ul>
+        <a href="booking.html" class="btn btn-outline-primary btn-block">Book Single Lesson</a>
+      </article>
+
+      <article class="pricing-card fade-in" itemprop="itemListElement" itemscope itemtype="https://schema.org/Product">
+        <p class="pricing-name" itemprop="name">5-Lesson Package</p>
+        <div class="pricing-amount"><sup>$</sup><span itemprop="price">400</span></div>
+        <p class="pricing-per">$80/lesson · Save $25</p>
+        <div class="pricing-savings">Save $25 vs single lessons</div>
+        <ul class="pricing-features">
+          <li><i class="fa-solid fa-check"></i> 5 hours in-car training</li>
+          <li><i class="fa-solid fa-check"></i> Certified instructor</li>
+          <li><i class="fa-solid fa-check"></i> Dual-brake vehicle</li>
+          <li><i class="fa-solid fa-check"></i> Pickup &amp; drop-off</li>
+          <li><i class="fa-solid fa-check"></i> Progress report</li>
+          <li><i class="fa-solid fa-check"></i> G2 test readiness check</li>
+        </ul>
+        <a href="booking.html" class="btn btn-outline-primary btn-block">Book 5 Lessons</a>
+      </article>
+
+      <article class="pricing-card featured fade-in" itemprop="itemListElement" itemscope itemtype="https://schema.org/Product">
+        <div class="pricing-badge">Most Popular</div>
+        <p class="pricing-name" itemprop="name">10-Lesson Package</p>
+        <div class="pricing-amount"><sup>$</sup><span itemprop="price">750</span></div>
+        <p class="pricing-per">$75/lesson · Save $100</p>
+        <div class="pricing-savings">Save $100 vs single lessons</div>
+        <ul class="pricing-features">
+          <li><i class="fa-solid fa-check"></i> 10 hours in-car training</li>
+          <li><i class="fa-solid fa-check"></i> Certified instructor</li>
+          <li><i class="fa-solid fa-check"></i> Dual-brake vehicle</li>
+          <li><i class="fa-solid fa-check"></i> Pickup &amp; drop-off</li>
+          <li><i class="fa-solid fa-check"></i> Detailed progress reports</li>
+          <li><i class="fa-solid fa-check"></i> G2 test readiness assessment</li>
+          <li><i class="fa-solid fa-check"></i> Instructor hotline access</li>
+        </ul>
+        <a href="booking.html" class="btn btn-primary btn-block">Book 10 Lessons</a>
+      </article>
+
+      <article class="pricing-card fade-in" itemprop="itemListElement" itemscope itemtype="https://schema.org/Product">
+        <p class="pricing-name" itemprop="name">20-Lesson Package</p>
+        <div class="pricing-amount"><sup>$</sup><span itemprop="price">1,400</span></div>
+        <p class="pricing-per">$70/lesson · Save $300</p>
+        <div class="pricing-savings">Best value — Save $300!</div>
+        <ul class="pricing-features">
+          <li><i class="fa-solid fa-check"></i> 20 hours in-car training</li>
+          <li><i class="fa-solid fa-check"></i> Priority scheduling</li>
+          <li><i class="fa-solid fa-check"></i> Dual-brake vehicle</li>
+          <li><i class="fa-solid fa-check"></i> Pickup &amp; drop-off</li>
+          <li><i class="fa-solid fa-check"></i> Comprehensive progress tracking</li>
+          <li><i class="fa-solid fa-check"></i> G2 + Full G test prep included</li>
+          <li><i class="fa-solid fa-check"></i> Emergency lesson rebook (1 free)</li>
+          <li><i class="fa-solid fa-check"></i> Instructor hotline priority</li>
+        </ul>
+        <a href="booking.html" class="btn btn-outline-primary btn-block">Book 20 Lessons</a>
+      </article>
+
+    </div><!-- /.pricing-grid -->
+  </div>
+</section>
+
+<!-- ALL SERVICES PRICING TABLE -->
+<section class="section bg-accent" aria-labelledby="table-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">All Programs</div>
+      <h2 id="table-heading">Complete Price Comparison</h2>
+      <p>Comparing all of our driving programs side by side.</p>
+    </div>
+
+    <div style="overflow-x:auto" class="fade-in">
+      <table class="comparison-table" role="table" aria-label="Pricing comparison table">
+        <thead>
+          <tr>
+            <th scope="col">Program</th>
+            <th scope="col">What's Included</th>
+            <th scope="col">Duration</th>
+            <th scope="col" class="featured-col">Price</th>
+            <th scope="col">Book</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>G1 Coaching Session</td><td>Mock tests, study guide, coaching</td><td>1 hour</td><td class="featured-col" style="font-weight:700;color:var(--secondary)">$45</td><td><a href="booking.html" class="btn btn-primary btn-sm">Book</a></td></tr>
+          <tr><td>G2 Single Lesson</td><td>In-car training, certified instructor</td><td>1 hour</td><td class="featured-col" style="font-weight:700;color:var(--secondary)">$85</td><td><a href="booking.html" class="btn btn-primary btn-sm">Book</a></td></tr>
+          <tr><td>G2 — 5-Lesson Pack</td><td>5 in-car lessons, progress report</td><td>5 hours</td><td class="featured-col" style="font-weight:700;color:var(--secondary)">$400</td><td><a href="booking.html" class="btn btn-primary btn-sm">Book</a></td></tr>
+          <tr><td>G2 — 10-Lesson Pack</td><td>10 lessons, test readiness, hotline</td><td>10 hours</td><td class="featured-col" style="font-weight:700;color:var(--secondary)">$750</td><td><a href="booking.html" class="btn btn-primary btn-sm">Book</a></td></tr>
+          <tr><td>G2 — 20-Lesson Pack</td><td>Full program, priority booking</td><td>20 hours</td><td class="featured-col" style="font-weight:700;color:var(--secondary)">$1,400</td><td><a href="booking.html" class="btn btn-primary btn-sm">Book</a></td></tr>
+          <tr><td>Full G Highway Training</td><td>400-series highway, merging, passing</td><td>1.5 hours</td><td class="featured-col" style="font-weight:700;color:var(--secondary)">$185</td><td><a href="booking.html" class="btn btn-primary btn-sm">Book</a></td></tr>
+          <tr><td>Full G — 3-Session Pack</td><td>3 highway sessions</td><td>4.5 hours</td><td class="featured-col" style="font-weight:700;color:var(--secondary)">$510</td><td><a href="booking.html" class="btn btn-primary btn-sm">Book</a></td></tr>
+          <tr><td>Refresher Lesson</td><td>Adults / seniors confidence rebuild</td><td>1 hour</td><td class="featured-col" style="font-weight:700;color:var(--secondary)">$85</td><td><a href="booking.html" class="btn btn-primary btn-sm">Book</a></td></tr>
+          <tr><td>Refresher — 5-Pack</td><td>5 refresher lessons</td><td>5 hours</td><td class="featured-col" style="font-weight:700;color:var(--secondary)">$395</td><td><a href="booking.html" class="btn btn-primary btn-sm">Book</a></td></tr>
+          <tr><td>Winter Driving Clinic (Group)</td><td>Skid recovery, black ice, whiteout</td><td>3 hours</td><td class="featured-col" style="font-weight:700;color:var(--secondary)">$120</td><td><a href="booking.html" class="btn btn-primary btn-sm">Book</a></td></tr>
+          <tr><td>Winter Driving (Private)</td><td>1-on-1 winter session</td><td>2 hours</td><td class="featured-col" style="font-weight:700;color:var(--secondary)">$185</td><td><a href="booking.html" class="btn btn-primary btn-sm">Book</a></td></tr>
+          <tr><td>BDE Full Program</td><td>20h classroom + 10h in-car</td><td>Full course</td><td class="featured-col" style="font-weight:700;color:var(--secondary)">Contact Us</td><td><a href="contact.html" class="btn btn-outline-primary btn-sm">Enquire</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING CALCULATOR -->
+<section class="section" aria-labelledby="calc-heading">
+  <div class="container" style="max-width:640px">
+    <div class="section-header">
+      <div class="section-tag">Quick Calculator</div>
+      <h2 id="calc-heading">Find Your Best Package</h2>
+      <p>Select a service to see pricing and savings instantly.</p>
+    </div>
+    <div class="calc-widget fade-in">
+      <div class="form-group">
+        <label class="form-label" for="pkgCalculator">Select a Package or Service</label>
+        <select class="form-control" id="pkgCalculator" aria-label="Select package for price calculation">
+          <option value="">— Choose a service —</option>
+          <optgroup label="G2 Lessons">
+            <option value="g2-single">G2 Single Lesson (1 hr)</option>
+            <option value="g2-5pack">G2 — 5-Lesson Package</option>
+            <option value="g2-10pack">G2 — 10-Lesson Package ⭐ Most Popular</option>
+            <option value="g2-20pack">G2 — 20-Lesson Package (Best Value)</option>
+          </optgroup>
+          <optgroup label="Other Programs">
+            <option value="full-g">Full G Highway Training</option>
+            <option value="refresher">Refresher Lesson</option>
+            <option value="winter-clinic">Winter Driving Clinic</option>
+            <option value="g1-prep">G1 Test Prep Coaching</option>
+          </optgroup>
+        </select>
+      </div>
+      <div id="calcResult"></div>
+      <div style="margin-top:20px;text-align:center">
+        <a href="booking.html" class="btn btn-primary"><i class="fa-solid fa-calendar-plus"></i> Book This Package</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERRAL + DISCOUNTS -->
+<section class="section bg-accent" aria-labelledby="discounts-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Save More</div>
+      <h2 id="discounts-heading">Discounts &amp; Special Offers</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px">
+
+      <div class="referral-card fade-in" aria-label="Referral discount">
+        <i class="fa-solid fa-users" style="font-size:2.5rem;margin-bottom:16px" aria-hidden="true"></i>
+        <h3>Refer a Friend — Both Save $10</h3>
+        <p>Tell a friend about us. When they book their first lesson and mention your name, you both receive $10 off your next lesson. No limit on referrals!</p>
+      </div>
+
+      <article class="service-card fade-in" aria-label="Family discount">
+        <div class="service-icon"><i class="fa-solid fa-house-user"></i></div>
+        <h3>Family Package Discount</h3>
+        <p>Have two family members learning to drive? Book both at the same time and receive 10% off each package. Perfect for teen + parent combos.</p>
+        <p style="font-size:0.85rem;color:var(--text-muted)">Contact us to apply this discount.</p>
+        <a href="contact.html" class="btn btn-outline-primary btn-sm">Get Discount</a>
+      </article>
+
+      <article class="service-card fade-in" aria-label="Student discount">
+        <div class="service-icon"><i class="fa-solid fa-id-card"></i></div>
+        <h3>Student ID Discount</h3>
+        <p>Show a valid high school or post-secondary student ID when booking and receive $5 off any single lesson or $15 off any package.</p>
+        <p style="font-size:0.85rem;color:var(--text-muted)">Must present ID at start of first lesson.</p>
+        <a href="booking.html" class="btn btn-outline-primary btn-sm">Book &amp; Save</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT METHODS -->
+<section class="section" aria-labelledby="payment-heading">
+  <div class="container" style="max-width:800px">
+    <div class="section-header">
+      <div class="section-tag">Payment</div>
+      <h2 id="payment-heading">We Accept All Major Payment Methods</h2>
+      <p>Pay securely online or in person. Full payment is due before the first lesson of your package.</p>
+    </div>
+    <div class="payment-icons fade-in" role="list" aria-label="Accepted payment methods">
+      <div class="payment-icon" role="listitem"><i class="fa-brands fa-cc-visa"></i> Visa</div>
+      <div class="payment-icon" role="listitem"><i class="fa-brands fa-cc-mastercard"></i> Mastercard</div>
+      <div class="payment-icon" role="listitem"><i class="fa-brands fa-cc-amex"></i> Amex</div>
+      <div class="payment-icon" role="listitem"><i class="fa-solid fa-mobile-screen"></i> Interac e-Transfer</div>
+      <div class="payment-icon" role="listitem"><i class="fa-solid fa-money-bill"></i> Cash</div>
+      <div class="payment-icon" role="listitem"><i class="fa-brands fa-paypal"></i> PayPal</div>
+    </div>
+    <div class="alert alert-info" style="margin-top:24px">
+      <i class="fa-solid fa-shield-halved"></i> All online payments are processed securely via Stripe. We never store your card details.
+    </div>
+  </div>
+</section>
+
+<!-- REFUND POLICY -->
+<section class="section bg-accent" aria-labelledby="refund-heading">
+  <div class="container" style="max-width:800px">
+    <div class="section-header">
+      <div class="section-tag">Policies</div>
+      <h2 id="refund-heading">Refund &amp; Cancellation Policy</h2>
+      <p>We know life happens. Here's our fair and transparent cancellation policy.</p>
+    </div>
+    <div style="overflow-x:auto" class="fade-in">
+      <table class="refund-table" role="table" aria-label="Cancellation and refund policy">
+        <thead>
+          <tr><th>Situation</th><th>Policy</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cancel 48+ hours before lesson</td><td>Full reschedule at no charge, or full credit to your account</td></tr>
+          <tr><td>Cancel 24–48 hours before lesson</td><td>50% of lesson fee charged; remainder credited to account</td></tr>
+          <tr><td>Cancel less than 24 hours / No-show</td><td>Full lesson fee charged (1 lesson deducted from package)</td></tr>
+          <tr><td>Instructor cancellation (our fault)</td><td>Full reschedule at no charge + $10 goodwill credit</td></tr>
+          <tr><td>Package — unused lessons</td><td>Unused lessons refunded within 30 days of request</td></tr>
+          <tr><td>BDE program withdrawal (before 50%)</td><td>Pro-rated refund for unused portion</td></tr>
+          <tr><td>BDE program withdrawal (after 50%)</td><td>No refund — certificate cannot be issued</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-top:16px">Cancellations must be made by phone or WhatsApp. Email cancellations are accepted but time-stamped to when we read them, not when sent.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" aria-labelledby="faq-heading">
+  <div class="container" style="max-width:720px">
+    <div class="section-header">
+      <div class="section-tag">FAQ</div>
+      <h2 id="faq-heading">Frequently Asked Questions</h2>
+    </div>
+    <div class="fade-in">
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">Do prices include pickup and drop-off?<i class="fa-solid fa-chevron-down accordion-icon"></i></button>
+        <div class="accordion-body"><div class="accordion-body-inner">Yes! All G2 and refresher lessons include free pickup and drop-off within our service area (Toronto, Mississauga, Brampton, Oakville, Hamilton, and surrounding GTA). Please contact us if you're unsure whether your address is covered.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">Can I switch instructors mid-package?<i class="fa-solid fa-chevron-down accordion-icon"></i></button>
+        <div class="accordion-body"><div class="accordion-body-inner">Yes, absolutely. If you feel you'd learn better with a different instructor, just let us know. We'll match you with someone better suited to your learning style at no extra cost. Your package hours transfer fully.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">Do lesson packages expire?<i class="fa-solid fa-chevron-down accordion-icon"></i></button>
+        <div class="accordion-body"><div class="accordion-body-inner">Package lessons must be used within 12 months of purchase. If you need an extension for medical or personal reasons, please contact us — we'll always try to accommodate. Unused lessons after 12 months are not refundable.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">Does completing BDE reduce my insurance premiums?<i class="fa-solid fa-chevron-down accordion-icon"></i></button>
+        <div class="accordion-body"><div class="accordion-body-inner">Many Ontario insurance providers offer discounts of 5–20% for drivers who complete an approved BDE program. The discount varies by insurer. We provide an MTO-approved completion certificate you can submit to your insurance provider.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">Are there extra charges on the road test day?<i class="fa-solid fa-chevron-down accordion-icon"></i></button>
+        <div class="accordion-body"><div class="accordion-body-inner">We charge a flat $50 vehicle use fee for using our car during your G2 or Full G road test. This covers insurance, fuel, and the instructor's time accompanying you to the test centre. The MTO road test fee ($53.75 G2, $89.50 G) is paid directly to ServiceOntario — not to us.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" aria-labelledby="pricing-cta">
+  <div class="container">
+    <h2 id="pricing-cta">Ready to Book?</h2>
+    <p>Choose your package and get started today. First available lessons as soon as this week.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="booking.html" class="btn btn-outline btn-lg"><i class="fa-solid fa-calendar-plus"></i> Book a Lesson Now</a>
+      <a href="contact.html" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:#fff;border:2px solid rgba(255,255,255,0.3)"><i class="fa-solid fa-phone"></i> Call Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo" style="margin-bottom:16px;display:inline-flex"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a><p>Ontario's most trusted MTO-approved driving school.</p><div class="footer-socials"><a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
+      <div><h4>Quick Links</h4><ul class="footer-links"><li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li><li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li><li><a href="pricing.html"><i class="fa-solid fa-chevron-right"></i> Pricing</a></li><li><a href="booking.html"><i class="fa-solid fa-chevron-right"></i> Book a Lesson</a></li></ul></div>
+      <div><h4>Resources</h4><ul class="footer-links"><li><a href="videos.html"><i class="fa-solid fa-chevron-right"></i> Free Videos</a></li><li><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog &amp; Tips</a></li><li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li></ul></div>
+      <div><h4>Contact</h4><div class="footer-contact-item"><i class="fa-solid fa-phone"></i><div><a href="tel:+14165550100" style="color:rgba(255,255,255,0.65)">+1 (416) 555-0100</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><div><a href="mailto:info@yourdrivingschool.ca" style="color:rgba(255,255,255,0.65)">info@yourdrivingschool.ca</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-clock"></i><div>Mon–Sat: 8am–7pm · Sun: 9am–5pm</div></div></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; <span id="year">2025</span> [Your Driving School]. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></div></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/1XXXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20driving%20lessons!" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat on WhatsApp</span></a>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="js/main.js"></script>
+<script src="js/booking.js"></script>
+</body>
+</html>

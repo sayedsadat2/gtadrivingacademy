@@ -1,70 +1,201 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Our Instructors | GTA Driving Academy</title>
-  <meta name="description" content="Meet our certified driving instructors at GTA Driving Academy — patient, experienced professionals serving Toronto and the GTA.">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/responsive.css"><link rel="stylesheet" href="css/dark-mode.css">
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Your Driving School Ontario</title>
+  <meta name="description" content="Learn about our mission, meet our certified instructors, and discover why thousands of Ontario drivers trust us for safe, professional driving education."/>
+  <meta property="og:title" content="About Us | Your Driving School Ontario"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/><link rel="stylesheet" href="css/responsive.css"/><link rel="stylesheet" href="css/dark-mode.css"/>
+  <style>
+    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+    .story-visual{background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:var(--radius-lg);height:420px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:7rem}
+    .vehicle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+    @media(max-width:768px){.story-grid{grid-template-columns:1fr}.story-visual{height:200px;font-size:4rem}}
+  </style>
 </head>
 <body>
-<div class="top-alert">🚗 &nbsp;Limited spots available this month — <strong>Book your first lesson today!</strong></div>
-<header class="navbar"><div class="container nav-inner">
-  <a class="logo" href="index.html"><img src="images/logo.png" alt="GTA Driving Academy logo"></a>
-  <button class="mobile-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('open')"><i class="fa-solid fa-bars"></i></button>
-  <nav class="nav-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="about.html" class="active">Instructors</a><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a></nav>
-  <div class="nav-actions"><button id="darkModeToggle" class="icon-link"><i class="fa-solid fa-moon"></i></button><a class="book-btn" href="booking.html">Book Now</a></div>
-</div></header>
-<main>
-<section class="page-hero"><div class="container"><div class="breadcrumbs">Home / About</div><h1>Our Story: Safe Roads, Safe Families</h1><p>We created GTA Driving Academy to make driving education more structured, respectful, and safety-focused for every student across Ontario.</p></div></section>
-
-<section class="section"><div class="container"><div class="split">
-  <div>
-    <div class="eyebrow" style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--orange);margin-bottom:10px">Our Mission</div>
-    <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,3.2vw,2.8rem);font-weight:900;color:var(--navy);line-height:1.1;margin-bottom:16px">Mission-Driven Driving Education</h2>
-    <p style="color:var(--muted);margin-bottom:16px;line-height:1.75">Our goal is not only to help students pass their road test. Our bigger purpose is to teach drivers how to protect themselves, their families, pedestrians, cyclists, and other drivers.</p>
-    <ul class="check-list" style="margin-bottom:24px">
-      <li><i class="fa-regular fa-circle-check"></i>Patient instruction for nervous beginners</li>
-      <li><i class="fa-regular fa-circle-check"></i>Structured, trackable progress</li>
-      <li><i class="fa-regular fa-circle-check"></i>Safety-first driving habits for life</li>
+<nav class="navbar" role="navigation" aria-label="Main Navigation">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a>
+    <ul class="nav-menu" role="menubar">
+      <li><a href="index.html">Home</a></li><li><a href="about.html" class="active">About</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="pricing.html">Pricing</a></li><li><a href="videos.html">Videos</a></li><li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li><li><a href="booking.html" class="btn btn-primary btn-sm">Book a Lesson</a></li>
     </ul>
-    <a class="btn btn-primary" href="booking.html">Book a Lesson</a>
+    <div class="nav-right">
+      <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i></button>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
   </div>
-  <div class="photo-feature-card"><img src="images/featured-driving-lesson-photo.png" alt="GTA Driving Academy lesson in progress"></div>
-</div></div></section>
+</nav>
 
-<section class="section section-light"><div class="container">
-  <div class="section-title"><div class="eyebrow">The Team</div><h2>Meet Our Certified Instructors</h2><p>Every instructor at GTA Driving Academy is certified, patient, and dedicated to your success on Ontario roads.</p></div>
-  <div class="blog-grid">
-    <article class="team-card"><div class="thumb"><i class="fa-solid fa-user" style="font-size:3rem;color:rgba(255,255,255,.2)"></i></div><div class="team-card-body"><h3>Instructor Name 1</h3><p>Certified driving instructor with 6+ years teaching G2, Full G, highway, parking, and defensive driving across the GTA.</p></div></article>
-    <article class="team-card"><div class="thumb"><i class="fa-solid fa-user" style="font-size:3rem;color:rgba(255,255,255,.2)"></i></div><div class="team-card-body"><h3>Instructor Name 2</h3><p>Certified driving instructor with 7+ years of experience — specializing in nervous beginners and newcomer students.</p></div></article>
-    <article class="team-card"><div class="thumb"><i class="fa-solid fa-user" style="font-size:3rem;color:rgba(255,255,255,.2)"></i></div><div class="team-card-body"><h3>Instructor Name 3</h3><p>Certified driving instructor with 8+ years of experience teaching Full G highway skills and winter driving across Ontario.</p></div></article>
+<header class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>About Us</span></nav>
+    <h1>Our Story &amp; Mission</h1>
+    <p>We don't just teach driving — we build safer communities one driver at a time.</p>
   </div>
-</div></section>
+</header>
 
-<section class="section"><div class="container">
-  <div class="section-title"><div class="eyebrow">Our Fleet</div><h2>Vehicles &amp; Safety Features</h2><p>We train in modern dual-brake vehicles with clear instructor signage, clean interiors, and student comfort in mind.</p></div>
-  <div class="stats">
-    <div class="stat"><strong>500+</strong><span>Lessons Taught</span></div>
-    <div class="stat"><strong>98%</strong><span>Student Pass Rate</span></div>
-    <div class="stat"><strong>5+</strong><span>Years in Business</span></div>
+<!-- OUR STORY -->
+<section class="section">
+  <div class="container">
+    <div class="story-grid">
+      <div class="fade-in">
+        <div class="section-tag">Our Story</div>
+        <h2>Born from a Personal Mission to Save Lives</h2>
+        <p>Over 12 years ago, our founder witnessed a close friend's family be devastated by a preventable road accident caused by an undertrained driver. That moment changed everything.</p>
+        <p>He committed to building a driving school where safety isn't just a checkbox — it's a deeply held value taught in every single lesson. Today, [Your Driving School] has trained over 2,500 students across the GTA with one of the highest first-time pass rates in Ontario.</p>
+        <p>But more importantly, our students leave with habits, instincts, and a respect for the road that keep them — and everyone around them — safe for life.</p>
+        <div style="display:flex;gap:14px;margin-top:26px;flex-wrap:wrap">
+          <a href="booking.html" class="btn btn-primary"><i class="fa-solid fa-calendar-plus"></i> Book a Lesson</a>
+          <a href="contact.html" class="btn btn-outline-primary">Get in Touch</a>
+        </div>
+      </div>
+      <div class="story-visual fade-in" aria-hidden="true"><i class="fa-solid fa-car"></i></div>
+    </div>
   </div>
-</div></section>
+</section>
 
-<section class="section section-light"><div class="container">
-  <div class="section-title"><div class="eyebrow">Our Environment</div><h2>What a Lesson Looks Like</h2><p>A professional, patient, and safety-focused training experience on real Ontario roads.</p></div>
-  <div class="photo-strip"><img src="images/featured-driving-lesson-photo.png" alt="Professional driving lesson with instructor and student"></div>
-</div></section>
-</main>
+<!-- STATS -->
+<section class="section-sm bg-accent">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card fade-in"><div class="stat-number" data-counter data-target="2500" data-suffix="+">2500+</div><div class="stat-label">Students Trained</div></div>
+      <div class="stat-card fade-in"><div class="stat-number" data-counter data-target="96" data-suffix="%">96%</div><div class="stat-label">First-Time Pass Rate</div></div>
+      <div class="stat-card fade-in"><div class="stat-number" data-counter data-target="12" data-suffix="">12</div><div class="stat-label">Years in Business</div></div>
+      <div class="stat-card fade-in"><div class="stat-number" data-counter data-target="15000" data-suffix="+">15000+</div><div class="stat-label">Lessons Delivered</div></div>
+      <div class="stat-card fade-in"><div class="stat-number">5&#9733;</div><div class="stat-label">Google Rating</div></div>
+    </div>
+  </div>
+</section>
 
-<a class="whatsapp" href="https://wa.me/10000000000?text=Hi%2C%20I'm%20interested%20in%20driving%20lessons" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-<footer class="footer"><div class="container"><div class="footer-grid">
-  <div><a class="footer-logo" href="index.html"><img src="images/logo.png" alt="GTA Driving Academy"></a><p>Drive Safe. Keep Families Safe. Keep Roads Safe.</p></div>
-  <div><h4>Pages</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="booking.html">Booking</a></div>
-  <div><h4>Learning</h4><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a></div>
-  <div><h4>Newsletter</h4><input class="form-control" type="email" placeholder="Email address" style="margin-bottom:10px"><button class="btn btn-secondary" style="width:100%;justify-content:center">Subscribe</button></div>
-</div><hr class="footer-divider"><div class="copyright">© 2026 GTA Driving Academy. All rights reserved.</div></div></footer>
+<!-- MEET THE TEAM -->
+<section class="section" aria-labelledby="team-h2">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">The People Behind the Wheel</div>
+      <h2 id="team-h2">Meet Our Certified Instructors</h2>
+      <p>All instructors are MTO-certified, background-checked, and passionate about road safety. You're in safe hands.</p>
+    </div>
+    <div class="instructors-grid">
+      <article class="instructor-card fade-in">
+        <div class="instructor-avatar" aria-hidden="true">JD</div>
+        <h3>James Downing</h3>
+        <div class="instructor-role">Senior Instructor &amp; Founder</div>
+        <p>15+ years of experience. Founded the school after witnessing firsthand how better driver training could prevent tragedy. Specializes in teen drivers and nervous first-timers.</p>
+        <div class="instructor-tags"><span class="tag">G1 &amp; G2</span><span class="tag">Full G Highway</span><span class="tag">Winter Driving</span><span class="tag">15+ yrs exp</span></div>
+      </article>
+      <article class="instructor-card fade-in">
+        <div class="instructor-avatar" aria-hidden="true">MC</div>
+        <h3>Maria Chen</h3>
+        <div class="instructor-role">Lead Instructor — Adults &amp; Seniors</div>
+        <p>Known for extraordinary patience and ability to rebuild confidence in adult learners, seniors, and newcomers to Canada. Fluent in English and Mandarin.</p>
+        <div class="instructor-tags"><span class="tag">Refresher Lessons</span><span class="tag">Seniors Specialist</span><span class="tag">Newcomers</span><span class="tag">8 yrs exp</span></div>
+      </article>
+      <article class="instructor-card fade-in">
+        <div class="instructor-avatar" aria-hidden="true">AS</div>
+        <h3>Arjun Singh</h3>
+        <div class="instructor-role">Instructor — G2 &amp; Highway</div>
+        <p>Calm, structured teaching style makes even the most anxious students feel at ease. Expert in G2 test preparation and 400-series highway training.</p>
+        <div class="instructor-tags"><span class="tag">G2 Test Prep</span><span class="tag">Highway Driving</span><span class="tag">Defensive Driving</span><span class="tag">6 yrs exp</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- OUR VEHICLES -->
+<section class="section bg-accent" aria-labelledby="vehicles-h2">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Safety First</div>
+      <h2 id="vehicles-h2">Our Fleet — Built for Safety</h2>
+      <p>Every vehicle is equipped with instructor-side dual brakes, maintained regularly, and fully insured.</p>
+    </div>
+    <div class="vehicle-grid">
+      <article class="service-card fade-in">
+        <div class="service-icon"><i class="fa-solid fa-car-side"></i></div>
+        <h3>Toyota Corolla (2022)</h3>
+        <p>Automatic — ideal for beginners learning G2 basics.</p>
+        <ul style="font-size:.86rem;color:var(--text-light);display:flex;flex-direction:column;gap:6px;margin-top:8px">
+          <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:6px"></i>Dual instructor brake</li>
+          <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:6px"></i>Backup camera</li>
+          <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:6px"></i>Automatic transmission</li>
+        </ul>
+      </article>
+      <article class="service-card fade-in">
+        <div class="service-icon"><i class="fa-solid fa-car"></i></div>
+        <h3>Honda Civic (2023)</h3>
+        <p>Our most popular training vehicle — great for G2 and Full G.</p>
+        <ul style="font-size:.86rem;color:var(--text-light);display:flex;flex-direction:column;gap:6px;margin-top:8px">
+          <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:6px"></i>Dual instructor brake</li>
+          <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:6px"></i>Collision warning system</li>
+          <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:6px"></i>Automatic transmission</li>
+        </ul>
+      </article>
+      <article class="service-card fade-in">
+        <div class="service-icon"><i class="fa-solid fa-truck-front"></i></div>
+        <h3>Toyota RAV4 (2023)</h3>
+        <p>SUV training and perfect for winter driving clinic sessions.</p>
+        <ul style="font-size:.86rem;color:var(--text-light);display:flex;flex-direction:column;gap:6px;margin-top:8px">
+          <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:6px"></i>Dual instructor brake</li>
+          <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:6px"></i>360° parking sensors</li>
+          <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:6px"></i>AWD — great for winter</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- COMMITMENT -->
+<section class="mission-section" aria-labelledby="commit-h2">
+  <div class="container">
+    <div class="mission-grid">
+      <div class="mission-content fade-in">
+        <div class="section-tag" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#fff">Our Commitment</div>
+        <h2 id="commit-h2">We Commit to Every Student's Success</h2>
+        <p>Every student deserves a patient, professional, and personalized experience. We adapt to every learning style, every pace, and every goal.</p>
+        <div class="mission-points">
+          <div class="mission-point"><i class="fa-solid fa-circle-check"></i><span><strong>MTO Approved</strong> — We meet Ontario's highest standards</span></div>
+          <div class="mission-point"><i class="fa-solid fa-circle-check"></i><span><strong>Personalized Learning</strong> — Lessons tailored to your pace</span></div>
+          <div class="mission-point"><i class="fa-solid fa-circle-check"></i><span><strong>Safety-First Culture</strong> — Defensive driving in every lesson</span></div>
+          <div class="mission-point"><i class="fa-solid fa-circle-check"></i><span><strong>Transparent Pricing</strong> — No hidden fees, ever</span></div>
+          <div class="mission-point"><i class="fa-solid fa-circle-check"></i><span><strong>Flexible Scheduling</strong> — Evenings and weekends available</span></div>
+          <div class="mission-point"><i class="fa-solid fa-circle-check"></i><span><strong>Test Route Practice</strong> — We practice the actual DriveTest routes</span></div>
+        </div>
+      </div>
+      <div class="mission-visual fade-in">
+        <div class="mission-stat-card"><strong>MTO</strong><span>Approved School</span></div>
+        <div class="mission-stat-card"><strong>100%</strong><span>Background-Checked Instructors</span></div>
+        <div class="mission-stat-card"><strong>$2M+</strong><span>Insurance Coverage</span></div>
+        <div class="mission-stat-card"><strong>7-Day</strong><span>Flexible Scheduling</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Get Started?</h2>
+    <p>Book your first lesson today and join thousands of safe Ontario drivers we've trained.</p>
+    <a href="booking.html" class="btn btn-outline btn-lg"><i class="fa-solid fa-calendar-plus"></i> Book Your First Lesson</a>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo" style="margin-bottom:14px;display:inline-flex"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a><p>Ontario's most trusted MTO-approved driving school.</p><div class="footer-socials"><a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
+      <div><h4>Quick Links</h4><ul class="footer-links"><li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li><li><a href="about.html"><i class="fa-solid fa-chevron-right"></i> About Us</a></li><li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li><li><a href="pricing.html"><i class="fa-solid fa-chevron-right"></i> Pricing</a></li><li><a href="booking.html"><i class="fa-solid fa-chevron-right"></i> Book a Lesson</a></li></ul></div>
+      <div><h4>Resources</h4><ul class="footer-links"><li><a href="videos.html"><i class="fa-solid fa-chevron-right"></i> Free Videos</a></li><li><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog &amp; Tips</a></li><li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li></ul></div>
+      <div><h4>Contact</h4><div class="footer-contact-item"><i class="fa-solid fa-phone"></i><div><a href="tel:+14165550100" style="color:rgba(255,255,255,.65)">+1 (416) 555-0100</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><div><a href="mailto:info@yourdrivingschool.ca" style="color:rgba(255,255,255,.65)">info@yourdrivingschool.ca</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-clock"></i><div>Mon–Sat: 8am–7pm · Sun: 9am–5pm</div></div></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; <span id="year"></span> [Your Driving School]. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></div></div>
+  </div>
+</footer>
+<a href="https://wa.me/1XXXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20driving%20lessons!" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat on WhatsApp</span></a>
 <script src="js/main.js"></script>
-</body></html>
+</body>
+</html>

@@ -1,0 +1,49 @@
+/* ================================================================
+   DARK MODE — applied via body.dark-mode
+   ================================================================ */
+body.dark-mode{--white:#0f172a;--accent:#1e293b;--accent2:#1a2744;--border:#334155;--text:#e2e8f0;--text-light:#94a3b8;--text-muted:#64748b;background:#0f172a;color:#e2e8f0}
+body.dark-mode .navbar{background:#0f172a;border-bottom:1px solid #1e293b}
+body.dark-mode .nav-menu a{color:#e2e8f0}
+body.dark-mode .nav-menu a:hover,body.dark-mode .nav-menu a.active{background:#1e293b;color:#93c5fd}
+body.dark-mode .nav-menu{background:#0f172a;border-color:#1e293b}
+body.dark-mode .dark-mode-toggle{background:#1e293b;color:#e2e8f0}
+body.dark-mode .hamburger span{background:#e2e8f0}
+body.dark-mode .service-card,body.dark-mode .blog-card,body.dark-mode .video-card,body.dark-mode .pricing-card,body.dark-mode .instructor-card,body.dark-mode .accordion-item{background:#1e293b;border-color:#334155}
+body.dark-mode .pricing-card.featured{border-color:var(--secondary)}
+body.dark-mode .form-control{background:#1e293b;border-color:#334155;color:#e2e8f0}
+body.dark-mode .form-control:focus{border-color:#60a5fa;box-shadow:0 0 0 3px rgba(96,165,250,.15)}
+body.dark-mode .form-label{color:#e2e8f0}
+body.dark-mode h1,body.dark-mode h2,body.dark-mode h3,body.dark-mode h4{color:#e2e8f0}
+body.dark-mode .service-card h3,body.dark-mode .blog-card h3 a{color:#93c5fd}
+body.dark-mode .service-icon{background:#1a2744}
+body.dark-mode .contact-info-card{background:#1e293b}
+body.dark-mode .trust-bar{background:#0f172a;border-color:#1e293b}
+body.dark-mode .accordion-header{background:#1e293b;color:#e2e8f0}
+body.dark-mode .accordion-header:hover{background:#253347}
+body.dark-mode .tag{background:#1a2744;color:#93c5fd}
+body.dark-mode .section-tag{background:#1a2744;border-color:#334155;color:#93c5fd}
+body.dark-mode .filter-tab{background:#1e293b;border-color:#334155;color:#e2e8f0}
+body.dark-mode .service-select-card,body.dark-mode .instructor-select-card,body.dark-mode .time-slot{background:#1e293b;border-color:#334155;color:#e2e8f0}
+body.dark-mode .service-select-card:hover,body.dark-mode .instructor-select-card:hover{background:#253347}
+body.dark-mode .review-table td{border-color:#334155}
+body.dark-mode .booking-nav{border-color:#334155}
+body.dark-mode .pricing-card .pricing-savings{background:#451a03;color:#fed7aa}
+body.dark-mode .comment-avatar{background:#1a2744}
+body.dark-mode .sidebar-widget,body.dark-mode .author-card,body.dark-mode .related-posts,body.dark-mode .toc{background:#1e293b;border-color:#334155}
+body.dark-mode .recent-post{border-color:#334155}
+body.dark-mode .tag-link{background:#1e293b;border-color:#334155;color:#e2e8f0}
+body.dark-mode .tag-link:hover{background:var(--primary);color:#fff}
+body.dark-mode .footer{background:#070f1a}
+body.dark-mode .footer-bottom{border-color:rgba(255,255,255,.08)}
+body.dark-mode .calc-widget{background:#1e293b;border-color:#334155}
+
+/* Sun/moon icon toggle */
+body.dark-mode .icon-moon{display:none}
+body.dark-mode .icon-sun{display:block}
+body:not(.dark-mode) .icon-sun{display:none}
+body:not(.dark-mode) .icon-moon{display:block}
+
+/* Scrollbar */
+body.dark-mode::-webkit-scrollbar{width:8px}
+body.dark-mode::-webkit-scrollbar-track{background:#1e293b}
+body.dark-mode::-webkit-scrollbar-thumb{background:#334155;border-radius:4px}

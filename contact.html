@@ -1,42 +1,272 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact and Booking</title>
-  <meta name="description" content="Contact our Ontario driving school, request lessons, and book G1, G2 or Full G training.">
-  <meta property="og:title" content="Contact and Booking">
-  <meta property="og:description" content="Contact our Ontario driving school, request lessons, and book G1, G2 or Full G training.">
-  <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;600;700" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/dark-mode.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"DrivingSchool","name":"GTA Driving Academy","areaServed":"Toronto and GTA, Ontario","telephone":"[Phone]","email":"[Email]","slogan":"Drive Safe. Keep Families Safe. Keep Roads Safe.","address":{"@type":"PostalAddress","addressLocality":"Toronto","addressRegion":"ON","addressCountry":"CA"}}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Your Driving School Ontario</title>
+  <meta name="description" content="Get in touch with Your Driving School. Call, email, or use our contact form. Serving Toronto, Mississauga, Brampton, Oakville, Hamilton and all GTA areas." />
+  <meta property="og:title" content="Contact | Your Driving School Ontario" />
+  <meta property="og:description" content="Contact our driving school in the GTA. Phone, email, WhatsApp or contact form — we're here to help." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/dark-mode.css" />
+  <link rel="icon" href="images/favicon.ico" />
+  <style>
+    .contact-layout { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+    .hours-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.88rem; margin-top:12px; }
+    .hours-row { display:contents; }
+    .hours-day { color:var(--text); font-weight:600; padding:6px 0; border-bottom:1px solid var(--border); }
+    .hours-time { color:var(--text-light); padding:6px 0; border-bottom:1px solid var(--border); text-align:right; }
+    @media(max-width:768px){ .contact-layout { grid-template-columns:1fr; } }
+  </style>
 </head>
 <body>
-<div class="top-alert">🚗 Safe Driving Starts Here — Book Your First Lesson Today</div>
-<header class="navbar">
-  <div class="container nav-inner">
-    <a class="logo" href="index.html" aria-label="GTA Driving Academy home"><img src="images/logo.png" alt="GTA Driving Academy logo"></a>
-    <button class="mobile-toggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
-    <nav class="nav-menu" aria-label="Main navigation">
-      <a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="about.html">Instructors</a><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a>
-    </nav>
-    <div class="nav-actions"><button id="darkModeToggle" class="icon-link" title="Dark mode"><i class="fa-solid fa-moon"></i></button><a class="icon-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a><a class="book-btn" href="booking.html">Book Now</a></div>
+
+<nav class="navbar" role="navigation" aria-label="Main Navigation">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a>
+    <ul class="nav-menu" role="menubar">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="pricing.html">Pricing</a></li><li><a href="videos.html">Videos</a></li><li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li><li><a href="booking.html" class="btn btn-primary btn-sm">Book a Lesson</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i></button>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero" role="banner">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Contact</span></nav>
+    <h1>Get in Touch</h1>
+    <p>Questions, bookings, or just want to chat? We typically respond within 2 hours during business hours.</p>
   </div>
 </header>
-<main><section class="page-hero"><div class="container"><div class="breadcrumbs">Home / Contact</div><h1>Contact & Booking</h1><p>Send us your information and we will help you choose the right driving lesson package.</p></div></section><section class="section"><div class="container split"><form class="form-card" data-validate="true" action="https://formspree.io/f/YOUR-ENDPOINT" method="POST"><h2>Contact Form</h2><div class="form-grid"><input class="form-control" name="name" required placeholder="Name"><input class="form-control" name="email" type="email" required placeholder="Email"><input class="form-control" name="phone" required placeholder="Phone"><select class="form-control" name="service" required><option value="">Service interested in</option><option>G1 Test Prep</option><option>G2 Lessons</option><option>Full G Training</option><option>Refresher Lessons</option></select><input class="form-control" type="date" name="date"><input class="form-control" type="time" name="time"></div><br><textarea class="form-control" name="message" placeholder="Message"></textarea><p><label><input type="checkbox" name="sms_opt_in"> I agree to receive SMS lesson reminders.</label></p><button class="btn btn-secondary">Send Message</button></form><div><div class="form-card"><h2>Direct Contact</h2><p><strong>Phone:</strong> [Phone Number]</p><p><strong>Email:</strong> [Email Address]</p><p><strong>Hours:</strong> Mon–Sat, 9 AM–7 PM</p><p><strong>Service Area:</strong> Toronto / GTA</p></div><br><iframe class="video-frame" loading="lazy" src="https://www.google.com/maps?q=Toronto,Ontario&output=embed" title="Google map placeholder"></iframe></div></div></section></main><script src="js/contact-form.js"></script><a class="whatsapp" aria-label="WhatsApp chat" href="https://wa.me/10000000000?text=Hi%2C%20I'm%20interested%20in%20driving%20lessons" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-<footer class="footer">
-  <div class="container footer-grid">
-    <div><a class="footer-logo" href="index.html" aria-label="GTA Driving Academy home"><img src="images/logo.png" alt="GTA Driving Academy logo"></a><p>Drive Safe. Keep Families Safe. Keep Roads Safe. Professional driving lessons for G1, G2, Full G, newcomers, parents, and seniors across the GTA.</p></div>
-    <div><h4>Pages</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="booking.html">Booking</a></div>
-    <div><h4>Learning</h4><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a></div>
-    <div><h4>Newsletter</h4><form id="newsletterForm"><input class="form-control" name="email" type="email" placeholder="Email address" required><br><button class="btn btn-secondary" type="submit">Subscribe</button></form></div>
-  </div><div class="container copyright">© 2026 GTA Driving Academy. Demo website. Replace placeholders before publishing.</div>
+
+<!-- CONTACT INFO CARDS -->
+<section class="section-sm bg-accent">
+  <div class="container">
+    <div class="contact-info-grid" role="list" aria-label="Contact information">
+      <div class="contact-info-card fade-in" role="listitem">
+        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+        <h4>Call Us</h4>
+        <p><a href="tel:+14165550100">+1 (416) 555-0100</a></p>
+        <p style="font-size:0.8rem;margin-top:4px">Mon–Sat 8am–7pm</p>
+      </div>
+      <div class="contact-info-card fade-in" role="listitem">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        <h4>WhatsApp</h4>
+        <p><a href="https://wa.me/1XXXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20driving%20lessons!" target="_blank" rel="noopener">Message Us Now</a></p>
+        <p style="font-size:0.8rem;margin-top:4px">Fastest response</p>
+      </div>
+      <div class="contact-info-card fade-in" role="listitem">
+        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        <h4>Email</h4>
+        <p><a href="mailto:info@yourdrivingschool.ca">info@yourdrivingschool.ca</a></p>
+        <p style="font-size:0.8rem;margin-top:4px">Reply within 2 hours</p>
+      </div>
+      <div class="contact-info-card fade-in" role="listitem">
+        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+        <h4>Service Area</h4>
+        <p>Toronto, Mississauga, Brampton</p>
+        <p>Oakville, Hamilton &amp; all GTA</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM + MAP -->
+<section class="section">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- FORM -->
+      <div class="fade-in">
+        <div class="section-tag">Send a Message</div>
+        <h2>We'd Love to Hear from You</h2>
+        <p style="color:var(--text-light);margin-bottom:28px">Fill in the form and we'll get back to you within 2 hours during business hours. For the fastest response, message us on WhatsApp.</p>
+
+        <!-- Success / Error messages -->
+        <div id="formSuccess" class="alert alert-success" style="display:none" role="alert">
+          <i class="fa-solid fa-circle-check" aria-hidden="true"></i> <strong>Message sent!</strong> We'll get back to you within 2 hours. Check your inbox for a confirmation.
+        </div>
+        <div id="formError" class="alert" style="display:none;background:#fef2f2;border-color:#dc2626;color:#dc2626" role="alert"></div>
+
+        <form id="contactForm" novalidate aria-label="Contact form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="contactName">Full Name <span aria-hidden="true">*</span></label>
+              <input type="text" class="form-control" id="contactName" name="name" placeholder="Jane Smith" required aria-required="true" autocomplete="name" />
+              <span class="form-error" id="contactNameError" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactEmail">Email Address <span aria-hidden="true">*</span></label>
+              <input type="email" class="form-control" id="contactEmail" name="email" placeholder="jane@email.com" required aria-required="true" autocomplete="email" />
+              <span class="form-error" id="contactEmailError" role="alert"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="contactPhone">Phone Number</label>
+              <input type="tel" class="form-control" id="contactPhone" name="phone" placeholder="+1 (416) 555-0000" autocomplete="tel" />
+              <span class="form-error" id="contactPhoneError" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactService">Service Interested In</label>
+              <select class="form-control" id="contactService" name="service" aria-label="Select service">
+                <option value="">— Select a service —</option>
+                <option value="g1-coaching">G1 Knowledge Test Coaching</option>
+                <option value="g2-lessons">G2 In-Car Lessons</option>
+                <option value="full-g">Full G Highway Training</option>
+                <option value="refresher">Refresher Lessons</option>
+                <option value="winter">Winter Driving Clinic</option>
+                <option value="bde">BDE Program</option>
+                <option value="other">Other / Not Sure</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contactDate">Preferred Date / Time</label>
+            <input type="text" class="form-control" id="contactDate" name="preferred_date" placeholder="e.g. Weekday evenings, Saturday mornings…" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contactMessage">Message <span aria-hidden="true">*</span></label>
+            <textarea class="form-control" id="contactMessage" name="message" rows="5" placeholder="Tell us about yourself and what you're looking to achieve. Any questions or special requirements?" required aria-required="true"></textarea>
+            <span class="form-error" id="contactMessageError" role="alert"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-check">
+              <input type="checkbox" id="smsOptin" name="sms_optin" />
+              <span>I agree to receive SMS lesson reminders and updates. Standard message rates may apply. You can opt out any time.</span>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label class="form-check">
+              <input type="checkbox" required aria-required="true" />
+              <span>I have read and agree to the <a href="#">Privacy Policy</a> and consent to being contacted about driving lessons. <span aria-hidden="true">*</span></span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Send Message
+          </button>
+
+          <p style="font-size:0.8rem;color:var(--text-muted);margin-top:12px">
+            <i class="fa-solid fa-lock" aria-hidden="true"></i> Your information is protected and never shared with third parties.
+          </p>
+        </form>
+      </div>
+
+      <!-- INFO + MAP -->
+      <div class="fade-in">
+        <div class="section-tag">Find Us</div>
+        <h2>Our Service Area</h2>
+        <p style="color:var(--text-light);margin-bottom:20px">We come to you! Pickup and drop-off included within our service area across the Greater Toronto Area.</p>
+
+        <!-- Google Maps embed — replace with your actual embed URL -->
+        <div class="map-container" role="region" aria-label="Google Maps showing Toronto and GTA service area">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d184552.57068987725!2d-79.54286601730695!3d43.71843258413!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb90d7c63ba5%3A0x323555502ab4c477!2sToronto%2C%20ON!5e0!3m2!1sen!2sca!4v1715000000000!5m2!1sen!2sca"
+            title="Map of Toronto and Greater Toronto Area — Our Service Area"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            aria-label="Google Maps: Toronto and GTA service area">
+          </iframe>
+        </div>
+
+        <!-- Hours -->
+        <div style="background:var(--accent2);border-radius:var(--radius-md);padding:24px;margin-top:24px">
+          <h4 style="margin-bottom:4px"><i class="fa-solid fa-clock" style="color:var(--secondary)" aria-hidden="true"></i> Hours of Operation</h4>
+          <div class="hours-grid" role="table" aria-label="Hours of operation">
+            <div class="hours-day" role="rowheader">Monday – Friday</div><div class="hours-time" role="cell">8:00 AM – 7:00 PM</div>
+            <div class="hours-day" role="rowheader">Saturday</div><div class="hours-time" role="cell">8:00 AM – 6:00 PM</div>
+            <div class="hours-day" role="rowheader">Sunday</div><div class="hours-time" role="cell">9:00 AM – 5:00 PM</div>
+            <div class="hours-day" role="rowheader">Statutory Holidays</div><div class="hours-time" role="cell">10:00 AM – 3:00 PM</div>
+          </div>
+        </div>
+
+        <!-- Service Areas List -->
+        <div style="margin-top:24px">
+          <h4 style="margin-bottom:12px"><i class="fa-solid fa-location-dot" style="color:var(--secondary)" aria-hidden="true"></i> Areas We Serve</h4>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span class="tag">Toronto</span><span class="tag">Mississauga</span><span class="tag">Brampton</span>
+            <span class="tag">Oakville</span><span class="tag">Hamilton</span><span class="tag">Burlington</span>
+            <span class="tag">Vaughan</span><span class="tag">Richmond Hill</span><span class="tag">Markham</span>
+            <span class="tag">Scarborough</span><span class="tag">North York</span><span class="tag">Etobicoke</span>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:24px">
+          <a href="tel:+14165550100" class="btn btn-outline-primary">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i> Call +1 (416) 555-0100
+          </a>
+          <a href="https://wa.me/1XXXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20driving%20lessons!" target="_blank" rel="noopener" class="btn" style="background:#25d366;color:#fff;border:2px solid #25d366" aria-label="Message on WhatsApp">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp
+          </a>
+          <a href="booking.html" class="btn btn-primary">
+            <i class="fa-solid fa-calendar-plus" aria-hidden="true"></i> Book a Lesson Online
+          </a>
+        </div>
+
+      </div>
+    </div><!-- /.contact-layout -->
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section bg-accent" aria-labelledby="contact-faq-heading">
+  <div class="container" style="max-width:720px">
+    <div class="section-header">
+      <div class="section-tag">FAQ</div>
+      <h2 id="contact-faq-heading">Common Questions</h2>
+    </div>
+    <div class="fade-in">
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">How quickly can I get my first lesson booked?<i class="fa-solid fa-chevron-down accordion-icon"></i></button>
+        <div class="accordion-body"><div class="accordion-body-inner">Most students can get their first lesson within 3–5 business days of booking. During peak periods (summer, back-to-school), it may take up to 1–2 weeks. Book early to secure your preferred time slot.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">Do you offer lessons in languages other than English?<i class="fa-solid fa-chevron-down accordion-icon"></i></button>
+        <div class="accordion-body"><div class="accordion-body-inner">Yes! Instructor Maria Chen teaches in English and Mandarin. Instructor Arjun Singh teaches in English and Punjabi. Contact us to request a specific language and we'll match you with the right instructor.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">What do I need to bring to my first lesson?<i class="fa-solid fa-chevron-down accordion-icon"></i><i></i></button>
+        <div class="accordion-body"><div class="accordion-body-inner">Bring your valid Ontario G1 licence (or higher). That's it! We'll handle everything else — the vehicle, insurance, and lesson plan. Wear comfortable clothing and closed-toe shoes. Glasses or contacts if you need them for driving.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">Where exactly do you pick me up?<i class="fa-solid fa-chevron-down accordion-icon"></i></button>
+        <div class="accordion-body"><div class="accordion-body-inner">We pick you up at your home address, school, workplace, or any agreed location within our service area. Just provide your address when booking and we'll confirm it's within range.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo" style="margin-bottom:16px;display:inline-flex"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a><p>Ontario's most trusted MTO-approved driving school.</p><div class="footer-socials"><a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
+      <div><h4>Quick Links</h4><ul class="footer-links"><li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li><li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li><li><a href="pricing.html"><i class="fa-solid fa-chevron-right"></i> Pricing</a></li><li><a href="booking.html"><i class="fa-solid fa-chevron-right"></i> Book a Lesson</a></li></ul></div>
+      <div><h4>Resources</h4><ul class="footer-links"><li><a href="videos.html"><i class="fa-solid fa-chevron-right"></i> Free Videos</a></li><li><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog &amp; Tips</a></li><li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li></ul></div>
+      <div><h4>Contact</h4><div class="footer-contact-item"><i class="fa-solid fa-phone"></i><div><a href="tel:+14165550100" style="color:rgba(255,255,255,0.65)">+1 (416) 555-0100</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><div><a href="mailto:info@yourdrivingschool.ca" style="color:rgba(255,255,255,0.65)">info@yourdrivingschool.ca</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-clock"></i><div>Mon–Sat: 8am–7pm · Sun: 9am–5pm</div></div></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; <span id="year">2025</span> [Your Driving School]. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></div></div>
+  </div>
 </footer>
+
+<a href="https://wa.me/1XXXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20driving%20lessons!" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat on WhatsApp</span></a>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 <script src="js/main.js"></script>
-</body></html>
+<script src="js/contact-form.js"></script>
+</body>
+</html>

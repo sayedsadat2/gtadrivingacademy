@@ -1,47 +1,216 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Driving Lessons and Services</title>
-  <meta name="description" content="G1 prep, G2 lessons, Full G highway training, refresher lessons and winter driving clinic.">
-  <meta property="og:title" content="Driving Lessons and Services">
-  <meta property="og:description" content="G1 prep, G2 lessons, Full G highway training, refresher lessons and winter driving clinic.">
-  <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;600;700" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/dark-mode.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"DrivingSchool","name":"GTA Driving Academy","areaServed":"Toronto and GTA, Ontario","telephone":"[Phone]","email":"[Email]","slogan":"Drive Safe. Keep Families Safe. Keep Roads Safe.","address":{"@type":"PostalAddress","addressLocality":"Toronto","addressRegion":"ON","addressCountry":"CA"}}</script>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services | G1, G2, Full G &amp; More | Your Driving School Ontario</title>
+  <meta name="description" content="Explore our full range of driving programs: G1 knowledge test prep, G2 in-car lessons, Full G highway training, refresher lessons, and winter driving clinics in Ontario."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/><link rel="stylesheet" href="css/responsive.css"/><link rel="stylesheet" href="css/dark-mode.css"/>
+  <style>
+    .svc-block{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;padding:52px 0;border-bottom:1px solid var(--border)}
+    .svc-block:last-child{border-bottom:none}
+    .svc-block.rev .svc-text{order:2}.svc-block.rev .svc-vis{order:1}
+    .svc-vis{border-radius:var(--radius-lg);height:300px;display:flex;align-items:center;justify-content:center;font-size:6rem;color:#fff}
+    .svc-includes{margin:16px 0;display:flex;flex-direction:column;gap:9px}
+    .svc-includes li{display:flex;align-items:flex-start;gap:9px;font-size:.9rem}
+    .svc-includes li i{color:var(--secondary);margin-top:3px;flex-shrink:0}
+    .pkg-chips{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0}
+    .pkg-chip{background:var(--accent2);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:.82rem;font-weight:600;font-family:var(--font-head);color:var(--primary)}
+    .pkg-chip span{color:var(--secondary)}
+    @media(max-width:768px){.svc-block{grid-template-columns:1fr;gap:24px}.svc-block.rev .svc-text,.svc-block.rev .svc-vis{order:unset}.svc-vis{height:180px;font-size:4rem}}
+  </style>
 </head>
 <body>
-<div class="top-alert">🚗 Safe Driving Starts Here — Book Your First Lesson Today</div>
-<header class="navbar">
-  <div class="container nav-inner">
-    <a class="logo" href="index.html" aria-label="GTA Driving Academy home"><img src="images/logo.png" alt="GTA Driving Academy logo"></a>
-    <button class="mobile-toggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
-    <nav class="nav-menu" aria-label="Main navigation">
-      <a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="about.html">Instructors</a><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a>
-    </nav>
-    <div class="nav-actions"><button id="darkModeToggle" class="icon-link" title="Dark mode"><i class="fa-solid fa-moon"></i></button><a class="icon-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a><a class="book-btn" href="booking.html">Book Now</a></div>
+<nav class="navbar" role="navigation" aria-label="Main Navigation">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a>
+    <ul class="nav-menu" role="menubar">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html" class="active">Services</a></li>
+      <li><a href="pricing.html">Pricing</a></li><li><a href="videos.html">Videos</a></li><li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li><li><a href="booking.html" class="btn btn-primary btn-sm">Book a Lesson</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i></button>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Services</span></nav>
+    <h1>Our Driving Programs</h1>
+    <p>Every program is designed with one goal: making Ontario roads safer by building truly skilled, confident drivers.</p>
   </div>
 </header>
-<main><section class="page-hero"><div class="container"><div class="breadcrumbs">Home / Services</div><h1>Driving School Services</h1><p>From first-time learners to Full G highway training, our services are organized around safety, confidence, and road test readiness.</p></div></section><section class="section"><div class="container"><div class="card-grid">
-  <article class="service-card blue"><div class="service-icon"><i class="fa-solid fa-book-open"></i></div><h3>G1 Test Prep</h3><div class="dotted"></div><ul class="check-list"><li><i class="fa-regular fa-circle-check"></i>Traffic signs and road rules</li><li><i class="fa-regular fa-circle-check"></i>Mock practice tests</li><li><i class="fa-regular fa-circle-check"></i>Study guides and review plan</li><li><i class="fa-regular fa-circle-check"></i>Beginner-friendly explanations</li></ul></article>
-  <article class="service-card pink"><div class="service-icon"><i class="fa-solid fa-road"></i></div><h3>G2 Road Test Prep</h3><div class="dotted"></div><ul class="check-list"><li><i class="fa-regular fa-circle-check"></i>Parking and lane changes</li><li><i class="fa-regular fa-circle-check"></i>Residential and city driving</li><li><i class="fa-regular fa-circle-check"></i>Mock road test practice</li><li><i class="fa-regular fa-circle-check"></i>Confidence-building coaching</li></ul></article>
-  <article class="service-card yellow"><div class="service-icon"><i class="fa-solid fa-route"></i></div><h3>Full G Highway Training</h3><div class="dotted"></div><ul class="check-list"><li><i class="fa-regular fa-circle-check"></i>Highway 401 merging</li><li><i class="fa-regular fa-circle-check"></i>Speed and space management</li><li><i class="fa-regular fa-circle-check"></i>Defensive driving habits</li><li><i class="fa-regular fa-circle-check"></i>Emergency situation awareness</li></ul></article>
-  <article class="service-card peach"><div class="service-icon"><i class="fa-solid fa-shield-heart"></i></div><h3>Refresher Lessons</h3><div class="dotted"></div><ul class="check-list"><li><i class="fa-regular fa-circle-check"></i>Senior driver refreshers</li><li><i class="fa-regular fa-circle-check"></i>Newcomer Ontario road practice</li><li><i class="fa-regular fa-circle-check"></i>Winter driving support</li><li><i class="fa-regular fa-circle-check"></i>Patient, calm instructors</li></ul></article>
-</div></div></section><section class="section section-light"><div class="container"><div class="section-title"><h2>Service Details</h2></div><div class="table-wrap"><table><thead><tr><th>Service</th><th>Best For</th><th>Includes</th><th>Action</th></tr></thead><tbody><tr><td>G1 Knowledge Test Prep</td><td>New learners</td><td>Mock tests, traffic signs, road rules, study support</td><td><a href="booking.html">Book Now</a></td></tr><tr><td>G2 In-Car Lessons</td><td>Road test students</td><td>10-hour, 20-hour, single lessons, parking and test routes</td><td><a href="booking.html">Book Now</a></td></tr><tr><td>Full G Highway Training</td><td>G drivers preparing for highway test</td><td>Merging, exits, speed control, defensive driving</td><td><a href="booking.html">Book Now</a></td></tr><tr><td>Refresher Lessons</td><td>Adults, newcomers, seniors</td><td>Confidence, local rules, parking, safety updates</td><td><a href="booking.html">Book Now</a></td></tr><tr><td>Winter Driving Clinic</td><td>Seasonal safety</td><td>Black ice, stopping distance, low visibility, emergency planning</td><td><a href="booking.html">Book Now</a></td></tr></tbody></table></div></div></section></main><a class="whatsapp" aria-label="WhatsApp chat" href="https://wa.me/10000000000?text=Hi%2C%20I'm%20interested%20in%20driving%20lessons" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-<footer class="footer">
-  <div class="container footer-grid">
-    <div><a class="footer-logo" href="index.html" aria-label="GTA Driving Academy home"><img src="images/logo.png" alt="GTA Driving Academy logo"></a><p>Drive Safe. Keep Families Safe. Keep Roads Safe. Professional driving lessons for G1, G2, Full G, newcomers, parents, and seniors across the GTA.</p></div>
-    <div><h4>Pages</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="booking.html">Booking</a></div>
-    <div><h4>Learning</h4><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a></div>
-    <div><h4>Newsletter</h4><form id="newsletterForm"><input class="form-control" name="email" type="email" placeholder="Email address" required><br><button class="btn btn-secondary" type="submit">Subscribe</button></form></div>
-  </div><div class="container copyright">© 2026 GTA Driving Academy. Demo website. Replace placeholders before publishing.</div>
+
+<!-- Quick Jump -->
+<section class="section-sm bg-accent">
+  <div class="container">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+      <a href="#g1" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-book-open"></i> G1 Prep</a>
+      <a href="#g2" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-car"></i> G2 Lessons</a>
+      <a href="#fullg" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-road"></i> Full G Training</a>
+      <a href="#refresher" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-arrows-rotate"></i> Refresher</a>
+      <a href="#winter" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-snowflake"></i> Winter Clinic</a>
+      <a href="#bde" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-graduation-cap"></i> BDE</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <!-- G1 -->
+    <div class="svc-block" id="g1">
+      <div class="svc-text fade-in">
+        <div class="section-tag">Step 1 of Your Journey</div>
+        <h2>G1 Knowledge Test Preparation</h2>
+        <p>The G1 written test is the gateway to your driving journey. Our G1 prep resources are proven to work and completely free online — with optional paid coaching sessions for extra support.</p>
+        <ul class="svc-includes">
+          <li><i class="fa-solid fa-circle-check"></i><span>Full MTO-aligned study guide download</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>20+ practice mock tests (signs, rules, safety)</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Video walkthroughs for the trickiest questions</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Personalized 1-on-1 coaching session available</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Tips for test-day calm and confidence</span></li>
+        </ul>
+        <div class="pkg-chips"><span class="pkg-chip">Online Resources: <span>Free</span></span><span class="pkg-chip">Coaching Session: <span>$45</span></span></div>
+        <a href="booking.html" class="btn btn-primary"><i class="fa-solid fa-calendar-plus"></i> Book G1 Coaching</a>
+      </div>
+      <div class="svc-vis fade-in" style="background:linear-gradient(135deg,#1a3c61,#2a5a8e)" aria-hidden="true"><i class="fa-solid fa-book-open"></i></div>
+    </div>
+
+    <!-- G2 -->
+    <div class="svc-block rev" id="g2">
+      <div class="svc-vis fade-in" style="background:linear-gradient(135deg,#e85d04,#ff7722)" aria-hidden="true"><i class="fa-solid fa-car"></i></div>
+      <div class="svc-text fade-in">
+        <div class="section-tag">The Core Program</div>
+        <h2>G2 In-Car Lessons</h2>
+        <p>One-on-one in-car training covering everything from basic vehicle control to complex intersections, parallel parking, and three-point turns. Pickup and drop-off included.</p>
+        <ul class="svc-includes">
+          <li><i class="fa-solid fa-circle-check"></i><span>Certified, background-checked instructor</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Dual-brake safety vehicle</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Free pickup and drop-off at your address</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Practice on actual G2 test routes</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Written progress report after each lesson</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Flexible scheduling — evenings &amp; weekends</span></li>
+        </ul>
+        <div class="pkg-chips">
+          <span class="pkg-chip">1 Lesson: <span>$85</span></span>
+          <span class="pkg-chip">5-Pack: <span>$400</span></span>
+          <span class="pkg-chip">10-Pack: <span>$750</span></span>
+          <span class="pkg-chip">20-Pack: <span>$1,400</span></span>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="booking.html" class="btn btn-primary"><i class="fa-solid fa-calendar-plus"></i> Book G2 Lessons</a>
+          <a href="pricing.html" class="btn btn-outline-primary">Compare Packages</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full G -->
+    <div class="svc-block" id="fullg">
+      <div class="svc-text fade-in">
+        <div class="section-tag">Full Independence</div>
+        <h2>Full G Highway Training</h2>
+        <p>The Full G test includes mandatory highway driving on 400-series roads. We train you extensively on merging, lane changes, passing, and high-speed driving so you feel completely prepared.</p>
+        <ul class="svc-includes">
+          <li><i class="fa-solid fa-circle-check"></i><span>Highway 400/401/404/QEW driving practice</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>On-ramp merging and highway exits</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Safe passing maneuvers at highway speed</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Emergency braking and hazard awareness</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Practice on local Full G test routes</span></li>
+        </ul>
+        <div class="pkg-chips"><span class="pkg-chip">Single Session: <span>$185</span></span><span class="pkg-chip">3-Session Pack: <span>$510</span></span></div>
+        <a href="booking.html" class="btn btn-primary"><i class="fa-solid fa-calendar-plus"></i> Book Highway Training</a>
+      </div>
+      <div class="svc-vis fade-in" style="background:linear-gradient(135deg,#065f46,#059669)" aria-hidden="true"><i class="fa-solid fa-road"></i></div>
+    </div>
+
+    <!-- Refresher -->
+    <div class="svc-block rev" id="refresher">
+      <div class="svc-vis fade-in" style="background:linear-gradient(135deg,#7c3aed,#6d28d9)" aria-hidden="true"><i class="fa-solid fa-arrows-rotate"></i></div>
+      <div class="svc-text fade-in">
+        <div class="section-tag">Adults &amp; Seniors</div>
+        <h2>Refresher Lessons</h2>
+        <p>Haven't driven in years? Nervous after an accident? New to Ontario? Our refresher program gently rebuilds your skills and confidence at your own pace — no judgment, ever.</p>
+        <ul class="svc-includes">
+          <li><i class="fa-solid fa-circle-check"></i><span>Patient, senior-friendly certified instructors</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Ontario-specific rule updates for newcomers</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Confidence rebuilding after accidents or anxiety</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Custom plan based on your current skill level</span></li>
+        </ul>
+        <div class="pkg-chips"><span class="pkg-chip">$85 <span>/ hour</span></span><span class="pkg-chip">5-Pack: <span>$395</span></span></div>
+        <a href="booking.html" class="btn btn-primary"><i class="fa-solid fa-calendar-plus"></i> Book Refresher Lesson</a>
+      </div>
+    </div>
+
+    <!-- Winter -->
+    <div class="svc-block" id="winter">
+      <div class="svc-text fade-in">
+        <div class="section-tag">Seasonal — Book Early</div>
+        <h2>Winter Driving Clinic</h2>
+        <p>Ontario winters are merciless. Black ice, whiteouts, and freezing rain claim hundreds of vehicles every year. Our winter clinic gives you the hands-on skills to survive and thrive.</p>
+        <ul class="svc-includes">
+          <li><i class="fa-solid fa-circle-check"></i><span>Understanding black ice and how to react</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Skid recovery in a safe, controlled environment</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Braking distance training on slippery surfaces</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Whiteout visibility and low-speed maneuvers</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Small group sessions (max 4 students)</span></li>
+        </ul>
+        <div class="pkg-chips"><span class="pkg-chip">Group: <span>$120</span></span><span class="pkg-chip">Private: <span>$185</span></span></div>
+        <div class="alert alert-warning"><i class="fa-solid fa-clock"></i> Seasonal — runs November through March. Limited spots!</div>
+        <a href="booking.html" class="btn btn-primary"><i class="fa-solid fa-calendar-plus"></i> Reserve My Spot</a>
+      </div>
+      <div class="svc-vis fade-in" style="background:linear-gradient(135deg,#1e3a5f,#0ea5e9)" aria-hidden="true"><i class="fa-solid fa-snowflake"></i></div>
+    </div>
+
+    <!-- BDE -->
+    <div class="svc-block rev" id="bde">
+      <div class="svc-vis fade-in" style="background:linear-gradient(135deg,#92400e,#d97706)" aria-hidden="true"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div class="svc-text fade-in">
+        <div class="section-tag">For Teen Drivers</div>
+        <h2>BDE — Beginner Driver Education</h2>
+        <p>Our MTO-approved BDE program combines classroom theory with in-car training. Completion lets teen drivers take the G2 test 4 months early and may reduce insurance premiums.</p>
+        <ul class="svc-includes">
+          <li><i class="fa-solid fa-circle-check"></i><span>20 hours classroom instruction</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>10 hours in-car training with certified instructor</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>MTO completion certificate issued</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Eligible for insurance discount (varies by insurer)</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>G2 eligibility at 16 instead of 16+8 months</span></li>
+        </ul>
+        <div class="alert alert-info"><i class="fa-solid fa-circle-info"></i> Contact us for current BDE program schedules and pricing.</div>
+        <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Contact for BDE Info</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Not Sure Which Program is Right for You?</h2>
+    <p>Contact us for a free 10-minute phone consultation. We'll help you choose the right path.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="booking.html" class="btn btn-outline btn-lg"><i class="fa-solid fa-calendar-plus"></i> Book a Lesson</a>
+      <a href="contact.html" class="btn btn-lg" style="background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.3)"><i class="fa-solid fa-phone"></i> Call Us Free</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo" style="margin-bottom:14px;display:inline-flex"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a><p>Ontario's most trusted MTO-approved driving school.</p><div class="footer-socials"><a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
+      <div><h4>Quick Links</h4><ul class="footer-links"><li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li><li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li><li><a href="pricing.html"><i class="fa-solid fa-chevron-right"></i> Pricing</a></li><li><a href="booking.html"><i class="fa-solid fa-chevron-right"></i> Book a Lesson</a></li></ul></div>
+      <div><h4>Resources</h4><ul class="footer-links"><li><a href="videos.html"><i class="fa-solid fa-chevron-right"></i> Free Videos</a></li><li><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog &amp; Tips</a></li><li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li></ul></div>
+      <div><h4>Contact</h4><div class="footer-contact-item"><i class="fa-solid fa-phone"></i><div><a href="tel:+14165550100" style="color:rgba(255,255,255,.65)">+1 (416) 555-0100</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><div><a href="mailto:info@yourdrivingschool.ca" style="color:rgba(255,255,255,.65)">info@yourdrivingschool.ca</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-clock"></i><div>Mon–Sat: 8am–7pm · Sun: 9am–5pm</div></div></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; <span id="year"></span> [Your Driving School]. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></div></div>
+  </div>
 </footer>
+<a href="https://wa.me/1XXXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20driving%20lessons!" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat on WhatsApp</span></a>
 <script src="js/main.js"></script>
-</body></html>
+</body>
+</html>

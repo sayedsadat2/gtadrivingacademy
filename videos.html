@@ -1,55 +1,334 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Driving Video Library</title>
-  <meta name="description" content="Free Ontario driving school videos for G1, G2, highway merging, parallel parking and winter driving.">
-  <meta property="og:title" content="Driving Video Library">
-  <meta property="og:description" content="Free Ontario driving school videos for G1, G2, highway merging, parallel parking and winter driving.">
-  <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/dark-mode.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"DrivingSchool","name":"GTA Driving Academy","areaServed":"Toronto and GTA, Ontario","telephone":"[Phone]","email":"[Email]","slogan":"Drive Safe. Keep Families Safe. Keep Roads Safe.","address":{"@type":"PostalAddress","addressLocality":"Toronto","addressRegion":"ON","addressCountry":"CA"}}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Driving Video Library | Your Driving School Ontario</title>
+  <meta name="description" content="Watch free driving tutorial videos: G1 test prep, parallel parking, highway merging, winter driving, and real G2 mock tests from Ontario's certified instructors." />
+  <meta property="og:title" content="Free Driving Videos | Your Driving School Ontario" />
+  <meta property="og:description" content="Free video lessons: G1 tips, G2 test prep, highway driving, winter safety and more." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/dark-mode.css" />
+  <link rel="icon" href="images/favicon.ico" />
+  <style>
+    .featured-video-wrap { position:relative; padding-bottom:56.25%; background:var(--primary); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-lg); }
+    .featured-video-wrap iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+    .video-card .video-play-overlay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(26,60,97,0.55); transition:var(--transition); }
+    .video-card .video-play-overlay i { font-size:3rem; color:#fff; filter:drop-shadow(0 2px 8px rgba(0,0,0,0.4)); transition:var(--transition); }
+    .video-card:hover .video-play-overlay { background:rgba(232,93,4,0.6); }
+    .video-card:hover .video-play-overlay i { transform:scale(1.15); }
+    .video-stats { display:flex; gap:12px; font-size:0.78rem; color:var(--text-muted); margin-top:6px; }
+    .video-stats span { display:flex; align-items:center; gap:4px; }
+  </style>
 </head>
 <body>
-<div class="top-alert">🚗 Safe Driving Starts Here — Book Your First Lesson Today</div>
-<header class="navbar">
-  <div class="container nav-inner">
-    <a class="logo" href="index.html" aria-label="GTA Driving Academy home"><img src="images/logo.png" alt="GTA Driving Academy logo"></a>
-    <button class="mobile-toggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
-    <nav class="nav-menu" aria-label="Main navigation">
-      <a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="about.html">Instructors</a><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a>
-    </nav>
-    <div class="nav-actions"><button id="darkModeToggle" class="icon-link" title="Dark mode"><i class="fa-solid fa-moon"></i></button><a class="icon-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a><a class="book-btn" href="booking.html">Book Now</a></div>
+
+<nav class="navbar" role="navigation" aria-label="Main Navigation">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a>
+    <ul class="nav-menu" role="menubar">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="pricing.html">Pricing</a></li><li><a href="videos.html" class="active">Videos</a></li><li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li><li><a href="booking.html" class="btn btn-primary btn-sm">Book a Lesson</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i></button>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero" role="banner">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Video Library</span></nav>
+    <h1>Free Driving Video Library</h1>
+    <p>Expert video tutorials from our certified instructors — completely free. Watch, learn, and drive safer.</p>
   </div>
 </header>
-<main>
-<section class="section">
+
+<!-- FEATURED VIDEO -->
+<section class="section bg-accent" aria-labelledby="featured-video-heading">
   <div class="container">
-    <div class="section-title">
-      <h2>Featured GTA Driving Lesson Video</h2>
-      <p>A quick 3-second preview showing calm, safety-first instruction on the road.</p>
+    <div class="section-header">
+      <div class="section-tag">Featured Video</div>
+      <h2 id="featured-video-heading">Top 5 Mistakes New Drivers Make</h2>
+      <p>Our most-watched video — over 120,000 views. Senior Instructor James Downing breaks down the five errors that cause the most accidents among new Ontario drivers.</p>
     </div>
-    <video class="video-frame" controls autoplay muted loop playsinline poster="images/gta-driving-lesson-safety-poster.png">
-  <source src="videos/gta-driving-lesson-safety-3sec.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+    <div style="max-width:840px;margin:0 auto" class="fade-in">
+      <div class="featured-video-wrap" role="region" aria-label="Featured video player">
+        <!-- Replace VIDEO_ID_1 with your actual YouTube video ID -->
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID_1?rel=0&modestbranding=1"
+          title="Top 5 Mistakes New Drivers Make — Your Driving School Ontario"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+          aria-label="Video: Top 5 Mistakes New Drivers Make">
+        </iframe>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;flex-wrap:wrap;gap:12px">
+        <div>
+          <span style="font-size:0.85rem;color:var(--text-muted)"><i class="fa-solid fa-eye" aria-hidden="true"></i> 120,843 views &nbsp;·&nbsp; <i class="fa-solid fa-thumbs-up" aria-hidden="true"></i> 4.9/5 &nbsp;·&nbsp; <i class="fa-solid fa-clock" aria-hidden="true"></i> 8 min</span>
+        </div>
+        <div class="share-buttons">
+          <a href="#" class="share-btn share-fb" aria-label="Share on Facebook"><i class="fa-brands fa-facebook-f"></i> Share</a>
+          <a href="#" class="share-btn share-wa" aria-label="Share on WhatsApp"><i class="fa-brands fa-whatsapp"></i> Share</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
-<section class="page-hero"><div class="container"><div class="breadcrumbs">Home / Videos</div><h1>Video Library</h1><p>Learn before you drive. Watch simple driving tips and book personalized coaching when ready.</p></div></section><section class="section"><div class="container"><div class="section-title"><h2>Featured Video: Top 5 Mistakes New Drivers Make</h2></div><iframe class="video-frame" loading="lazy" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Featured video"></iframe></div></section><section class="section section-light"><div class="container"><div class="filter-bar"><input data-filter-search class="form-control" placeholder="Search videos"><select data-filter-category class="form-control"><option value="all">All Categories</option><option value="g1">G1 Test Tips</option><option value="parking">Parallel Parking</option><option value="highway">Highway Merging</option><option value="winter">Winter Driving</option><option value="g2">Instructor Diaries</option></select></div><div class="blog-grid"><article class="video-card" data-card data-category="g1"><div class="thumb"><i class="fa-brands fa-youtube" style="font-size:3rem"></i></div><div class="video-card-body"><h3>G1 Test: 10 Traffic Signs You MUST Know</h3><p><strong>Duration:</strong> 3 min</p><p>Short placeholder description. Replace embed with your real YouTube video.</p></div></article><article class="video-card" data-card data-category="highway"><div class="thumb"><i class="fa-brands fa-youtube" style="font-size:3rem"></i></div><div class="video-card-body"><h3>How to Merge on Highway 401 Safely</h3><p><strong>Duration:</strong> 4 min</p><p>Short placeholder description. Replace embed with your real YouTube video.</p></div></article><article class="video-card" data-card data-category="parking"><div class="thumb"><i class="fa-brands fa-youtube" style="font-size:3rem"></i></div><div class="video-card-body"><h3>Parallel Parking from Start to Finish</h3><p><strong>Duration:</strong> 5 min</p><p>Short placeholder description. Replace embed with your real YouTube video.</p></div></article><article class="video-card" data-card data-category="winter"><div class="thumb"><i class="fa-brands fa-youtube" style="font-size:3rem"></i></div><div class="video-card-body"><h3>Winter Driving: Black Ice Survival Guide</h3><p><strong>Duration:</strong> 6 min</p><p>Short placeholder description. Replace embed with your real YouTube video.</p></div></article><article class="video-card" data-card data-category="g2"><div class="thumb"><i class="fa-brands fa-youtube" style="font-size:3rem"></i></div><div class="video-card-body"><h3>Behind the Wheel: A Real G2 Mock Test</h3><p><strong>Duration:</strong> 10 min</p><p>Short placeholder description. Replace embed with your real YouTube video.</p></div></article></div><br><div style="text-align:center"><a class="btn btn-secondary" href="booking.html">Want personalized coaching? Book a lesson</a></div></div></section></main><script src="js/filters.js"></script><a class="whatsapp" aria-label="WhatsApp chat" href="https://wa.me/10000000000?text=Hi%2C%20I'm%20interested%20in%20driving%20lessons" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-<footer class="footer">
-  <div class="container footer-grid">
-    <div><a class="footer-logo" href="index.html" aria-label="GTA Driving Academy home"><img src="images/logo.png" alt="GTA Driving Academy logo"></a><p>Drive Safe. Keep Families Safe. Keep Roads Safe. Professional driving lessons for G1, G2, Full G, newcomers, parents, and seniors across the GTA.</p></div>
-    <div><h4>Pages</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="booking.html">Booking</a></div>
-    <div><h4>Learning</h4><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a></div>
-    <div><h4>Newsletter</h4><form id="newsletterForm"><input class="form-control" name="email" type="email" placeholder="Email address" required><br><button class="btn btn-secondary" type="submit">Subscribe</button></form></div>
-  </div><div class="container copyright">© 2026 GTA Driving Academy. Demo website. Replace placeholders before publishing.</div>
+
+<!-- VIDEO LIBRARY -->
+<section class="section" aria-labelledby="library-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">All Videos</div>
+      <h2 id="library-heading">Browse the Full Library</h2>
+      <p>Filter by topic, or scroll through all free tutorials below.</p>
+    </div>
+
+    <div class="filter-tabs" role="tablist" aria-label="Video categories">
+      <button class="filter-tab active" data-category="all" role="tab" aria-selected="true">All Videos</button>
+      <button class="filter-tab" data-category="g1-tips" role="tab" aria-selected="false">G1 Test Tips</button>
+      <button class="filter-tab" data-category="parking" role="tab" aria-selected="false">Parking Skills</button>
+      <button class="filter-tab" data-category="highway" role="tab" aria-selected="false">Highway Driving</button>
+      <button class="filter-tab" data-category="winter" role="tab" aria-selected="false">Winter Driving</button>
+      <button class="filter-tab" data-category="mock-test" role="tab" aria-selected="false">Mock Tests</button>
+      <button class="filter-tab" data-category="instructor" role="tab" aria-selected="false">Instructor Diaries</button>
+    </div>
+
+    <div class="video-grid" id="videoGrid" aria-label="Video library">
+
+      <!-- Video 1 -->
+      <article class="video-card fade-in" data-category="g1-tips">
+        <div class="video-thumb" role="img" aria-label="Video: G1 Test Traffic Signs">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a3c61,#2a5a8e);display:flex;align-items:center;justify-content:center">
+            <i class="fa-solid fa-signs-post" style="font-size:3.5rem;color:#fff" aria-hidden="true"></i>
+          </div>
+          <div class="video-play-overlay" aria-hidden="true"><i class="fa-solid fa-circle-play"></i></div>
+          <span class="video-duration">3:24</span>
+        </div>
+        <div class="video-body">
+          <div class="video-category">G1 Test Tips</div>
+          <h3>G1 Test: 10 Traffic Signs You MUST Know</h3>
+          <p>Master the most-tested traffic signs in the Ontario G1 exam. Regulatory, warning, and information signs explained simply.</p>
+          <div class="video-stats">
+            <span><i class="fa-solid fa-eye" aria-hidden="true"></i> 48,210</span>
+            <span><i class="fa-solid fa-thumbs-up" aria-hidden="true"></i> 4.8/5</span>
+            <span><i class="fa-solid fa-clock" aria-hidden="true"></i> 3 min</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Video 2 -->
+      <article class="video-card fade-in" data-category="highway">
+        <div class="video-thumb" role="img" aria-label="Video: Highway 401 Merging">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#065f46,#059669);display:flex;align-items:center;justify-content:center">
+            <i class="fa-solid fa-road" style="font-size:3.5rem;color:#fff" aria-hidden="true"></i>
+          </div>
+          <div class="video-play-overlay" aria-hidden="true"><i class="fa-solid fa-circle-play"></i></div>
+          <span class="video-duration">4:11</span>
+        </div>
+        <div class="video-body">
+          <div class="video-category">Highway Driving</div>
+          <h3>How to Merge on Highway 401 Safely</h3>
+          <p>Merging on the 401 at 100+ km/h terrifies new drivers. This step-by-step breakdown makes it predictable and safe.</p>
+          <div class="video-stats">
+            <span><i class="fa-solid fa-eye" aria-hidden="true"></i> 72,900</span>
+            <span><i class="fa-solid fa-thumbs-up" aria-hidden="true"></i> 4.9/5</span>
+            <span><i class="fa-solid fa-clock" aria-hidden="true"></i> 4 min</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Video 3 -->
+      <article class="video-card fade-in" data-category="parking">
+        <div class="video-thumb" role="img" aria-label="Video: Parallel Parking">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#7c3aed,#4f46e5);display:flex;align-items:center;justify-content:center">
+            <i class="fa-solid fa-parking" style="font-size:3.5rem;color:#fff" aria-hidden="true"></i>
+          </div>
+          <div class="video-play-overlay" aria-hidden="true"><i class="fa-solid fa-circle-play"></i></div>
+          <span class="video-duration">5:03</span>
+        </div>
+        <div class="video-body">
+          <div class="video-category">Parking Skills</div>
+          <h3>Parallel Parking from Start to Finish</h3>
+          <p>Our 8-step parallel parking method explained clearly with real-time demonstration. Never fail a G2 parking maneuver again.</p>
+          <div class="video-stats">
+            <span><i class="fa-solid fa-eye" aria-hidden="true"></i> 95,440</span>
+            <span><i class="fa-solid fa-thumbs-up" aria-hidden="true"></i> 4.9/5</span>
+            <span><i class="fa-solid fa-clock" aria-hidden="true"></i> 5 min</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Video 4 -->
+      <article class="video-card fade-in" data-category="winter">
+        <div class="video-thumb" role="img" aria-label="Video: Black Ice Survival Guide">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#1e3a5f,#0ea5e9);display:flex;align-items:center;justify-content:center">
+            <i class="fa-solid fa-snowflake" style="font-size:3.5rem;color:#fff" aria-hidden="true"></i>
+          </div>
+          <div class="video-play-overlay" aria-hidden="true"><i class="fa-solid fa-circle-play"></i></div>
+          <span class="video-duration">6:17</span>
+        </div>
+        <div class="video-body">
+          <div class="video-category">Winter Driving</div>
+          <h3>Winter Driving: Black Ice Survival Guide</h3>
+          <p>Black ice is invisible and deadly. Learn how to detect it, react when you hit it, and avoid the most dangerous Ontario winter road conditions.</p>
+          <div class="video-stats">
+            <span><i class="fa-solid fa-eye" aria-hidden="true"></i> 88,720</span>
+            <span><i class="fa-solid fa-thumbs-up" aria-hidden="true"></i> 5.0/5</span>
+            <span><i class="fa-solid fa-clock" aria-hidden="true"></i> 6 min</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Video 5 -->
+      <article class="video-card fade-in" data-category="mock-test">
+        <div class="video-thumb" role="img" aria-label="Video: Real G2 Mock Test">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#b45309,#e85d04);display:flex;align-items:center;justify-content:center">
+            <i class="fa-solid fa-car" style="font-size:3.5rem;color:#fff" aria-hidden="true"></i>
+          </div>
+          <div class="video-play-overlay" aria-hidden="true"><i class="fa-solid fa-circle-play"></i></div>
+          <span class="video-duration">10:28</span>
+        </div>
+        <div class="video-body">
+          <div class="video-category">Mock Tests</div>
+          <h3>Behind the Wheel: A Real G2 Mock Test</h3>
+          <p>Watch a real G2 mock test from the driver's seat. Instructor commentary explains what the examiner is scoring at every moment.</p>
+          <div class="video-stats">
+            <span><i class="fa-solid fa-eye" aria-hidden="true"></i> 134,090</span>
+            <span><i class="fa-solid fa-thumbs-up" aria-hidden="true"></i> 4.9/5</span>
+            <span><i class="fa-solid fa-clock" aria-hidden="true"></i> 10 min</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Video 6 -->
+      <article class="video-card fade-in" data-category="parking">
+        <div class="video-thumb" role="img" aria-label="Video: Three-Point Turn">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#be123c,#e11d48);display:flex;align-items:center;justify-content:center">
+            <i class="fa-solid fa-arrows-rotate" style="font-size:3.5rem;color:#fff" aria-hidden="true"></i>
+          </div>
+          <div class="video-play-overlay" aria-hidden="true"><i class="fa-solid fa-circle-play"></i></div>
+          <span class="video-duration">3:45</span>
+        </div>
+        <div class="video-body">
+          <div class="video-category">Parking Skills</div>
+          <h3>3-Point Turn: Perfect Every Time</h3>
+          <p>The three-point turn trips up more students than expected. This video shows exactly where to look, when to steer, and how to stay safe.</p>
+          <div class="video-stats">
+            <span><i class="fa-solid fa-eye" aria-hidden="true"></i> 41,300</span>
+            <span><i class="fa-solid fa-thumbs-up" aria-hidden="true"></i> 4.8/5</span>
+            <span><i class="fa-solid fa-clock" aria-hidden="true"></i> 4 min</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Video 7 -->
+      <article class="video-card fade-in" data-category="instructor">
+        <div class="video-thumb" role="img" aria-label="Video: Instructor Diary - Most Common Student Errors">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a3c61,#7c3aed);display:flex;align-items:center;justify-content:center">
+            <i class="fa-solid fa-chalkboard-user" style="font-size:3.5rem;color:#fff" aria-hidden="true"></i>
+          </div>
+          <div class="video-play-overlay" aria-hidden="true"><i class="fa-solid fa-circle-play"></i></div>
+          <span class="video-duration">7:52</span>
+        </div>
+        <div class="video-body">
+          <div class="video-category">Instructor Diaries</div>
+          <h3>What I Saw Teaching 500 Students — Instructor Diary</h3>
+          <p>After teaching over 500 students, James shares the patterns he's noticed — what separates students who pass quickly from those who struggle.</p>
+          <div class="video-stats">
+            <span><i class="fa-solid fa-eye" aria-hidden="true"></i> 63,100</span>
+            <span><i class="fa-solid fa-thumbs-up" aria-hidden="true"></i> 4.9/5</span>
+            <span><i class="fa-solid fa-clock" aria-hidden="true"></i> 8 min</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Video 8 -->
+      <article class="video-card fade-in" data-category="g1-tips">
+        <div class="video-thumb" role="img" aria-label="Video: Right of Way Rules">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#164e63,#06b6d4);display:flex;align-items:center;justify-content:center">
+            <i class="fa-solid fa-traffic-light" style="font-size:3.5rem;color:#fff" aria-hidden="true"></i>
+          </div>
+          <div class="video-play-overlay" aria-hidden="true"><i class="fa-solid fa-circle-play"></i></div>
+          <span class="video-duration">5:30</span>
+        </div>
+        <div class="video-body">
+          <div class="video-category">G1 Test Tips</div>
+          <h3>Right-of-Way Rules Explained Simply</h3>
+          <p>Four-way stops, uncontrolled intersections, pedestrians, left turns — every right-of-way scenario on the Ontario G1 test, clearly explained.</p>
+          <div class="video-stats">
+            <span><i class="fa-solid fa-eye" aria-hidden="true"></i> 55,820</span>
+            <span><i class="fa-solid fa-thumbs-up" aria-hidden="true"></i> 4.8/5</span>
+            <span><i class="fa-solid fa-clock" aria-hidden="true"></i> 6 min</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Video 9 -->
+      <article class="video-card fade-in" data-category="highway">
+        <div class="video-thumb" role="img" aria-label="Video: Lane Changes on Highway">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#065f46,#10b981);display:flex;align-items:center;justify-content:center">
+            <i class="fa-solid fa-arrow-right-arrow-left" style="font-size:3.5rem;color:#fff" aria-hidden="true"></i>
+          </div>
+          <div class="video-play-overlay" aria-hidden="true"><i class="fa-solid fa-circle-play"></i></div>
+          <span class="video-duration">4:55</span>
+        </div>
+        <div class="video-body">
+          <div class="video-category">Highway Driving</div>
+          <h3>Safe Lane Changes at Highway Speed</h3>
+          <p>Mirror checks, blind spots, signal timing — the complete safe lane-change sequence for driving on Ontario's 400-series highways.</p>
+          <div class="video-stats">
+            <span><i class="fa-solid fa-eye" aria-hidden="true"></i> 38,440</span>
+            <span><i class="fa-solid fa-thumbs-up" aria-hidden="true"></i> 4.7/5</span>
+            <span><i class="fa-solid fa-clock" aria-hidden="true"></i> 5 min</span>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /#videoGrid -->
+  </div>
+</section>
+
+<!-- SUBSCRIBE CTA -->
+<section class="section bg-accent" aria-labelledby="subscribe-heading">
+  <div class="container" style="max-width:640px;text-align:center">
+    <div class="section-tag">Stay Updated</div>
+    <h2 id="subscribe-heading">New Videos Every Week</h2>
+    <p>Subscribe to our YouTube channel for new tutorials every week. Over 12,000 subscribers and growing.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px">
+      <a href="https://youtube.com/@YourDrivingSchool" target="_blank" rel="noopener" class="btn btn-primary btn-lg" aria-label="Subscribe on YouTube">
+        <i class="fa-brands fa-youtube" aria-hidden="true"></i> Subscribe on YouTube
+      </a>
+      <a href="booking.html" class="btn btn-outline-primary btn-lg">
+        <i class="fa-solid fa-calendar-plus" aria-hidden="true"></i> Book a Lesson
+      </a>
+    </div>
+    <p style="margin-top:20px;font-size:0.85rem;color:var(--text-muted)">Want personalized coaching? <a href="booking.html">Book a one-on-one lesson</a> with a certified instructor.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo" style="margin-bottom:16px;display:inline-flex"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a><p>Ontario's most trusted MTO-approved driving school.</p><div class="footer-socials"><a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
+      <div><h4>Quick Links</h4><ul class="footer-links"><li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li><li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li><li><a href="pricing.html"><i class="fa-solid fa-chevron-right"></i> Pricing</a></li><li><a href="booking.html"><i class="fa-solid fa-chevron-right"></i> Book a Lesson</a></li></ul></div>
+      <div><h4>Resources</h4><ul class="footer-links"><li><a href="videos.html"><i class="fa-solid fa-chevron-right"></i> Free Videos</a></li><li><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog &amp; Tips</a></li><li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li></ul></div>
+      <div><h4>Contact</h4><div class="footer-contact-item"><i class="fa-solid fa-phone"></i><div><a href="tel:+14165550100" style="color:rgba(255,255,255,0.65)">+1 (416) 555-0100</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><div><a href="mailto:info@yourdrivingschool.ca" style="color:rgba(255,255,255,0.65)">info@yourdrivingschool.ca</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-clock"></i><div>Mon–Sat: 8am–7pm · Sun: 9am–5pm</div></div></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; <span id="year">2025</span> [Your Driving School]. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></div></div>
+  </div>
 </footer>
+
+<a href="https://wa.me/1XXXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20driving%20lessons!" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat on WhatsApp</span></a>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 <script src="js/main.js"></script>
-</body></html>
+</body>
+</html>

@@ -1,42 +1,301 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Driving Blog Post Template</title>
-  <meta name="description" content="Individual driving school blog post template with share buttons and comments.">
-  <meta property="og:title" content="Driving Blog Post Template">
-  <meta property="og:description" content="Individual driving school blog post template with share buttons and comments.">
-  <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/dark-mode.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"DrivingSchool","name":"GTA Driving Academy","areaServed":"Toronto and GTA, Ontario","telephone":"[Phone]","email":"[Email]","slogan":"Drive Safe. Keep Families Safe. Keep Roads Safe.","address":{"@type":"PostalAddress","addressLocality":"Toronto","addressRegion":"ON","addressCountry":"CA"}}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5 Most Common G1 Test Mistakes | Your Driving School Ontario</title>
+  <meta name="description" content="Are you studying for your Ontario G1 knowledge test? Avoid these 5 common mistakes that cause students to fail — with expert tips from our certified instructors." />
+  <meta property="og:title" content="5 Most Common G1 Test Mistakes | Your Driving School Ontario" />
+  <meta property="og:description" content="Avoid these 5 G1 test mistakes and pass on your first try. Expert advice from Ontario's certified driving instructors." />
+  <meta property="og:type" content="article" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/dark-mode.css" />
+  <link rel="icon" href="images/favicon.ico" />
+  <style>
+    .post-layout { display:grid; grid-template-columns:1fr 300px; gap:48px; align-items:start; }
+    .post-header { margin-bottom:36px; }
+    .post-meta-bar { display:flex; flex-wrap:wrap; gap:16px; align-items:center; margin-bottom:24px; padding:16px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .post-meta-item { display:flex; align-items:center; gap:8px; font-size:0.85rem; color:var(--text-muted); }
+    .post-meta-item i { color:var(--secondary); }
+    .post-featured-img { aspect-ratio:16/7; background:linear-gradient(135deg,var(--primary),var(--primary-light)); border-radius:var(--radius-md); margin-bottom:36px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:6rem; overflow:hidden; }
+    .post-featured-img img { width:100%; height:100%; object-fit:cover; }
+    .share-section { background:var(--accent); border-radius:var(--radius-md); padding:24px; margin:40px 0; }
+    .share-section h4 { margin-bottom:16px; font-size:1rem; }
+    .comments-section { margin-top:48px; }
+    .comment-form { background:var(--accent); border-radius:var(--radius-md); padding:28px; margin-top:32px; }
+    .sidebar-sticky { position:sticky; top:90px; display:flex; flex-direction:column; gap:24px; }
+    .toc { background:var(--accent2); border:1px solid var(--border); border-radius:var(--radius-md); padding:24px; }
+    .toc h4 { margin-bottom:16px; font-size:0.95rem; }
+    .toc ol { padding-left:18px; display:flex; flex-direction:column; gap:8px; }
+    .toc ol li a { font-size:0.87rem; color:var(--text-light); }
+    .toc ol li a:hover { color:var(--secondary); }
+    .author-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-md); padding:24px; text-align:center; }
+    .author-card .author-avatar { width:72px; height:72px; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--primary-light)); display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.5rem; font-weight:700; font-family:var(--font-heading); margin:0 auto 14px; }
+    .related-posts { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-md); padding:24px; }
+    .related-post-item { display:flex; gap:10px; padding:10px 0; border-bottom:1px solid var(--border); }
+    .related-post-item:last-child { border-bottom:none; padding-bottom:0; }
+    .related-post-thumb { width:50px; height:50px; border-radius:var(--radius-sm); background:linear-gradient(135deg,var(--primary),var(--primary-light)); flex-shrink:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.1rem; }
+    .related-post-item h5 { font-size:0.82rem; line-height:1.4; margin-bottom:3px; }
+    .related-post-item h5 a { color:var(--text); }
+    .related-post-item h5 a:hover { color:var(--secondary); }
+    .related-post-item span { font-size:0.75rem; color:var(--text-muted); }
+    @media(max-width:1024px){ .post-layout { grid-template-columns:1fr; } .sidebar-sticky { position:static; } }
+  </style>
 </head>
 <body>
-<div class="top-alert">🚗 Safe Driving Starts Here — Book Your First Lesson Today</div>
-<header class="navbar">
-  <div class="container nav-inner">
-    <a class="logo" href="index.html" aria-label="GTA Driving Academy home"><img src="images/logo.png" alt="GTA Driving Academy logo"></a>
-    <button class="mobile-toggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
-    <nav class="nav-menu" aria-label="Main navigation">
-      <a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="about.html">Instructors</a><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a>
-    </nav>
-    <div class="nav-actions"><button id="darkModeToggle" class="icon-link" title="Dark mode"><i class="fa-solid fa-moon"></i></button><a class="icon-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a><a class="book-btn" href="booking.html">Book Now</a></div>
+
+<nav class="navbar" role="navigation" aria-label="Main Navigation">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a>
+    <ul class="nav-menu" role="menubar">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="pricing.html">Pricing</a></li><li><a href="videos.html">Videos</a></li><li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li><li><a href="booking.html" class="btn btn-primary btn-sm">Book a Lesson</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i></button>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
   </div>
-</header>
-<main><section class="page-hero"><div class="container"><div class="breadcrumbs">Home / Blog / Post</div><h1>Parallel Parking Made Simple: Step-by-Step Guide</h1><p>By [Instructor Name] • May 15, 2026 • 5 min read</p></div></section><article class="section"><div class="container" style="max-width:860px"><div class="thumb" style="height:320px;border-radius:26px">Featured Image</div><h2>Introduction</h2><p>This article area is a placeholder. Replace this text with your real driving tips. Explain one driving topic clearly, step by step, using examples from Ontario roads and road test expectations.</p><h2>Step-by-Step Driving Tips</h2><p>Start with mirror checks, signal timing, speed control, observation, space, and calm decision-making. Use short paragraphs and simple wording so students can remember the lesson.</p><h2>Common Mistakes</h2><ul><li>Rushing before checking surroundings.</li><li>Forgetting mirror and blind spot checks.</li><li>Turning too early or too late.</li><li>Not correcting calmly.</li></ul><div class="alert-box"><strong>Safety Reminder:</strong> Practice only in safe, legal areas with proper supervision.</div><h3>Share This Post</h3><p><a class="btn btn-outline" href="#">Facebook</a> <a class="btn btn-outline" href="#">Twitter</a> <a class="btn btn-outline" href="#">WhatsApp</a></p><h2>Related Posts</h2><p><a href="blog.html">Winter Driving in Ontario</a> • <a href="blog.html">G1 Test Mistakes</a> • <a href="blog.html">Defensive Driving on 401</a></p><h2>Comments</h2><form class="form-card" data-validate="true"><input class="form-control" required placeholder="Your name"><br><input class="form-control" type="email" required placeholder="Your email"><br><textarea class="form-control" required placeholder="Comment"></textarea><br><button class="btn btn-secondary">Submit Comment</button></form></div></article></main><script src="js/contact-form.js"></script><a class="whatsapp" aria-label="WhatsApp chat" href="https://wa.me/10000000000?text=Hi%2C%20I'm%20interested%20in%20driving%20lessons" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-<footer class="footer">
-  <div class="container footer-grid">
-    <div><a class="footer-logo" href="index.html" aria-label="GTA Driving Academy home"><img src="images/logo.png" alt="GTA Driving Academy logo"></a><p>Drive Safe. Keep Families Safe. Keep Roads Safe. Professional driving lessons for G1, G2, Full G, newcomers, parents, and seniors across the GTA.</p></div>
-    <div><h4>Pages</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="booking.html">Booking</a></div>
-    <div><h4>Learning</h4><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a></div>
-    <div><h4>Newsletter</h4><form id="newsletterForm"><input class="form-control" name="email" type="email" placeholder="Email address" required><br><button class="btn btn-secondary" type="submit">Subscribe</button></form></div>
-  </div><div class="container copyright">© 2026 GTA Driving Academy. Demo website. Replace placeholders before publishing.</div>
+</nav>
+
+<div style="background:var(--accent);padding:14px 0;margin-top:72px">
+  <div class="container">
+    <nav class="breadcrumb" style="justify-content:flex-start;margin:0" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i>
+      <a href="blog.html">Blog</a><i class="fa-solid fa-chevron-right"></i>
+      <span>G1 Test Mistakes</span>
+    </nav>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="post-layout">
+
+      <!-- MAIN ARTICLE -->
+      <article itemscope itemtype="https://schema.org/Article">
+        <div class="post-header">
+          <div style="margin-bottom:12px">
+            <span class="blog-category-badge" style="position:static;font-size:0.78rem">G1 Tips</span>
+          </div>
+          <h1 itemprop="headline">5 Most Common G1 Test Mistakes (And How to Avoid Them)</h1>
+
+          <div class="post-meta-bar" aria-label="Article metadata">
+            <div class="post-meta-item"><i class="fa-solid fa-calendar" aria-hidden="true"></i><time itemprop="datePublished" datetime="2025-05-10">May 10, 2025</time></div>
+            <div class="post-meta-item"><i class="fa-solid fa-user" aria-hidden="true"></i><span itemprop="author">James Downing</span></div>
+            <div class="post-meta-item"><i class="fa-solid fa-clock" aria-hidden="true"></i><span>5 min read</span></div>
+            <div class="post-meta-item"><i class="fa-solid fa-eye" aria-hidden="true"></i><span>4,218 views</span></div>
+          </div>
+        </div>
+
+        <div class="post-featured-img" aria-hidden="true">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+
+        <div class="article-content" itemprop="articleBody">
+
+          <p>Every week, hundreds of Ontario students walk into a DriveTest centre confident they're ready for their G1 knowledge test — and walk out having failed. After 12 years of teaching and coaching thousands of students, I've identified the five mistakes that account for the vast majority of those failures. The good news? Every single one is completely preventable.</p>
+
+          <h2 id="mistake-1">Mistake #1: Only Reading the Official MTO Handbook Once</h2>
+          <p>The MTO Driver's Handbook is the bible for your G1 test, and most students read it exactly once — the night before. This is a critical error. The G1 test is designed to catch gaps in knowledge that casual reading doesn't reveal. Signs that look similar, rules with subtle exceptions, right-of-way scenarios — these all require multiple reviews and active practice, not passive reading.</p>
+          <p><strong>What to do instead:</strong> Read the handbook at least twice, with at least a week between reads. On your second read, highlight anything that surprised you or that you weren't 100% sure about. Then review only those sections a third time.</p>
+
+          <blockquote>"The students who pass on their first try aren't necessarily smarter — they're just more deliberate in how they study." — James Downing, Senior Instructor</blockquote>
+
+          <h2 id="mistake-2">Mistake #2: Skipping the Practice Tests</h2>
+          <p>The MTO provides sample questions, and many free practice test websites exist for Ontario G1 prep. Yet a shocking number of students skip these entirely, believing that if they've read the handbook, they'll be fine. They're not.</p>
+          <p>Practice tests do two essential things: they identify your weak spots before the real test does, and they familiarize you with how questions are phrased. G1 questions are designed to trip up students who "sort of" know the answer. Doing practice tests forces you to commit to a specific answer — which is a completely different cognitive skill than recognition while reading.</p>
+          <p><strong>What to do instead:</strong> Complete a minimum of five full practice tests (40 questions each) before your real test. Aim for a consistent score of 85%+ before booking your appointment.</p>
+
+          <h2 id="mistake-3">Mistake #3: Guessing on Road Sign Questions</h2>
+          <p>Road sign questions (the second half of the G1 test) trip up more students than any other section. Many students assume they know what signs mean from years of being passengers — and they're often wrong. Signs with similar shapes but different colours, regulatory vs. warning signs, temporary construction signs — all appear on the test.</p>
+          <p><strong>What to do instead:</strong> Use a flashcard system specifically for road signs. There are 50+ signs in the MTO handbook. Quiz yourself until you can identify every single one without hesitation. We have a free sign quiz in our <a href="videos.html">video library</a>.</p>
+
+          <h2 id="mistake-4">Mistake #4: Not Understanding the Right-of-Way Rules</h2>
+          <p>Right-of-way questions are the most commonly missed on the G1 test — and they appear frequently. Four-way stops, uncontrolled intersections, yielding to pedestrians, yielding when turning left — students often have a vague sense of these rules but can't answer confidently under test conditions.</p>
+          <p>Right-of-way rules have subtle nuances: what happens when two vehicles arrive at a four-way stop at exactly the same time? (The vehicle on the right goes first.) What about when you're turning left at an advance green versus a regular green? These distinctions matter.</p>
+          <p><strong>What to do instead:</strong> Study right-of-way rules as their own dedicated chapter. Create decision trees: "I'm at a four-way stop. Did anyone else arrive at the same time? → If yes, who is to my right?" Practice walking through these scenarios until they're instinctive.</p>
+
+          <h2 id="mistake-5">Mistake #5: Booking the Test Before You're Actually Ready</h2>
+          <p>The pressure of having a test date booked can motivate students to study — but it also leads many to book too early, before they've achieved consistent practice test scores. The result is a failed test, a $15.75 rebooking fee, and — worse — shaken confidence that makes the second attempt harder.</p>
+          <p><strong>What to do instead:</strong> Don't book until you're scoring 85% or higher on practice tests consistently (three tests in a row, not just one lucky run). Once you're there, book your test quickly — momentum matters.</p>
+
+          <h2 id="final-tips">Bonus Tips for Test Day</h2>
+          <ul>
+            <li>Bring your original Ontario birth certificate or passport — photocopies are not accepted</li>
+            <li>Arrive 15 minutes early — the test is taken on a computer at the DriveTest centre</li>
+            <li>Read each question twice before answering — the answer is almost always in the wording</li>
+            <li>Don't rush — you have unlimited time for the G1 test</li>
+            <li>If you're genuinely unsure, eliminate wrong answers first and then choose</li>
+          </ul>
+
+          <div class="alert alert-success" style="margin-top:32px">
+            <i class="fa-solid fa-graduation-cap"></i> <strong>Want personalized G1 coaching?</strong> Our instructors can sit with you for a one-hour session ($45) and walk you through your weak spots. <a href="booking.html">Book a G1 coaching session here.</a>
+          </div>
+
+        </div><!-- /.article-content -->
+
+        <!-- SHARE -->
+        <div class="share-section" aria-label="Share this article">
+          <h4><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Found this helpful? Share it!</h4>
+          <div class="share-buttons">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_URL" target="_blank" rel="noopener" class="share-btn share-fb" aria-label="Share on Facebook">
+              <i class="fa-brands fa-facebook-f" aria-hidden="true"></i> Facebook
+            </a>
+            <a href="https://twitter.com/intent/tweet?text=5+G1+Test+Mistakes+to+Avoid&url=YOUR_URL" target="_blank" rel="noopener" class="share-btn share-tw" aria-label="Share on Twitter">
+              <i class="fa-brands fa-x-twitter" aria-hidden="true"></i> Twitter / X
+            </a>
+            <a href="https://wa.me/?text=Check+this+out%3A+YOUR_URL" target="_blank" rel="noopener" class="share-btn share-wa" aria-label="Share on WhatsApp">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- COMMENTS -->
+        <div class="comments-section" aria-labelledby="comments-heading">
+          <h2 id="comments-heading">Comments (3)</h2>
+          <div style="margin-top:24px">
+
+            <div class="comment" role="article" aria-label="Comment by Emily R.">
+              <div class="comment-avatar" aria-hidden="true">E</div>
+              <div>
+                <div class="comment-meta"><strong>Emily R.</strong><span>May 15, 2025</span></div>
+                <p class="comment-text">This is so helpful! I failed my G1 last month because of right-of-way questions and I had no idea why I kept getting them wrong. Going to try the decision tree approach you described. Thank you!</p>
+              </div>
+            </div>
+
+            <div class="comment" role="article" aria-label="Comment by Michael T.">
+              <div class="comment-avatar" aria-hidden="true">M</div>
+              <div>
+                <div class="comment-meta"><strong>Michael T.</strong><span>May 18, 2025</span></div>
+                <p class="comment-text">The practice test tip is spot-on. I did 8 practice tests before my G1 and scored 38/40 on the real thing. The key really is getting comfortable with how the questions are worded.</p>
+              </div>
+            </div>
+
+            <div class="comment" role="article" aria-label="Reply by James Downing">
+              <div class="comment-avatar" style="background:linear-gradient(135deg,var(--secondary),var(--secondary-dark))" aria-hidden="true">JD</div>
+              <div>
+                <div class="comment-meta"><strong>James Downing</strong> <span style="background:var(--secondary);color:#fff;font-size:0.7rem;padding:2px 8px;border-radius:4px;margin-left:6px">Instructor</span><span>May 19, 2025</span></div>
+                <p class="comment-text">Great work Michael — 38/40 is an excellent score! Emily, the right-of-way decision trees genuinely work. Feel free to book a coaching session if you'd like to go through them with an instructor. Good luck to you both!</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Comment Form -->
+          <div class="comment-form">
+            <h3 style="margin-bottom:20px;font-size:1.1rem">Leave a Comment</h3>
+            <form id="commentForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="commentName">Name <span>*</span></label>
+                  <input type="text" class="form-control" id="commentName" placeholder="Your name" required aria-required="true" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="commentEmail">Email <span>*</span></label>
+                  <input type="email" class="form-control" id="commentEmail" placeholder="your@email.com" required aria-required="true" />
+                  <small style="color:var(--text-muted);font-size:0.78rem">Your email won't be published.</small>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="commentText">Comment <span>*</span></label>
+                <textarea class="form-control" id="commentText" rows="4" placeholder="Share your thoughts or questions…" required aria-required="true"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Post Comment</button>
+            </form>
+          </div>
+        </div>
+
+      </article><!-- /article -->
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="sidebar-sticky">
+
+          <!-- Table of Contents -->
+          <div class="toc" role="navigation" aria-label="Table of contents">
+            <h4><i class="fa-solid fa-list" aria-hidden="true"></i> In This Article</h4>
+            <ol>
+              <li><a href="#mistake-1">Reading the Handbook Only Once</a></li>
+              <li><a href="#mistake-2">Skipping Practice Tests</a></li>
+              <li><a href="#mistake-3">Guessing on Road Signs</a></li>
+              <li><a href="#mistake-4">Not Knowing Right-of-Way</a></li>
+              <li><a href="#mistake-5">Booking Before You're Ready</a></li>
+              <li><a href="#final-tips">Bonus Test Day Tips</a></li>
+            </ol>
+          </div>
+
+          <!-- Author Card -->
+          <div class="author-card" itemscope itemtype="https://schema.org/Person">
+            <div class="author-avatar" aria-hidden="true">JD</div>
+            <h4 itemprop="name">James Downing</h4>
+            <p style="font-size:0.82rem;color:var(--secondary);font-weight:600;margin-bottom:8px">Senior Instructor &amp; Founder</p>
+            <p style="font-size:0.82rem;color:var(--text-light)" itemprop="description">15+ years teaching Ontario drivers. Passionate about road safety and building confident, skilled drivers who protect their families.</p>
+            <a href="about.html" class="btn btn-outline-primary btn-sm btn-block" style="margin-top:14px">Meet the Team</a>
+          </div>
+
+          <!-- Related Posts -->
+          <div class="related-posts">
+            <h4 style="margin-bottom:16px;font-size:0.95rem;padding-bottom:10px;border-bottom:2px solid var(--secondary);display:inline-block">Related Articles</h4>
+            <div>
+              <div class="related-post-item">
+                <div class="related-post-thumb"><i class="fa-solid fa-signs-post"></i></div>
+                <div><h5><a href="blog-post-template.html">20 Traffic Signs Every G1 Student Must Know</a></h5><span>May 28, 2024</span></div>
+              </div>
+              <div class="related-post-item">
+                <div class="related-post-thumb"><i class="fa-solid fa-parking"></i></div>
+                <div><h5><a href="blog-post-template.html">Parallel Parking: Step-by-Step Guide</a></h5><span>Oct 14, 2024</span></div>
+              </div>
+              <div class="related-post-item">
+                <div class="related-post-thumb"><i class="fa-solid fa-road"></i></div>
+                <div><h5><a href="blog-post-template.html">What Examiners Look for in Your G2 Test</a></h5><span>Apr 10, 2024</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Book Lesson Widget -->
+          <div style="background:linear-gradient(135deg,var(--secondary),var(--secondary-dark));border-radius:var(--radius-md);padding:24px;text-align:center">
+            <i class="fa-solid fa-calendar-plus" style="font-size:2rem;color:#fff;margin-bottom:10px" aria-hidden="true"></i>
+            <h4 style="color:#fff;margin-bottom:8px">Need G1 Coaching?</h4>
+            <p style="color:rgba(255,255,255,0.85);font-size:0.85rem;margin-bottom:16px">1-hour coaching session with a certified instructor — $45</p>
+            <a href="booking.html" class="btn btn-outline btn-block">Book Now</a>
+          </div>
+
+        </div>
+      </aside>
+
+    </div><!-- /.post-layout -->
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo" style="margin-bottom:16px;display:inline-flex"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a><p>Ontario's most trusted MTO-approved driving school.</p><div class="footer-socials"><a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
+      <div><h4>Quick Links</h4><ul class="footer-links"><li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li><li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li><li><a href="pricing.html"><i class="fa-solid fa-chevron-right"></i> Pricing</a></li><li><a href="booking.html"><i class="fa-solid fa-chevron-right"></i> Book a Lesson</a></li></ul></div>
+      <div><h4>Resources</h4><ul class="footer-links"><li><a href="videos.html"><i class="fa-solid fa-chevron-right"></i> Free Videos</a></li><li><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog &amp; Tips</a></li><li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li></ul></div>
+      <div><h4>Contact</h4><div class="footer-contact-item"><i class="fa-solid fa-phone"></i><div><a href="tel:+14165550100" style="color:rgba(255,255,255,0.65)">+1 (416) 555-0100</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><div><a href="mailto:info@yourdrivingschool.ca" style="color:rgba(255,255,255,0.65)">info@yourdrivingschool.ca</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-clock"></i><div>Mon–Sat: 8am–7pm · Sun: 9am–5pm</div></div></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; <span id="year">2025</span> [Your Driving School]. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></div></div>
+  </div>
 </footer>
+
+<a href="https://wa.me/1XXXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20driving%20lessons!" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat on WhatsApp</span></a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('commentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('commentName').value.trim();
+    const text = document.getElementById('commentText').value.trim();
+    if (!name || !text) { alert('Please fill in your name and comment.'); return; }
+    this.innerHTML = '<div class="alert alert-success"><i class="fa-solid fa-circle-check"></i> Thank you ' + name + '! Your comment is awaiting moderation.</div>';
+  });
+</script>
 <script src="js/main.js"></script>
-</body></html>
+</body>
+</html>

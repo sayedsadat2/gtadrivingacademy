@@ -1,0 +1,86 @@
+/* ================================================================
+   RESPONSIVE — Mobile First
+   Breakpoints: 1024px | 768px | 480px
+   ================================================================ */
+
+@media(max-width:1024px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .mission-grid{grid-template-columns:1fr;gap:36px}
+  .pricing-card.featured{transform:scale(1.01)}
+  .form-row{grid-template-columns:1fr}
+}
+
+@media(max-width:768px){
+  :root{--nav-h:62px}
+  .nav-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--white);padding:18px 22px 26px;flex-direction:column;align-items:flex-start;gap:3px;box-shadow:var(--shadow-md);border-top:1px solid var(--border);max-height:calc(100vh - var(--nav-h));overflow-y:auto;z-index:999}
+  .nav-menu.open{display:flex}
+  .nav-menu a{width:100%;padding:11px 14px;font-size:.97rem}
+  .nav-menu .btn{width:100%;justify-content:center}
+  .hamburger{display:flex}
+  .section{padding:52px 0}
+  .section-sm{padding:34px 0}
+  .section-header{margin-bottom:34px}
+  .hero{min-height:auto;padding:100px 0 80px}
+  .hero-stats{gap:18px;margin-top:32px}
+  .hero-stat strong{font-size:1.5rem}
+  .hero-actions{flex-direction:column}
+  .hero-actions .btn{justify-content:center}
+  .trust-bar .container{gap:18px}
+  .services-grid{grid-template-columns:1fr}
+  .testimonial-card{padding:0 18px}
+  .testimonial-text{font-size:1rem}
+  .blog-grid{grid-template-columns:1fr}
+  .video-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .pricing-card.featured{transform:none}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .footer-bottom-links{justify-content:center;flex-wrap:wrap}
+  .booking-progress{gap:3px}
+  .step-label{display:none}
+  .step-line{width:20px}
+  .newsletter-form{flex-direction:column}
+  .page-hero{padding:88px 0 44px}
+  .map-container{height:260px}
+  .whatsapp-fab{width:50px;height:50px;font-size:1.35rem;bottom:18px;right:18px}
+  .mission-visual{grid-template-columns:1fr 1fr}
+  .instructors-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .blog-layout{grid-template-columns:1fr!important}
+  .sidebar{position:static!important}
+  .post-layout{grid-template-columns:1fr!important}
+  .sidebar-sticky{position:static!important}
+  .service-detail-inner{grid-template-columns:1fr!important;gap:24px!important}
+  .contact-layout{grid-template-columns:1fr!important}
+  .service-select-grid{grid-template-columns:1fr 1fr}
+  .instructor-select-grid{grid-template-columns:1fr}
+  .time-slots-grid{grid-template-columns:repeat(3,1fr)}
+  .booking-nav{flex-direction:column;gap:10px}
+  .booking-nav .btn{width:100%;justify-content:center}
+  .carousel-arrow{display:none}
+}
+
+@media(max-width:480px){
+  .container{padding:0 14px}
+  h1{font-size:1.85rem}
+  h2{font-size:1.45rem}
+  .trust-bar .container{flex-direction:column;gap:12px}
+  .filter-tabs{gap:5px}
+  .filter-tab{font-size:.78rem;padding:6px 12px}
+  .share-buttons{flex-direction:column}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .service-select-grid{grid-template-columns:1fr}
+}
+
+@media(min-width:1280px){
+  .services-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+@media print{
+  .navbar,.whatsapp-fab,.footer,.btn{display:none!important}
+  body{color:#000}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}

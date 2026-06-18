@@ -1,42 +1,334 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Driving School Blog</title>
-  <meta name="description" content="Ontario driving tips for G1, G2, winter driving, defensive driving and parents.">
-  <meta property="og:title" content="Driving School Blog">
-  <meta property="og:description" content="Ontario driving tips for G1, G2, winter driving, defensive driving and parents.">
-  <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/dark-mode.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"DrivingSchool","name":"GTA Driving Academy","areaServed":"Toronto and GTA, Ontario","telephone":"[Phone]","email":"[Email]","slogan":"Drive Safe. Keep Families Safe. Keep Roads Safe.","address":{"@type":"PostalAddress","addressLocality":"Toronto","addressRegion":"ON","addressCountry":"CA"}}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Driving Tips, G1 &amp; G2 Advice | Your Driving School Ontario</title>
+  <meta name="description" content="Free driving tips, G1 test prep, G2 advice, winter driving guides and more. Expert articles from Ontario's certified driving instructors." />
+  <meta property="og:title" content="Driving Blog | Your Driving School Ontario" />
+  <meta property="og:description" content="Expert driving tips, G1/G2 test prep, winter driving safety and more — all free from Ontario's top driving school." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/dark-mode.css" />
+  <link rel="icon" href="images/favicon.ico" />
+  <style>
+    .blog-layout { display:grid; grid-template-columns:1fr 320px; gap:48px; align-items:start; }
+    .sidebar { position:sticky; top:90px; }
+    .sidebar-widget { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-md); padding:28px; margin-bottom:24px; }
+    .sidebar-widget h4 { margin-bottom:16px; font-size:1rem; padding-bottom:10px; border-bottom:2px solid var(--secondary); display:inline-block; }
+    .sidebar-categories { display:flex; flex-direction:column; gap:8px; }
+    .sidebar-cat { display:flex; align-items:center; justify-content:space-between; padding:8px 12px; border-radius:var(--radius-sm); transition:var(--transition); cursor:pointer; font-size:0.9rem; border:none; background:transparent; width:100%; text-align:left; }
+    .sidebar-cat:hover, .sidebar-cat.active { background:var(--accent2); color:var(--primary); }
+    .sidebar-cat .count { background:var(--secondary); color:#fff; font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:100px; }
+    .recent-post { display:flex; gap:12px; align-items:flex-start; padding:10px 0; border-bottom:1px solid var(--border); }
+    .recent-post:last-child { border-bottom:none; }
+    .recent-post-thumb { width:56px; height:56px; border-radius:var(--radius-sm); background:linear-gradient(135deg,var(--primary),var(--primary-light)); flex-shrink:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.2rem; }
+    .recent-post h5 { font-size:0.82rem; margin-bottom:4px; line-height:1.4; }
+    .recent-post h5 a { color:var(--text); }
+    .recent-post h5 a:hover { color:var(--secondary); }
+    .recent-post span { font-size:0.75rem; color:var(--text-muted); }
+    .tag-cloud { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag-link { background:var(--accent); border:1px solid var(--border); color:var(--text); font-size:0.8rem; padding:5px 12px; border-radius:100px; transition:var(--transition); text-decoration:none; }
+    .tag-link:hover { background:var(--primary); color:#fff; border-color:var(--primary); }
+    @media(max-width:1024px){ .blog-layout { grid-template-columns:1fr; } .sidebar { position:static; } }
+  </style>
 </head>
 <body>
-<div class="top-alert">🚗 Safe Driving Starts Here — Book Your First Lesson Today</div>
-<header class="navbar">
-  <div class="container nav-inner">
-    <a class="logo" href="index.html" aria-label="GTA Driving Academy home"><img src="images/logo.png" alt="GTA Driving Academy logo"></a>
-    <button class="mobile-toggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
-    <nav class="nav-menu" aria-label="Main navigation">
-      <a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="about.html">Instructors</a><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a>
-    </nav>
-    <div class="nav-actions"><button id="darkModeToggle" class="icon-link" title="Dark mode"><i class="fa-solid fa-moon"></i></button><a class="icon-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a><a class="book-btn" href="booking.html">Book Now</a></div>
+
+<nav class="navbar" role="navigation" aria-label="Main Navigation">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a>
+    <ul class="nav-menu" role="menubar">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="pricing.html">Pricing</a></li><li><a href="videos.html">Videos</a></li><li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li><li><a href="booking.html" class="btn btn-primary btn-sm">Book a Lesson</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i></button>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero" role="banner">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Blog</span></nav>
+    <h1>Driving Tips &amp; Guides</h1>
+    <p>Free expert advice from Ontario's certified driving instructors to help you drive safer and pass your tests.</p>
   </div>
 </header>
-<main><section class="page-hero"><div class="container"><div class="breadcrumbs">Home / Blog</div><h1>Driving Safety Blog</h1><p>Free road safety articles for students, parents, newcomers, and seniors.</p></div></section><section class="section"><div class="container"><div class="filter-bar"><input data-filter-search class="form-control" placeholder="Search blog posts"><select data-filter-category class="form-control"><option value="all">All Categories</option><option value="g1">G1 Tips</option><option value="g2">G2 Test Prep</option><option value="winter">Winter Driving</option><option value="safety">Vehicle Safety</option></select></div><div class="blog-grid"><article class="blog-card" data-card data-category="g1"><div class="thumb">Blog Image</div><div class="blog-card-body"><p>May 10, 2026</p><h3>5 Most Common G1 Test Mistakes (And How to Avoid Them)</h3><p>Practical Ontario driving advice written in simple language for students and families.</p><a class="btn btn-outline" href="blog-post-template.html">Read More</a></div></article><article class="blog-card" data-card data-category="winter"><div class="thumb">Blog Image</div><div class="blog-card-body"><p>May 11, 2026</p><h3>Winter Driving in Ontario: 7 Tips to Keep You and Your Family Safe</h3><p>Practical Ontario driving advice written in simple language for students and families.</p><a class="btn btn-outline" href="blog-post-template.html">Read More</a></div></article><article class="blog-card" data-card data-category="g2"><div class="thumb">Blog Image</div><div class="blog-card-body"><p>May 12, 2026</p><h3>Parallel Parking Made Simple: Step-by-Step Guide</h3><p>Practical Ontario driving advice written in simple language for students and families.</p><a class="btn btn-outline" href="blog-post-template.html">Read More</a></div></article><article class="blog-card" data-card data-category="safety"><div class="thumb">Blog Image</div><div class="blog-card-body"><p>May 13, 2026</p><h3>Why Defensive Driving Saves Lives on 401</h3><p>Practical Ontario driving advice written in simple language for students and families.</p><a class="btn btn-outline" href="blog-post-template.html">Read More</a></div></article><article class="blog-card" data-card data-category="g2"><div class="thumb">Blog Image</div><div class="blog-card-body"><p>May 14, 2026</p><h3>How to Help Your Teen Stay Calm During G2 Test</h3><p>Practical Ontario driving advice written in simple language for students and families.</p><a class="btn btn-outline" href="blog-post-template.html">Read More</a></div></article><article class="blog-card" data-card data-category="safety"><div class="thumb">Blog Image</div><div class="blog-card-body"><p>May 15, 2026</p><h3>The Hidden Dangers of Distracted Driving – A Parent's Guide</h3><p>Practical Ontario driving advice written in simple language for students and families.</p><a class="btn btn-outline" href="blog-post-template.html">Read More</a></div></article></div></div></section></main><script src="js/filters.js"></script><a class="whatsapp" aria-label="WhatsApp chat" href="https://wa.me/10000000000?text=Hi%2C%20I'm%20interested%20in%20driving%20lessons" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-<footer class="footer">
-  <div class="container footer-grid">
-    <div><a class="footer-logo" href="index.html" aria-label="GTA Driving Academy home"><img src="images/logo.png" alt="GTA Driving Academy logo"></a><p>Drive Safe. Keep Families Safe. Keep Roads Safe. Professional driving lessons for G1, G2, Full G, newcomers, parents, and seniors across the GTA.</p></div>
-    <div><h4>Pages</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="booking.html">Booking</a></div>
-    <div><h4>Learning</h4><a href="blog.html">Blog</a><a href="videos.html">Videos</a><a href="contact.html">Contact</a></div>
-    <div><h4>Newsletter</h4><form id="newsletterForm"><input class="form-control" name="email" type="email" placeholder="Email address" required><br><button class="btn btn-secondary" type="submit">Subscribe</button></form></div>
-  </div><div class="container copyright">© 2026 GTA Driving Academy. Demo website. Replace placeholders before publishing.</div>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Search + Filters -->
+    <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-bottom:32px">
+      <div class="search-bar" style="flex:1;min-width:240px">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" class="form-control" id="blogSearch" placeholder="Search articles…" aria-label="Search blog articles" />
+      </div>
+    </div>
+
+    <div class="filter-tabs" role="tablist" aria-label="Blog categories">
+      <button class="filter-tab active" data-category="all" role="tab" aria-selected="true">All Posts</button>
+      <button class="filter-tab" data-category="g1-tips" role="tab" aria-selected="false">G1 Tips</button>
+      <button class="filter-tab" data-category="g2-prep" role="tab" aria-selected="false">G2 Test Prep</button>
+      <button class="filter-tab" data-category="winter" role="tab" aria-selected="false">Winter Driving</button>
+      <button class="filter-tab" data-category="safety" role="tab" aria-selected="false">Vehicle Safety</button>
+      <button class="filter-tab" data-category="instructor" role="tab" aria-selected="false">Instructor Advice</button>
+      <button class="filter-tab" data-category="parents" role="tab" aria-selected="false">For Parents</button>
+    </div>
+
+    <div class="blog-layout">
+
+      <!-- MAIN BLOG GRID -->
+      <main>
+        <div class="blog-grid" id="blogGrid" aria-label="Blog posts">
+
+          <article class="blog-card fade-in" data-category="g1-tips">
+            <div class="blog-thumb" style="background:linear-gradient(135deg,#1a3c61,#2a5a8e)">
+              <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+              <span class="blog-category-badge">G1 Tips</span>
+            </div>
+            <div class="blog-body">
+              <div class="blog-meta"><span><i class="fa-solid fa-calendar" aria-hidden="true"></i> May 10, 2025</span><span><i class="fa-solid fa-user" aria-hidden="true"></i> James Downing</span><span><i class="fa-solid fa-clock" aria-hidden="true"></i> 5 min</span></div>
+              <h3><a href="blog-post-template.html">5 Most Common G1 Test Mistakes (And How to Avoid Them)</a></h3>
+              <p>Thousands of Ontario students fail their G1 knowledge test each year because of these five preventable mistakes. Learn exactly what they are and how to avoid them before test day.</p>
+              <a href="blog-post-template.html" class="read-more">Read Article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="blog-card fade-in" data-category="winter">
+            <div class="blog-thumb" style="background:linear-gradient(135deg,#1e3a5f,#0ea5e9)">
+              <i class="fa-solid fa-snowflake" aria-hidden="true"></i>
+              <span class="blog-category-badge">Winter Driving</span>
+            </div>
+            <div class="blog-body">
+              <div class="blog-meta"><span><i class="fa-solid fa-calendar" aria-hidden="true"></i> Nov 28, 2024</span><span><i class="fa-solid fa-user" aria-hidden="true"></i> Maria Chen</span><span><i class="fa-solid fa-clock" aria-hidden="true"></i> 7 min</span></div>
+              <h3><a href="blog-post-template.html">Winter Driving in Ontario: 7 Tips to Keep Your Family Safe</a></h3>
+              <p>Black ice, whiteouts, and freezing rain are Ontario realities. Here are 7 proven winter driving strategies our instructors teach every season to protect you and your family.</p>
+              <a href="blog-post-template.html" class="read-more">Read Article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="blog-card fade-in" data-category="g2-prep">
+            <div class="blog-thumb" style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">
+              <i class="fa-solid fa-parking" aria-hidden="true"></i>
+              <span class="blog-category-badge">G2 Test Prep</span>
+            </div>
+            <div class="blog-body">
+              <div class="blog-meta"><span><i class="fa-solid fa-calendar" aria-hidden="true"></i> Oct 14, 2024</span><span><i class="fa-solid fa-user" aria-hidden="true"></i> Arjun Singh</span><span><i class="fa-solid fa-clock" aria-hidden="true"></i> 4 min</span></div>
+              <h3><a href="blog-post-template.html">Parallel Parking Made Simple: Step-by-Step Guide for Your G2</a></h3>
+              <p>Parallel parking fails more G2 students than any other maneuver. Our 8-step method makes it predictable, repeatable, and stress-free — even on test day.</p>
+              <a href="blog-post-template.html" class="read-more">Read Article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="blog-card fade-in" data-category="safety">
+            <div class="blog-thumb" style="background:linear-gradient(135deg,#065f46,#059669)">
+              <i class="fa-solid fa-shield-road" aria-hidden="true"></i>
+              <span class="blog-category-badge">Vehicle Safety</span>
+            </div>
+            <div class="blog-body">
+              <div class="blog-meta"><span><i class="fa-solid fa-calendar" aria-hidden="true"></i> Sep 3, 2024</span><span><i class="fa-solid fa-user" aria-hidden="true"></i> James Downing</span><span><i class="fa-solid fa-clock" aria-hidden="true"></i> 6 min</span></div>
+              <h3><a href="blog-post-template.html">Why Defensive Driving Saves Lives on Highway 401</a></h3>
+              <p>The 401 is one of the busiest highways in North America. These defensive driving principles — taught in every one of our lessons — dramatically reduce your accident risk on Ontario highways.</p>
+              <a href="blog-post-template.html" class="read-more">Read Article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="blog-card fade-in" data-category="parents">
+            <div class="blog-thumb" style="background:linear-gradient(135deg,#b45309,#d97706)">
+              <i class="fa-solid fa-users" aria-hidden="true"></i>
+              <span class="blog-category-badge">For Parents</span>
+            </div>
+            <div class="blog-body">
+              <div class="blog-meta"><span><i class="fa-solid fa-calendar" aria-hidden="true"></i> Aug 19, 2024</span><span><i class="fa-solid fa-user" aria-hidden="true"></i> Maria Chen</span><span><i class="fa-solid fa-clock" aria-hidden="true"></i> 5 min</span></div>
+              <h3><a href="blog-post-template.html">How to Help Your Teen Stay Calm During Their G2 Road Test</a></h3>
+              <p>Test anxiety is real and it causes preventable failures. As a parent, your support in the days and hours before the test makes an enormous difference. Here's exactly what to say and do.</p>
+              <a href="blog-post-template.html" class="read-more">Read Article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="blog-card fade-in" data-category="parents">
+            <div class="blog-thumb" style="background:linear-gradient(135deg,#be123c,#e11d48)">
+              <i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>
+              <span class="blog-category-badge">For Parents</span>
+            </div>
+            <div class="blog-body">
+              <div class="blog-meta"><span><i class="fa-solid fa-calendar" aria-hidden="true"></i> Jul 7, 2024</span><span><i class="fa-solid fa-user" aria-hidden="true"></i> James Downing</span><span><i class="fa-solid fa-clock" aria-hidden="true"></i> 6 min</span></div>
+              <h3><a href="blog-post-template.html">The Hidden Dangers of Distracted Driving — A Parent's Guide</a></h3>
+              <p>Distracted driving kills. As a parent, understanding the specific risks your teen faces behind the wheel — and how to talk about them — could genuinely save their life.</p>
+              <a href="blog-post-template.html" class="read-more">Read Article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="blog-card fade-in" data-category="instructor">
+            <div class="blog-thumb" style="background:linear-gradient(135deg,#1a3c61,#e85d04)">
+              <i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i>
+              <span class="blog-category-badge">Instructor Advice</span>
+            </div>
+            <div class="blog-body">
+              <div class="blog-meta"><span><i class="fa-solid fa-calendar" aria-hidden="true"></i> Jun 15, 2024</span><span><i class="fa-solid fa-user" aria-hidden="true"></i> Arjun Singh</span><span><i class="fa-solid fa-clock" aria-hidden="true"></i> 8 min</span></div>
+              <h3><a href="blog-post-template.html">10 Things Your Driving Instructor Wishes You Knew Before Lesson 1</a></h3>
+              <p>After thousands of lessons, our instructors have noticed the same things holding students back. Knowing these 10 things before your very first lesson will accelerate your progress dramatically.</p>
+              <a href="blog-post-template.html" class="read-more">Read Article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="blog-card fade-in" data-category="g1-tips">
+            <div class="blog-thumb" style="background:linear-gradient(135deg,#164e63,#06b6d4)">
+              <i class="fa-solid fa-signs-post" aria-hidden="true"></i>
+              <span class="blog-category-badge">G1 Tips</span>
+            </div>
+            <div class="blog-body">
+              <div class="blog-meta"><span><i class="fa-solid fa-calendar" aria-hidden="true"></i> May 28, 2024</span><span><i class="fa-solid fa-user" aria-hidden="true"></i> Maria Chen</span><span><i class="fa-solid fa-clock" aria-hidden="true"></i> 4 min</span></div>
+              <h3><a href="blog-post-template.html">20 Traffic Signs Every Ontario G1 Student Must Know</a></h3>
+              <p>Traffic sign questions make up a significant portion of the G1 test. Here are the 20 signs most likely to appear — with explanations of exactly what each one means and when it applies.</p>
+              <a href="blog-post-template.html" class="read-more">Read Article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="blog-card fade-in" data-category="g2-prep">
+            <div class="blog-thumb" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)">
+              <i class="fa-solid fa-road" aria-hidden="true"></i>
+              <span class="blog-category-badge">G2 Test Prep</span>
+            </div>
+            <div class="blog-body">
+              <div class="blog-meta"><span><i class="fa-solid fa-calendar" aria-hidden="true"></i> Apr 10, 2024</span><span><i class="fa-solid fa-user" aria-hidden="true"></i> James Downing</span><span><i class="fa-solid fa-clock" aria-hidden="true"></i> 7 min</span></div>
+              <h3><a href="blog-post-template.html">What Examiners Actually Look for During Your G2 Road Test</a></h3>
+              <p>We talked to DriveTest examiners (off the record!) and compiled everything they actually score you on — beyond what the official handbook says. This insider knowledge changes everything.</p>
+              <a href="blog-post-template.html" class="read-more">Read Article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+        </div><!-- /#blogGrid -->
+
+        <div style="text-align:center;margin-top:40px">
+          <button class="btn btn-outline-primary" id="loadMoreBtn" aria-label="Load more articles">
+            <i class="fa-solid fa-rotate" aria-hidden="true"></i> Load More Articles
+          </button>
+        </div>
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar" aria-label="Blog sidebar">
+
+        <!-- Newsletter -->
+        <div class="sidebar-widget">
+          <h4>Get Free Driving Tips</h4>
+          <p style="font-size:0.88rem;color:var(--text-light);margin-bottom:16px">Join 1,200+ Ontario drivers getting weekly tips, test prep guides, and exclusive discounts straight to their inbox.</p>
+          <form id="newsletterForm" novalidate>
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="your@email.com" aria-label="Email address for newsletter" required />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Subscribe — It's Free</button>
+          </form>
+        </div>
+
+        <!-- Categories -->
+        <div class="sidebar-widget">
+          <h4>Categories</h4>
+          <div class="sidebar-categories" role="list">
+            <button class="sidebar-cat" data-category="all" role="listitem" aria-label="All categories">All Posts <span class="count">9</span></button>
+            <button class="sidebar-cat" data-category="g1-tips" role="listitem">G1 Tips <span class="count">2</span></button>
+            <button class="sidebar-cat" data-category="g2-prep" role="listitem">G2 Test Prep <span class="count">3</span></button>
+            <button class="sidebar-cat" data-category="winter" role="listitem">Winter Driving <span class="count">1</span></button>
+            <button class="sidebar-cat" data-category="safety" role="listitem">Vehicle Safety <span class="count">1</span></button>
+            <button class="sidebar-cat" data-category="instructor" role="listitem">Instructor Advice <span class="count">1</span></button>
+            <button class="sidebar-cat" data-category="parents" role="listitem">For Parents <span class="count">2</span></button>
+          </div>
+        </div>
+
+        <!-- Recent Posts -->
+        <div class="sidebar-widget">
+          <h4>Recent Posts</h4>
+          <div role="list">
+            <div class="recent-post" role="listitem">
+              <div class="recent-post-thumb" aria-hidden="true"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div><h5><a href="blog-post-template.html">5 Most Common G1 Test Mistakes</a></h5><span>May 10, 2025</span></div>
+            </div>
+            <div class="recent-post" role="listitem">
+              <div class="recent-post-thumb" aria-hidden="true"><i class="fa-solid fa-snowflake"></i></div>
+              <div><h5><a href="blog-post-template.html">Winter Driving: 7 Tips for Ontario Families</a></h5><span>Nov 28, 2024</span></div>
+            </div>
+            <div class="recent-post" role="listitem">
+              <div class="recent-post-thumb" aria-hidden="true"><i class="fa-solid fa-parking"></i></div>
+              <div><h5><a href="blog-post-template.html">Parallel Parking: Step-by-Step Guide</a></h5><span>Oct 14, 2024</span></div>
+            </div>
+            <div class="recent-post" role="listitem">
+              <div class="recent-post-thumb" aria-hidden="true"><i class="fa-solid fa-road"></i></div>
+              <div><h5><a href="blog-post-template.html">Defensive Driving on Highway 401</a></h5><span>Sep 3, 2024</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="sidebar-widget">
+          <h4>Popular Tags</h4>
+          <div class="tag-cloud" role="list">
+            <a href="#" class="tag-link" role="listitem">G1 Test</a>
+            <a href="#" class="tag-link" role="listitem">G2 Road Test</a>
+            <a href="#" class="tag-link" role="listitem">Winter Driving</a>
+            <a href="#" class="tag-link" role="listitem">Parallel Parking</a>
+            <a href="#" class="tag-link" role="listitem">Highway 401</a>
+            <a href="#" class="tag-link" role="listitem">Teen Drivers</a>
+            <a href="#" class="tag-link" role="listitem">Defensive Driving</a>
+            <a href="#" class="tag-link" role="listitem">Black Ice</a>
+            <a href="#" class="tag-link" role="listitem">Ontario MTO</a>
+            <a href="#" class="tag-link" role="listitem">Full G License</a>
+          </div>
+        </div>
+
+        <!-- CTA Widget -->
+        <div style="background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:var(--radius-md);padding:28px;text-align:center">
+          <i class="fa-solid fa-car" style="font-size:2.5rem;color:#fff;margin-bottom:12px" aria-hidden="true"></i>
+          <h4 style="color:#fff;margin-bottom:10px">Ready to Drive?</h4>
+          <p style="color:rgba(255,255,255,0.8);font-size:0.88rem;margin-bottom:20px">Book your first lesson today — as soon as this week!</p>
+          <a href="booking.html" class="btn btn-primary btn-block">Book a Lesson</a>
+        </div>
+
+      </aside>
+    </div><!-- /.blog-layout -->
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo" style="margin-bottom:16px;display:inline-flex"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a><p>Ontario's most trusted MTO-approved driving school.</p><div class="footer-socials"><a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
+      <div><h4>Quick Links</h4><ul class="footer-links"><li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li><li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li><li><a href="pricing.html"><i class="fa-solid fa-chevron-right"></i> Pricing</a></li><li><a href="booking.html"><i class="fa-solid fa-chevron-right"></i> Book a Lesson</a></li></ul></div>
+      <div><h4>Resources</h4><ul class="footer-links"><li><a href="videos.html"><i class="fa-solid fa-chevron-right"></i> Free Videos</a></li><li><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog &amp; Tips</a></li><li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li></ul></div>
+      <div><h4>Contact</h4><div class="footer-contact-item"><i class="fa-solid fa-phone"></i><div><a href="tel:+14165550100" style="color:rgba(255,255,255,0.65)">+1 (416) 555-0100</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><div><a href="mailto:info@yourdrivingschool.ca" style="color:rgba(255,255,255,0.65)">info@yourdrivingschool.ca</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-clock"></i><div>Mon–Sat: 8am–7pm · Sun: 9am–5pm</div></div></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; <span id="year">2025</span> [Your Driving School]. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></div></div>
+  </div>
 </footer>
+
+<a href="https://wa.me/1XXXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20driving%20lessons!" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat on WhatsApp</span></a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Sidebar category filter links to main filter tabs
+  document.querySelectorAll('.sidebar-cat').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.category;
+      const tab = document.querySelector(`.filter-tab[data-category="${cat}"]`);
+      if (tab) tab.click();
+      document.querySelectorAll('.sidebar-cat').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // Load more (demo — just shows a message)
+  document.getElementById('loadMoreBtn').addEventListener('click', function() {
+    this.innerHTML = '<i class="fa-solid fa-check"></i> All articles loaded';
+    this.disabled = true;
+  });
+</script>
 <script src="js/main.js"></script>
-</body></html>
+</body>
+</html>
