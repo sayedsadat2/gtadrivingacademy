@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="css/style.css"/><link rel="stylesheet" href="css/responsive.css"/><link rel="stylesheet" href="css/dark-mode.css"/>
+  <link rel="stylesheet" href="css/style.css?v=5"/><link rel="stylesheet" href="css/responsive.css"/><link rel="stylesheet" href="css/dark-mode.css"/>
   <style>
     .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
     .story-visual{background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:var(--radius-lg);height:420px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:7rem}
@@ -45,41 +45,29 @@
   </div>
 </header>
 
-<!-- OUR STORY -->
+<!-- OUR STORY & MISSION -->
 <section class="section">
   <div class="container">
     <div class="story-grid">
       <div class="fade-in">
-        <div class="section-tag">Our Story</div>
+        <div class="section-tag">Our Story &amp; Mission</div>
         <h2>Born from a Personal Mission to Save Lives</h2>
-        <p>Over 7 years ago, our founder witnessed a close friend's family be devastated by a preventable road accident caused by an undertrained driver. That moment changed everything.</p>
-        <p>He committed to building a driving school where safety isn't just a checkbox — it's a deeply held value taught in every single lesson. Today, GTA Driving Academy has delivered over 3,200 lessons across the GTA with one of the highest first-time pass rates in Ontario.</p>
-        <p>But more importantly, our students leave with habits, instincts, and a respect for the road that keep them — and everyone around them — safe for life.</p>
-        <div style="display:flex;gap:14px;margin-top:26px;flex-wrap:wrap">
-          <a href="booking.html" class="btn btn-primary"><i class="fa-solid fa-calendar-plus"></i> Book a Lesson</a>
-          <a href="contact.html" class="btn btn-outline-primary">Get in Touch</a>
-        </div>
-      </div>
-      <div class="image-panel fade-in"><img src="images/instructor-bashari-1.jpg" alt="GTA Driving Academy instructor teaching a student in-car, Toronto skyline visible" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg)"></div>
-    </div>
-  </div>
-</section>
-
-<!-- MISSION-DRIVEN TRAINING -->
-<section class="section bg-accent">
-  <div class="container">
-    <div class="story-grid">
-      <div class="image-panel fade-in"><img src="images/instructor-yarzai-1.jpg" alt="GTA Driving Academy instructor teaching a young driver, family safety in focus" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg)"></div>
-      <div class="fade-in">
-        <div class="section-tag">Mission-Driven Training</div>
-        <h2>Every Lesson Is About More Than Passing a Test</h2>
-        <p>Our goal isn't only to help students pass their road test. Our bigger purpose is to teach drivers how to protect themselves, their families, pedestrians, cyclists, and everyone else sharing the road with them.</p>
-        <p>Every teen who learns with us, every parent who trusts us with their child, every newcomer building a new life in Canada — they're not just students. They're the reason we hold every lesson to a higher standard.</p>
+        <p>Over 7 years ago, our founders witnessed a close friend's family be devastated by a preventable road accident caused by an undertrained driver. That moment changed everything.</p>
+        <p>They committed to building a driving school where safety isn't just a checkbox — it's a deeply held value taught in every single lesson. Today, GTA Driving Academy has delivered over 3,200 lessons across the GTA with one of the highest first-time pass rates in Ontario.</p>
+        <p>Our goal isn't only to help students pass their road test. Our bigger purpose is to teach drivers how to protect themselves, their families, pedestrians, cyclists, and everyone else sharing the road with them. Every teen who learns with us, every parent who trusts us with their child, every newcomer building a new life in Canada — they're the reason we hold every lesson to a higher standard.</p>
         <ul class="check-list">
           <li><i class="fa-solid fa-circle-check"></i> Patient instruction for nervous beginners</li>
           <li><i class="fa-solid fa-circle-check"></i> Structured progress tracking every lesson</li>
           <li><i class="fa-solid fa-circle-check"></i> Safety-first habits that last a lifetime</li>
         </ul>
+        <div style="display:flex;gap:14px;margin-top:26px;flex-wrap:wrap">
+          <a href="booking.html" class="btn btn-primary"><i class="fa-solid fa-calendar-plus"></i> Book a Lesson</a>
+          <a href="contact.html" class="btn btn-outline-primary">Get in Touch</a>
+        </div>
+      </div>
+      <div class="single-rotating-photo fade-in" data-rotate-group="instructors">
+        <img src="images/instructor-bashari-2.jpg" alt="Wais Bashari, GTA Driving Academy instructor, full photo with student" loading="lazy" class="rp-active">
+        <img src="images/instructor-yarzai-2.jpg" alt="Fahim Yarzai, GTA Driving Academy instructor, full photo with student" loading="lazy">
       </div>
     </div>
   </div>
@@ -267,6 +255,30 @@
   </div>
 </footer>
 <a href="https://wa.me/14169390201?text=Hi%2C%20I%27m%20interested%20in%20driving%20lessons!" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat on WhatsApp</span></a>
+<script>
+  // Sync-rotate paired instructor photos so both change together, never one before the other.
+  // Always rotates — a "reduce motion" system setting only removes the fade animation, never stops the swap itself.
+  (function () {
+    var groups = document.querySelectorAll('[data-rotate-group="instructors"]');
+    if (!groups.length) return;
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      groups.forEach(function (group) { group.classList.add('rp-no-transition'); });
+    }
+
+    function rotateAll() {
+      groups.forEach(function (group) {
+        var imgs = group.querySelectorAll('img');
+        var activeIndex = -1;
+        imgs.forEach(function (img, i) { if (img.classList.contains('rp-active')) activeIndex = i; });
+        var nextIndex = (activeIndex + 1) % imgs.length;
+        imgs[activeIndex].classList.remove('rp-active');
+        imgs[nextIndex].classList.add('rp-active');
+      });
+    }
+    setInterval(rotateAll, 4500);
+  })();
+</script>
 <script src="js/main.js"></script>
 <script src="js/chatbot.js" defer></script>
 </body>

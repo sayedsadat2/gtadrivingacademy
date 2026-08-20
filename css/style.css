@@ -59,9 +59,17 @@ p{margin-bottom:1rem}
 .check-list li{display:flex;align-items:center;gap:10px;font-size:.95rem;color:var(--text)}
 .check-list li i{color:var(--secondary);font-size:1.05rem;flex-shrink:0}
 .image-panel{height:420px;border-radius:var(--radius-lg);overflow:hidden}
+.dual-image-panel{height:420px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dual-image-panel img{width:100%;height:100%;object-fit:cover;object-position:left center;border-radius:var(--radius-lg)}
+.single-rotating-photo{position:relative;height:420px;border-radius:var(--radius-lg);overflow:hidden;background:var(--primary-dark)}
+.single-rotating-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--primary-dark);opacity:0;transition:opacity 1.1s ease}
+.single-rotating-photo img.rp-active{opacity:1}
+.single-rotating-photo.rp-no-transition img{transition:none}
+@media(max-width:768px){.single-rotating-photo{height:280px}}
+@media(prefers-reduced-motion:reduce){.single-rotating-photo img{transition:none}}
 .trust-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px}
 .trust-pill{background:var(--accent2);color:var(--primary);font-weight:600;font-size:.88rem;padding:9px 20px;border-radius:100px;border:1px solid var(--border)}
-@media(max-width:768px){.image-panel{height:240px}}
+@media(max-width:768px){.image-panel{height:240px}.dual-image-panel{height:260px}}
 .section-sm{padding:48px 0}
 .section-header{text-align:center;margin-bottom:56px}
 .section-header h2{margin-bottom:12px}
@@ -83,7 +91,7 @@ p{margin-bottom:1rem}
 .btn-block{width:100%;justify-content:center}
 
 /* ---------- Navbar ---------- */
-.navbar{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:var(--white);z-index:1000;box-shadow:var(--shadow-sm);transition:var(--transition)}
+.navbar{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:var(--white);z-index:1000;box-shadow:var(--shadow-sm);transition:var(--transition);overflow:hidden}
 .navbar.scrolled{box-shadow:var(--shadow-md)}
 .navbar .container{display:flex;align-items:center;justify-content:space-between;height:100%}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
