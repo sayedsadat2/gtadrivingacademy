@@ -55,7 +55,7 @@
       // Demo fallback — mailto
       const s=encodeURIComponent(`Contact from ${payload.name}`);
       const b=encodeURIComponent(`Name: ${payload.name}\nEmail: ${payload.email}\nPhone: ${payload.phone}\nService: ${payload.service}\nDate: ${payload.date}\n\nMessage:\n${payload.message}\n\nSMS opt-in: ${payload.sms_optin}`);
-      window.location.href=`mailto:info@yourdrivingschool.ca?subject=${s}&body=${b}`;
+      window.location.href=`mailto:gtadrivingacademy@gmail.com?subject=${s}&body=${b}`;
       btn.disabled=false;btn.innerHTML=orig;showOk();return;
     }
     try{

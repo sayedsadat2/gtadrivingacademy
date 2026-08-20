@@ -3,7 +3,7 @@
    Colors: #1a3c61 (navy) | #e85d04 (orange) | #f4f4f4 | #333
    Fonts: Poppins (headings) | Open Sans (body)
    ================================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap');
+/* Font loaded via <link> in HTML <head> for parallel loading — see font-fix below */
 
 :root {
   --primary:       #1a3c61;
@@ -27,7 +27,7 @@
   --transition:    all .3s ease;
   --font-head:     'Poppins', sans-serif;
   --font-body:     'Open Sans', sans-serif;
-  --nav-h:         72px;
+  --nav-h:         88px;
 }
 
 /* ---------- Reset ---------- */
@@ -55,6 +55,13 @@ p{margin-bottom:1rem}
 .container{max-width:1200px;margin:0 auto;padding:0 24px}
 .container-narrow{max-width:800px;margin:0 auto;padding:0 24px}
 .section{padding:80px 0}
+.check-list{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-direction:column;gap:12px}
+.check-list li{display:flex;align-items:center;gap:10px;font-size:.95rem;color:var(--text)}
+.check-list li i{color:var(--secondary);font-size:1.05rem;flex-shrink:0}
+.image-panel{height:420px;border-radius:var(--radius-lg);overflow:hidden}
+.trust-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px}
+.trust-pill{background:var(--accent2);color:var(--primary);font-weight:600;font-size:.88rem;padding:9px 20px;border-radius:100px;border:1px solid var(--border)}
+@media(max-width:768px){.image-panel{height:240px}}
 .section-sm{padding:48px 0}
 .section-header{text-align:center;margin-bottom:56px}
 .section-header h2{margin-bottom:12px}
@@ -80,6 +87,9 @@ p{margin-bottom:1rem}
 .navbar.scrolled{box-shadow:var(--shadow-md)}
 .navbar .container{display:flex;align-items:center;justify-content:space-between;height:100%}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-img{height:80px;width:auto;display:block}
+.footer-logo-img{height:56px;width:auto;display:block;margin-bottom:14px}
+.footer-logo-wrap{display:inline-block;background:var(--white);padding:12px 18px;border-radius:var(--radius-sm);margin-bottom:16px}
 .nav-logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem}
 .nav-logo-text{font-family:var(--font-head);font-weight:800;font-size:1rem;line-height:1.2}
 .nav-logo-text span{color:var(--primary);display:block}
@@ -221,7 +231,8 @@ textarea.form-control{resize:vertical;min-height:115px}
 .instructors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:26px}
 .instructor-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:30px;text-align:center;transition:var(--transition)}
 .instructor-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
-.instructor-avatar{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;color:var(--white);font-size:2rem;margin:0 auto 18px;font-family:var(--font-head);font-weight:700}
+.instructor-avatar{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;color:var(--white);font-size:2rem;margin:0 auto 18px;font-family:var(--font-head);font-weight:700;overflow:hidden}
+.instructor-avatar img{width:100%;height:100%;object-fit:cover}
 .instructor-card h3{margin-bottom:3px}
 .instructor-role{color:var(--secondary);font-size:.85rem;font-weight:600;font-family:var(--font-head);margin-bottom:10px}
 .instructor-card p{font-size:.86rem;color:var(--text-light);margin-bottom:14px}
@@ -374,7 +385,8 @@ textarea.form-control{resize:vertical;min-height:115px}
 .instructor-select-card{border:2px solid var(--border);border-radius:var(--radius-md);padding:18px;cursor:pointer;transition:var(--transition);text-align:center;background:var(--white)}
 .instructor-select-card:hover{border-color:var(--primary);background:var(--accent2)}
 .instructor-select-card.selected{border-color:var(--secondary);background:rgba(232,93,4,.05)}
-.inst-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-head);font-weight:700;font-size:1rem;margin:0 auto 10px;transition:var(--transition)}
+.inst-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-head);font-weight:700;font-size:1rem;margin:0 auto 10px;transition:var(--transition);overflow:hidden}
+.inst-avatar img{width:100%;height:100%;object-fit:cover}
 .instructor-select-card.selected .inst-avatar{background:linear-gradient(135deg,var(--secondary),var(--secondary-dark))}
 .time-slots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:9px;margin-top:14px}
 .time-slot{border:2px solid var(--border);border-radius:var(--radius-sm);padding:9px;text-align:center;cursor:pointer;font-family:var(--font-head);font-weight:600;font-size:.83rem;color:var(--text);transition:var(--transition);background:var(--white)}

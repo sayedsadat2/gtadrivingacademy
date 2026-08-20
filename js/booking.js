@@ -6,12 +6,13 @@
 
   const PRICES={
     'g1-coaching':  {label:'G1 Test Coaching (1 hr)',price:45,note:'One-on-one coaching session'},
-    'g2-single':    {label:'G2 Single Lesson (1 hr)',price:85,note:'In-car with certified instructor'},
-    'g2-5pack':     {label:'G2 — 5-Lesson Package',  price:400,note:'Save $25 vs single lessons'},
-    'g2-10pack':    {label:'G2 — 10-Lesson Package',  price:750,note:'Most popular — Save $100'},
-    'g2-20pack':    {label:'G2 — 20-Lesson Package',  price:1400,note:'Best value — Save $300'},
+    'g2-single':    {label:'G2 Single Lesson (1 hr)',price:55,note:'In-car with certified instructor'},
+    'mock-test':    {label:'Mock Test (1 hr)',  price:55,note:'Examiner-style practice evaluation'},
+    'g2-5pack':     {label:'G2 — 5-Lesson Package',  price:260,note:'Save $15 vs single lessons'},
+    'g2-10pack':    {label:'G2 — 10-Lesson Package',  price:500,note:'Most popular — Save $50'},
+    'g2-20pack':    {label:'G2 — 20-Lesson Package',  price:900,note:'Best value — Save $200'},
     'full-g':       {label:'Full G Highway Training',  price:185,note:'400-series highway driving'},
-    'refresher':    {label:'Refresher Lesson (1 hr)',  price:85,note:'Adults & seniors program'},
+    'refresher':    {label:'Refresher Lesson (1 hr)',  price:55,note:'Adults & seniors program'},
     'winter-clinic':{label:'Winter Driving Clinic',    price:120,note:'Seasonal — group session'},
   };
 

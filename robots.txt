@@ -4,4 +4,4 @@ Allow: /
 # Block thank-you page from indexing
 Disallow: /thank-you.html
 
-Sitemap: https://yourdrivingschool.ca/sitemap.xml
+Sitemap: https://gtadrivingacademy.ca/sitemap.xml

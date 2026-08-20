@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Book a Lesson | Your Driving School Ontario</title>
+  <title>Book a Lesson | GTA Driving Academy Ontario</title>
+  <link rel="canonical" href="https://gtadrivingacademy.ca/booking.html"/>
   <meta name="description" content="Book your driving lesson online in minutes. Choose your service, instructor, date and time. Available across Toronto, Mississauga, Brampton and all GTA." />
-  <meta property="og:title" content="Book a Driving Lesson | Your Driving School Ontario" />
+  <meta property="og:title" content="Book a Driving Lesson | GTA Driving Academy Ontario" />
   <meta property="og:description" content="Easy online booking for G2 lessons, Full G training, refresher courses and more. Choose your instructor and time slot." />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/responsive.css" />
   <link rel="stylesheet" href="css/dark-mode.css" />
-  <link rel="icon" href="images/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png"/>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
   <style>
     .booking-container { max-width:760px; margin:0 auto; }
     .booking-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); padding:48px; box-shadow:var(--shadow-md); }
@@ -65,14 +71,18 @@
       .booking-nav .btn { width:100%; justify-content:center; }
     }
   </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"GTA Driving Academy","description":"MTO-approved driving school in Ontario offering G1, G2, Full G and refresher lessons.","url":"https://gtadrivingacademy.ca","telephone":"+14169390201","email":"gtadrivingacademy@gmail.com","areaServed":["Toronto","Scarborough","North York","Etobicoke","Markham","Vaughan","Richmond Hill","Mississauga","Pickering","Ajax"],"address":{"@type":"PostalAddress","addressLocality":"Toronto","addressRegion":"ON","addressCountry":"CA"}}</script>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png"/>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
 </head>
 <body>
 
 <nav class="navbar" role="navigation" aria-label="Main Navigation">
   <div class="container">
-    <a href="index.html" class="nav-logo"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a>
+    <a href="index.html" class="nav-logo" aria-label="GTA Driving Academy Home"><img src="images/logo-full.png" alt="GTA Driving Academy — Drive Safe. Keep Roads Safe. Keep Families Safe." class="nav-logo-img"></a>
     <ul class="nav-menu" role="menubar">
-      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="index.html">Home</a></li><li><a href="about.html">Instructors</a></li><li><a href="services.html">Services</a></li>
       <li><a href="pricing.html">Pricing</a></li><li><a href="videos.html">Videos</a></li><li><a href="blog.html">Blog</a></li>
       <li><a href="contact.html">Contact</a></li><li><a href="booking.html" class="btn btn-primary btn-sm active">Book a Lesson</a></li>
     </ul>
@@ -142,35 +152,40 @@
               <h4>G1 Test Coaching</h4>
               <p>$45 · 1 hour</p>
             </div>
-            <div class="service-select-card" data-service="g2-single" role="radio" aria-checked="false" tabindex="0" aria-label="G2 Single Lesson - $85 per hour">
+            <div class="service-select-card" data-service="g2-single" role="radio" aria-checked="false" tabindex="0" aria-label="G2 Single Lesson - $55 per hour">
               <i class="fa-solid fa-car" aria-hidden="true"></i>
               <h4>G2 Single Lesson</h4>
-              <p>$85 · 1 hour</p>
+              <p>$55 · 1 hour</p>
             </div>
-            <div class="service-select-card" data-service="g2-5pack" role="radio" aria-checked="false" tabindex="0" aria-label="G2 Five Lesson Package - $400">
+            <div class="service-select-card" data-service="mock-test" role="radio" aria-checked="false" tabindex="0" aria-label="Mock Test - $55 per hour">
+              <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+              <h4>Mock Test</h4>
+              <p>$55 · 1 hour</p>
+            </div>
+            <div class="service-select-card" data-service="g2-5pack" role="radio" aria-checked="false" tabindex="0" aria-label="G2 Five Lesson Package - $260">
               <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
               <h4>G2 — 5-Pack</h4>
-              <p>$400 · 5 hours</p>
+              <p>$260 · 5 hours</p>
             </div>
-            <div class="service-select-card" data-service="g2-10pack" role="radio" aria-checked="false" tabindex="0" aria-label="G2 Ten Lesson Package - $750 Most Popular">
+            <div class="service-select-card" data-service="g2-10pack" role="radio" aria-checked="false" tabindex="0" aria-label="G2 Ten Lesson Package - $500 Most Popular">
               <i class="fa-solid fa-star" aria-hidden="true"></i>
               <h4>G2 — 10-Pack ⭐</h4>
-              <p>$750 · 10 hours</p>
+              <p>$500 · 10 hours</p>
             </div>
-            <div class="service-select-card" data-service="g2-20pack" role="radio" aria-checked="false" tabindex="0" aria-label="G2 Twenty Lesson Package - $1400 Best Value">
+            <div class="service-select-card" data-service="g2-20pack" role="radio" aria-checked="false" tabindex="0" aria-label="G2 Twenty Lesson Package - $900 Best Value">
               <i class="fa-solid fa-trophy" aria-hidden="true"></i>
               <h4>G2 — 20-Pack</h4>
-              <p>$1,400 · Best Value</p>
+              <p>$900 · Best Value</p>
             </div>
             <div class="service-select-card" data-service="full-g" role="radio" aria-checked="false" tabindex="0" aria-label="Full G Highway Training - $185">
               <i class="fa-solid fa-road" aria-hidden="true"></i>
               <h4>Full G Highway</h4>
               <p>$185 · 1.5 hours</p>
             </div>
-            <div class="service-select-card" data-service="refresher" role="radio" aria-checked="false" tabindex="0" aria-label="Refresher Lesson - $85">
+            <div class="service-select-card" data-service="refresher" role="radio" aria-checked="false" tabindex="0" aria-label="Refresher Lesson - $55">
               <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
               <h4>Refresher Lesson</h4>
-              <p>$85 · 1 hour</p>
+              <p>$55 · 1 hour</p>
             </div>
             <div class="service-select-card" data-service="winter-clinic" role="radio" aria-checked="false" tabindex="0" aria-label="Winter Driving Clinic - $120">
               <i class="fa-solid fa-snowflake" aria-hidden="true"></i>
@@ -194,25 +209,16 @@
 
           <div class="instructor-select-grid" role="radiogroup" aria-label="Select instructor">
             <div class="instructor-select-card" data-instructor="Wais Bashari" role="radio" aria-checked="false" tabindex="0">
-              <div class="inst-avatar" aria-hidden="true">WB</div>
+              <div class="inst-avatar"><img src="images/headshots/bashari-headshot.jpg" alt="Wais Bashari"></div>
               <h4>Wais Bashari</h4>
-              <p>Senior Instructor · 15+ yrs</p>
+              <p>Instructor &amp; Founder</p>
               <p style="margin-top:6px">G1, G2, Full G, Winter</p>
-              <div style="margin-top:8px;font-size:0.75rem;color:#fbbf24">★★★★★ 4.9</div>
             </div>
             <div class="instructor-select-card" data-instructor="Fahim Yarzai" role="radio" aria-checked="false" tabindex="0">
-              <div class="inst-avatar" aria-hidden="true">FY</div>
+              <div class="inst-avatar"><img src="images/headshots/yarzai-headshot.jpg" alt="Fahim Yarzai"></div>
               <h4>Fahim Yarzai</h4>
-              <p>Lead Instructor · 8 yrs</p>
+              <p>Instructor &amp; Founder</p>
               <p style="margin-top:6px">G2, Refresher, Seniors</p>
-              <div style="margin-top:8px;font-size:0.75rem;color:#fbbf24">★★★★★ 4.9</div>
-            </div>
-            <div class="instructor-select-card" data-instructor="John" role="radio" aria-checked="false" tabindex="0">
-              <div class="inst-avatar" aria-hidden="true">AS</div>
-              <h4>Rohit</h4>
-              <p>Instructor · 6 yrs</p>
-              <p style="margin-top:6px">G2, Full G Highway</p>
-              <div style="margin-top:8px;font-size:0.75rem;color:#fbbf24">★★★★★ 4.8</div>
             </div>
             <div class="instructor-select-card" data-instructor="No Preference" role="radio" aria-checked="false" tabindex="0">
               <div class="inst-avatar" aria-hidden="true"><i class="fa-solid fa-shuffle" style="font-size:1.2rem"></i></div>
@@ -350,7 +356,7 @@
           <div class="form-group" style="margin-top:20px">
             <label class="form-check">
               <input type="checkbox" id="confirmTerms" required aria-required="true" />
-              <span>I have read and agree to the <a href="pricing.html#refund-heading">cancellation policy</a> and <a href="#">terms of service</a>. <span aria-hidden="true">*</span></span>
+              <span>I have read and agree to the <a href="pricing.html#refund-heading">cancellation policy</a> and <a href="terms.html">terms of service</a>. <span aria-hidden="true">*</span></span>
             </label>
           </div>
 
@@ -403,19 +409,20 @@
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-brand"><a href="index.html" class="nav-logo" style="margin-bottom:16px;display:inline-flex"><div class="nav-logo-icon"><i class="fa-solid fa-car"></i></div><div class="nav-logo-text"><span>[Your Driving School]</span><em>Drive Safe Ontario</em></div></a><p>Ontario's most trusted MTO-approved driving school.</p><div class="footer-socials"><a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
+      <div class="footer-brand"><a href="index.html" class="nav-logo" style="margin-bottom:16px;display:inline-flex"><div class="footer-logo-wrap"><img src="images/logo-full.png" alt="GTA Driving Academy" class="footer-logo-img"></div></a><p>Ontario's most trusted MTO-approved driving school.</p></div>
       <div><h4>Quick Links</h4><ul class="footer-links"><li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li><li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li><li><a href="pricing.html"><i class="fa-solid fa-chevron-right"></i> Pricing</a></li><li><a href="booking.html"><i class="fa-solid fa-chevron-right"></i> Book a Lesson</a></li></ul></div>
       <div><h4>Resources</h4><ul class="footer-links"><li><a href="videos.html"><i class="fa-solid fa-chevron-right"></i> Free Videos</a></li><li><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog &amp; Tips</a></li><li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li></ul></div>
-      <div><h4>Contact</h4><div class="footer-contact-item"><i class="fa-solid fa-phone"></i><div><a href="tel:+14165550100" style="color:rgba(255,255,255,0.65)">+1 (416) 555-0100</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><div><a href="mailto:info@yourdrivingschool.ca" style="color:rgba(255,255,255,0.65)">info@yourdrivingschool.ca</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-clock"></i><div>Mon–Sat: 8am–7pm · Sun: 9am–5pm</div></div></div>
+      <div><h4>Contact</h4><div class="footer-contact-item"><i class="fa-solid fa-phone"></i><div><a href="tel:+14169390201" style="color:rgba(255,255,255,0.65)">+1 (416) 939-0201</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><div><a href="mailto:gtadrivingacademy@gmail.com" style="color:rgba(255,255,255,0.65)">gtadrivingacademy@gmail.com</a></div></div><div class="footer-contact-item"><i class="fa-solid fa-clock"></i><div>Mon–Sat: 8am–7pm · Sun: 9am–5pm</div></div></div>
     </div>
-    <div class="footer-bottom"><p>&copy; <span id="year">2025</span> [Your Driving School]. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></div></div>
+    <div class="footer-bottom"><p>&copy; <span id="year">2025</span> GTA Driving Academy. All rights reserved.</p><div class="footer-bottom-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="accessibility.html">Accessibility</a></div></div>
   </div>
 </footer>
 
-<a href="https://wa.me/1XXXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20driving%20lessons!" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat on WhatsApp</span></a>
+<a href="https://wa.me/14169390201?text=Hi%2C%20I%27m%20interested%20in%20driving%20lessons!" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat on WhatsApp</span></a>
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 <script src="js/main.js"></script>
 <script src="js/booking.js"></script>
+<script src="js/chatbot.js" defer></script>
 </body>
 </html>
