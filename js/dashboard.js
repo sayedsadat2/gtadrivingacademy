@@ -16,9 +16,10 @@
 
   
 
-    const [{ data: profile }, { data: courses }] = await Promise.all([
+  const [{ data: profile }, { data: courses }, { data: modules }] = await Promise.all([
      client.from('profiles').select('first_name, role').eq('id', user.id).maybeSingle(),
-      client.from('courses').select('title,description,digital_hours').eq('active', true).limit(1)
+      client.from('courses').select('title,description,digital_hours').eq('active', true).limit(1),
+    client.from('modules').select('module_number,title,required_minutes,content_url').eq('course_id', 1).eq('active', true).order('module_number')
     ]);
     if (profile && profile.first_name) {
   document.getElementById('studentName').textContent =
