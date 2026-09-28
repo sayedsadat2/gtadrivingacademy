@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 3 — Vehicle Handling: Space, Turns and Low-Speed Manoeuvres | GTA Driving Academy Portal</title>
+<style>
+/* =========================================================================
+   GTA DRIVING ACADEMY — DESIGN SYSTEM
+   Concept: "The Route" — the graduated-licence journey rendered as a road.
+   Palette: night-road navy, signal orange, lane yellow, asphalt, fog.
+   Type: Overpass (highway-gantry heritage) for display, Inter for body,
+         IBM Plex Mono for data/mile-markers.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root{
+  /* ---- color tokens ---- */
+  --navy-deep:#071A33;
+  --navy:      #0B2545;
+  --navy-mid:  #123561;
+  --orange:    #F2971B;
+  --orange-dk: #CC7A0C;
+  --yellow:    #F4C430;
+  --asphalt:   #3A3D44;
+  --asphalt-lt:#55585F;
+  --fog:       #F7F8FA;
+  --paper:     #FFFFFF;
+  --ink:       #16202C;
+  --ink-soft:  #46505C;
+  --mist:      #E4E8EC;
+  --line:      #D8DEE4;
+  --good:      #2E7D4F;
+
+  /* ---- type tokens ---- */
+  --display:'Overpass', sans-serif;
+  --body:'Inter', sans-serif;
+  --mono:'IBM Plex Mono', monospace;
+
+  /* ---- layout tokens ---- */
+  --maxw: 1180px;
+  --pad: clamp(20px, 4vw, 56px);
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+}
+
+body{
+  margin:0;
+  font-family:var(--body);
+  color:var(--ink);
+  background:var(--fog);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.55;
+}
+
+img,svg{ display:block; max-width:100%; }
+a{ color:inherit; }
+button{ font-family:inherit; }
+
+h1,h2,h3,h4{
+  font-family:var(--display);
+  color:var(--navy);
+  margin:0 0 .5em;
+  line-height:1.08;
+  letter-spacing:-0.01em;
+}
+h1{ font-weight:900; }
+h2{ font-weight:800; }
+h3{ font-weight:700; }
+
+p{ margin:0 0 1em; color:var(--ink-soft); }
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--orange-dk);
+  display:inline-flex;
+  align-items:center;
+  gap:.5em;
+  margin-bottom:.9em;
+}
+.eyebrow::before{
+  content:"";
+  width:22px; height:2px;
+  background:var(--orange);
+  display:inline-block;
+}
+
+.wrap{ max-width:var(--maxw); margin:0 auto; padding:0 var(--pad); }
+section{ padding:clamp(56px,9vw,112px) 0; }
+
+/* ---- focus visibility (accessibility floor) ---- */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+  outline:3px solid var(--orange);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+/* =========================================================================
+   BUTTONS
+   ========================================================================= */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.55em;
+  font-family:var(--display);
+  font-weight:700;
+  font-size:.98rem;
+  letter-spacing:.01em;
+  padding:.95em 1.7em;
+  border-radius:999px;
+  border:2px solid transparent;
+  cursor:pointer;
+  text-decoration:none;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+  white-space:nowrap;
+}
+.btn-primary{
+  background:var(--orange);
+  color:var(--navy-deep);
+  box-shadow:0 8px 20px -8px rgba(242,151,27,.65);
+}
+.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 14px 26px -10px rgba(242,151,27,.75); }
+.btn-ghost{
+  background:transparent;
+  border-color:rgba(255,255,255,.4);
+  color:#fff;
+}
+.btn-ghost:hover{ border-color:#fff; background:rgba(255,255,255,.08); }
+.btn-dark{
+  background:var(--navy);
+  color:#fff;
+}
+.btn-dark:hover{ transform:translateY(-2px); background:var(--navy-mid); }
+.btn-sm{ padding:.6em 1.15em; font-size:.85rem; }
+
+/* =========================================================================
+   NAV
+   ========================================================================= */
+.site-header{
+  position:sticky; top:0; z-index:100;
+  background:var(--navy-deep);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px var(--pad);
+  max-width:var(--maxw); margin:0 auto;
+}
+.brand{
+  display:flex; align-items:center; gap:.65em;
+  font-family:var(--display); font-weight:900; font-size:1.05rem;
+  color:#fff; text-decoration:none; letter-spacing:.01em;
+}
+.brand small{
+  display:block; font-family:var(--mono); font-weight:500; font-size:.6rem;
+  letter-spacing:.14em; color:var(--yellow); text-transform:uppercase;
+}
+.brand-mark{ width:34px; height:34px; flex:none; }
+
+.nav-links{
+  display:flex; align-items:center; gap:2.1rem;
+  list-style:none; margin:0; padding:0;
+}
+.nav-links a{
+  text-decoration:none; color:#D9E0E8; font-weight:600; font-size:.93rem;
+  position:relative; padding:.3em 0;
+}
+.nav-links a::after{
+  content:""; position:absolute; left:0; right:0; bottom:-4px; height:2px;
+  background:var(--orange); transform:scaleX(0); transform-origin:left;
+  transition:transform .22s ease;
+}
+.nav-links a:hover::after, .nav-links a[aria-current="page"]::after{ transform:scaleX(1); }
+.nav-links a[aria-current="page"]{ color:#fff; }
+
+.nav-cta{ display:flex; align-items:center; gap:14px; }
+.nav-toggle{
+  display:none; background:none; border:0; color:#fff; padding:6px;
+}
+
+@media (max-width: 880px){
+  .nav-links{
+    position:fixed; inset:64px 0 auto 0; background:var(--navy-deep);
+    flex-direction:column; align-items:flex-start; gap:0;
+    padding:8px var(--pad) 20px; border-bottom:1px solid rgba(255,255,255,.1);
+    transform:translateY(-8px); opacity:0; pointer-events:none;
+    transition:transform .2s ease, opacity .2s ease;
+  }
+  .nav-links.open{ transform:translateY(0); opacity:1; pointer-events:auto; }
+  .nav-links li{ width:100%; border-top:1px solid rgba(255,255,255,.08); }
+  .nav-links a{ display:block; padding:14px 0; }
+  .nav-toggle{ display:block; }
+  .nav-cta .btn-ghost{ display:none; }
+}
+
+/* =========================================================================
+   ROAD / HERO DEVICES
+   ========================================================================= */
+.hero{
+  position:relative; overflow:hidden;
+  background:radial-gradient(120% 140% at 50% -10%, var(--navy-mid) 0%, var(--navy-deep) 55%, #050F20 100%);
+  color:#fff;
+  padding:clamp(70px,12vw,132px) 0 clamp(60px,9vw,108px);
+}
+.hero-road{
+  position:absolute; left:0; right:0; bottom:0; height:60%;
+  pointer-events:none;
+}
+.hero-grid{
+  position:absolute; inset:0; opacity:.5;
+  background-image:
+    linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(60% 60% at 50% 30%, #000 40%, transparent 100%);
+}
+.hero-inner{ position:relative; z-index:2; }
+.hero-kicker{
+  font-family:var(--mono); font-size:.82rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--yellow); display:flex; align-items:center; gap:.6em; margin-bottom:1.1em;
+}
+.hero h1{
+  color:#fff; font-size:clamp(2.4rem, 5.4vw, 4.35rem); max-width:16ch;
+}
+.hero h1 em{ font-style:normal; color:var(--orange); }
+.hero p.lead{
+  color:#C9D3DE; font-size:clamp(1.05rem,1.6vw,1.25rem); max-width:52ch; margin:1.2em 0 1.8em;
+}
+.hero-actions{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:2.6em; }
+
+.hero-stats{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1px; background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.14); border-radius:var(--radius);
+  overflow:hidden; max-width:760px;
+}
+.hero-stats div{ background:rgba(7,26,51,.65); padding:18px 20px; }
+.hero-stats .num{ font-family:var(--mono); font-weight:600; font-size:1.5rem; color:#fff; }
+.hero-stats .lab{ font-size:.78rem; color:#AEBBC9; margin-top:.25em; }
+
+/* =========================================================================
+   SECTIONS / CARDS
+   ========================================================================= */
+.section-head{ max-width:640px; margin-bottom:2.6rem; }
+.section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
+
+.card-grid{ display:grid; gap:26px; }
+.grid-3{ grid-template-columns:repeat(3,1fr); }
+.grid-2{ grid-template-columns:repeat(2,1fr); }
+@media (max-width:900px){ .grid-3,.grid-2{ grid-template-columns:1fr; } }
+
+.card{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:30px 28px; transition:box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+}
+.card:hover{ box-shadow:0 20px 40px -24px rgba(11,37,69,.28); transform:translateY(-3px); border-color:#c9d2da; }
+.card .icon{ width:46px; height:46px; margin-bottom:18px; }
+.card h3{ font-size:1.15rem; margin-bottom:.45em; }
+.card p{ font-size:.96rem; margin-bottom:0; }
+
+.strip{ background:var(--navy); color:#fff; }
+.strip h2{ color:#fff; }
+.strip p{ color:#C9D3DE; }
+
+/* =========================================================================
+   MILE-MARKER LIST (used for differentiators / step content)
+   ========================================================================= */
+.marker-list{ list-style:none; margin:0; padding:0; display:grid; gap:22px; }
+.marker-list li{ display:flex; gap:18px; align-items:flex-start; }
+.marker-badge{
+  flex:none; width:40px; height:40px; border-radius:50%;
+  background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center;
+  font-family:var(--mono); font-weight:600; font-size:.85rem;
+}
+.marker-list h4{ font-family:var(--body); font-weight:700; font-size:1.02rem; color:var(--navy); margin:0 0 .3em; }
+.marker-list p{ margin:0; font-size:.94rem; }
+
+/* =========================================================================
+   FOOTER
+   ========================================================================= */
+.site-footer{ background:var(--navy-deep); color:#B9C4D1; padding:56px 0 28px; }
+.footer-grid{
+  display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px;
+  padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,.1);
+}
+@media (max-width:760px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+.site-footer h5{
+  font-family:var(--mono); font-size:.74rem; letter-spacing:.12em; text-transform:uppercase;
+  color:#7C8AA0; margin:0 0 1em;
+}
+.site-footer a{ text-decoration:none; color:#D3DAE2; }
+.site-footer ul{ list-style:none; margin:0; padding:0; display:grid; gap:.65em; font-size:.92rem; }
+.footer-bottom{
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+  padding-top:22px; font-size:.82rem; color:#7C8AA0;
+}
+.footer-brand{ display:flex; align-items:center; gap:.6em; color:#fff; font-family:var(--display); font-weight:800; margin-bottom:.8em; }
+.footer-brand svg{ width:28px; height:28px; }
+
+/* =========================================================================
+   MISC UTILITIES
+   ========================================================================= */
+.tag{
+  display:inline-block; font-family:var(--mono); font-size:.72rem; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase; padding:.35em .7em; border-radius:999px;
+  background:rgba(242,151,27,.12); color:var(--orange-dk); border:1px solid rgba(242,151,27,.35);
+}
+.center-text{ text-align:center; }
+.mt-0{ margin-top:0; }
+.small{ font-size:.85rem; color:var(--ink-soft); }
+.divider{ height:1px; background:var(--line); border:0; margin:0; }
+
+.placeholder-note{
+  font-family:var(--mono); font-size:.72rem; color:var(--orange-dk);
+  background:rgba(242,151,27,.09); border:1px dashed rgba(242,151,27,.5);
+  padding:.5em .8em; border-radius:6px; display:inline-block; margin-top:.6em;
+}
+
+/* =========================================================================
+   SCROLL REVEAL
+   ========================================================================= */
+[data-reveal]{
+  opacity:0; transform:translateY(18px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+[data-reveal].is-visible{ opacity:1; transform:translateY(0); }
+[data-reveal="stagger"] > *{ transition-delay:calc(var(--i,0) * 70ms); }
+
+/* =========================================================================
+   THE ROUTE — signature component (curriculum.html)
+   A vertical road spine with a car marker that tracks scroll progress
+   through the ten real curriculum modules.
+   ========================================================================= */
+.route{ position:relative; padding:20px 0 40px; }
+.route-layout{
+  display:flex; align-items:stretch; gap:0 8px;
+  max-width:920px; margin:0 auto;
+}
+.route-track{
+  position:relative; flex:0 0 96px; width:96px;
+}
+.route-stops-col{ flex:1 1 auto; min-width:0; }
+.route-road{
+  position:absolute; top:0; bottom:0; left:50%; transform:translateX(-50%);
+  width:34px; background:linear-gradient(180deg,var(--asphalt-lt),var(--asphalt) 12%, var(--asphalt) 88%, var(--asphalt-lt));
+  border-radius:17px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.25);
+}
+.route-centerline{
+  position:absolute; top:0; bottom:0; left:50%; width:4px; transform:translateX(-50%);
+  background-image:linear-gradient(var(--yellow) 60%, transparent 0);
+  background-size:4px 26px; background-repeat:repeat-y; opacity:.9;
+}
+.route-progress-fill{
+  position:absolute; top:0; left:50%; width:34px; transform:translateX(-50%);
+  height:0; border-radius:17px 17px 0 0;
+  background:linear-gradient(180deg, rgba(242,151,27,.35), rgba(242,151,27,.12));
+  pointer-events:none;
+}
+.route-car{
+  position:absolute; left:50%; top:0; width:46px; height:46px;
+  transform:translate(-50%,-38%);
+  transition:top .05s linear;
+  filter:drop-shadow(0 6px 10px rgba(0,0,0,.35));
+  z-index:3;
+}
+.route-stop-marker{
+  display:inline-flex; width:38px; height:38px; border-radius:50%;
+  background:var(--navy); color:#fff; border:3px solid var(--fog);
+  align-items:center; justify-content:center;
+  font-family:var(--mono); font-weight:600; font-size:.95rem;
+  transition:background .25s ease, transform .25s ease;
+  margin-bottom:.85em;
+}
+.route-stop.is-active .route-stop-marker{ background:var(--orange); color:var(--navy-deep); transform:scale(1.1); }
+.route-stop.is-passed .route-stop-marker{ background:var(--good); }
+
+.route-stop{ position:relative; min-height:230px; display:flex; align-items:center; }
+.route-stop:last-child{ min-height:140px; }
+
+.route-card{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:26px 28px; width:100%;
+  transition:border-color .25s ease, box-shadow .25s ease;
+}
+.route-stop.is-active .route-card{
+  border-color:rgba(242,151,27,.55);
+  box-shadow:0 18px 34px -22px rgba(242,151,27,.5);
+}
+.route-card .cc-tag{
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.1em; color:var(--ink-soft);
+  text-transform:uppercase; margin-bottom:.5em; display:block;
+}
+.route-card h3{ font-size:1.18rem; margin-bottom:.4em; }
+.route-card p{ font-size:.95rem; margin-bottom:.7em; }
+.route-card .obj-label{
+  font-family:var(--mono); font-size:.72rem; color:var(--orange-dk); text-transform:uppercase;
+  letter-spacing:.08em; margin-right:.5em;
+}
+
+@media (max-width:720px){
+  .route-track{ flex-basis:64px; width:64px; }
+  .route-road{ width:22px; }
+  .route-progress-fill{ width:22px; }
+  .route-car{ width:36px; height:36px; }
+  .route-stop-marker{ width:30px; height:30px; font-size:.8rem; }
+  .route-card{ padding:20px; }
+}
+
+/* Route hero intro block */
+.route-intro{
+  max-width:680px; margin:0 auto 3.4rem; text-align:center;
+}
+
+
+/* =========================================================================
+   STUDENT PORTAL — additional components
+   ========================================================================= */
+
+/* ---- Login gate ---- */
+.login-shell{
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  background:radial-gradient(120% 140% at 50% -10%, var(--navy-mid) 0%, var(--navy-deep) 55%, #050F20 100%);
+  padding:24px;
+}
+.login-card{
+  background:#fff; border-radius:var(--radius); padding:40px 36px; width:100%; max-width:400px;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
+}
+.login-card h1{ font-size:1.4rem; margin-bottom:.2em; }
+.login-card p.sub{ font-size:.9rem; color:var(--ink-soft); margin-bottom:1.6em; }
+.login-field{ display:grid; gap:6px; margin-bottom:16px; }
+.login-field label{ font-size:.85rem; font-weight:600; color:var(--navy); }
+.login-field input{ padding:.8em .9em; border:1px solid var(--line); border-radius:8px; font-family:inherit; font-size:.95rem; }
+.login-demo-note{
+  font-family:var(--mono); font-size:.72rem; color:var(--orange-dk);
+  background:rgba(242,151,27,.09); border:1px dashed rgba(242,151,27,.5);
+  padding:.7em .9em; border-radius:8px; margin-top:18px; line-height:1.5;
+}
+
+/* ---- Portal shell ---- */
+.portal-header{
+  background:var(--navy-deep); color:#fff; padding:16px var(--pad);
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(255,255,255,.1);
+}
+.portal-header .brand{ display:flex; align-items:center; gap:.6em; font-family:var(--display); font-weight:900; color:#fff; text-decoration:none; font-size:1rem; }
+.portal-header .brand svg{ width:28px; height:28px; }
+.portal-user{ display:flex; align-items:center; gap:12px; font-size:.85rem; color:#C9D3DE; }
+.portal-user .avatar{ width:30px; height:30px; border-radius:50%; background:var(--orange); color:var(--navy-deep); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.8rem; }
+
+.portal-progress-bar{ height:6px; background:rgba(255,255,255,.12); }
+.portal-progress-fill{ height:100%; background:var(--orange); transition:width .4s ease; }
+
+/* ---- Module grid on portal home ---- */
+.module-grid{ display:grid; gap:16px; grid-template-columns:repeat(2,1fr); }
+@media (max-width:760px){ .module-grid{ grid-template-columns:1fr; } }
+.module-card{
+  display:flex; gap:16px; align-items:flex-start; background:#fff; border:1px solid var(--line);
+  border-radius:var(--radius); padding:20px 22px; text-decoration:none; color:inherit;
+  transition:box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+}
+.module-card:hover{ box-shadow:0 16px 32px -20px rgba(11,37,69,.3); transform:translateY(-2px); border-color:#c9d2da; }
+.module-num{
+  flex:none; width:44px; height:44px; border-radius:50%; background:var(--navy); color:#fff;
+  display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-weight:700;
+}
+.module-card.is-complete .module-num{ background:var(--good); }
+.module-card h3{ font-size:1rem; margin-bottom:.25em; }
+.module-card p{ font-size:.85rem; margin-bottom:.4em; }
+.module-meta{ font-family:var(--mono); font-size:.72rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.06em; }
+.module-check{ margin-left:auto; flex:none; color:var(--good); font-size:1.3rem; }
+
+/* ---- Session layout ---- */
+.session-shell{ max-width:820px; margin:0 auto; padding:36px var(--pad) 100px; }
+.session-crumb{ font-family:var(--mono); font-size:.78rem; color:var(--ink-soft); margin-bottom:.6em; }
+.session-crumb a{ color:var(--orange-dk); text-decoration:none; }
+.session-title{ font-size:clamp(1.6rem,3vw,2.1rem); margin-bottom:.3em; }
+.session-meta-row{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:2em; }
+.session-block{ margin-bottom:2.6em; }
+.session-block h2{ font-size:1.25rem; border-bottom:2px solid var(--mist); padding-bottom:.4em; margin-bottom:.7em; }
+.session-block h3{ font-size:1.02rem; color:var(--navy); margin-bottom:.4em; }
+.obj-list{ list-style:none; margin:0 0 1.5em; padding:0; display:grid; gap:8px; }
+.obj-list li{ display:flex; gap:10px; align-items:flex-start; font-size:.95rem; color:var(--ink-soft); }
+.obj-list li::before{ content:"\2192"; color:var(--orange); flex:none; font-weight:700; }
+
+.lesson-timeline{ list-style:none; margin:0; padding:0; border-left:3px solid var(--mist); }
+.lesson-timeline li{ position:relative; padding:0 0 22px 22px; }
+.lesson-timeline li::before{
+  content:""; position:absolute; left:-7.5px; top:4px; width:12px; height:12px; border-radius:50%;
+  background:var(--navy); border:2px solid #fff; box-shadow:0 0 0 2px var(--mist);
+}
+.lesson-timeline .t-min{ font-family:var(--mono); font-size:.72rem; color:var(--orange-dk); text-transform:uppercase; letter-spacing:.06em; }
+.lesson-timeline .t-title{ font-weight:700; color:var(--navy); margin:.15em 0; }
+.lesson-timeline .t-desc{ font-size:.93rem; color:var(--ink-soft); }
+
+/* ---- Instructional content blocks ---- */
+.teach-block{ background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:24px 26px; margin-bottom:18px; }
+.teach-block p{ font-size:.96rem; }
+.teach-block p:last-child{ margin-bottom:0; }
+.callout{
+  border-left:4px solid var(--orange); background:#FFF7EC; padding:14px 18px; border-radius:0 8px 8px 0;
+  font-size:.92rem; color:var(--ink); margin:14px 0;
+}
+.callout strong{ color:var(--orange-dk); }
+
+/* ---- Matching / sorting activity ---- */
+.activity-shell{ background:#EFF3F7; border:1px solid var(--line); border-radius:var(--radius); padding:24px; margin-bottom:18px; }
+.activity-shell h3{ margin-bottom:.3em; }
+.activity-instructions{ font-size:.88rem; color:var(--ink-soft); margin-bottom:16px; }
+.chip-pool{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+.chip{
+  padding:.5em 1em; border-radius:999px; background:#fff; border:2px solid var(--navy);
+  color:var(--navy); font-size:.85rem; font-weight:600; cursor:grab; user-select:none;
+}
+.chip.placed{ opacity:.35; cursor:default; }
+.drop-zones{ display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
+.drop-zone{
+  min-height:70px; border:2px dashed var(--line); border-radius:10px; padding:10px;
+  background:#fff; font-size:.82rem; color:var(--ink-soft);
+}
+.drop-zone.over{ border-color:var(--orange); background:#FFF7EC; }
+.drop-zone .zone-label{ font-family:var(--mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.06em; color:var(--navy); display:block; margin-bottom:6px; }
+.drop-zone .chip{ cursor:default; margin:3px 4px 0 0; }
+
+/* ---- Scenario / branching decision ---- */
+.scenario-shell{ background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:24px 26px; margin-bottom:18px; }
+.scenario-prompt{ font-size:.96rem; margin-bottom:14px; }
+.scenario-options{ display:grid; gap:10px; }
+.scenario-option{
+  text-align:left; padding:.9em 1.1em; border:2px solid var(--line); border-radius:10px; background:#fff;
+  font-family:inherit; font-size:.92rem; cursor:pointer; transition:border-color .15s ease, background .15s ease;
+}
+.scenario-option:hover{ border-color:var(--navy); }
+.scenario-option.correct{ border-color:var(--good); background:#EFFAF2; }
+.scenario-option.incorrect{ border-color:#C8102E; background:#FDEEEF; }
+.scenario-feedback{ margin-top:14px; padding:14px 16px; border-radius:8px; font-size:.9rem; display:none; }
+.scenario-feedback.show{ display:block; }
+.scenario-feedback.good{ background:#EFFAF2; color:#1F6B3A; }
+.scenario-feedback.bad{ background:#FDEEEF; color:#A3132A; }
+
+/* ---- Quiz ---- */
+.quiz-shell{ background:#fff; border:2px solid var(--navy); border-radius:var(--radius); padding:26px 28px; margin-bottom:18px; }
+.quiz-shell h3{ margin-bottom:.2em; }
+.quiz-progress{ font-family:var(--mono); font-size:.75rem; color:var(--ink-soft); margin-bottom:18px; }
+.quiz-q{ display:none; }
+.quiz-q.active{ display:block; }
+.quiz-q .q-text{ font-weight:700; color:var(--navy); margin-bottom:12px; }
+.quiz-opt{
+  display:block; width:100%; text-align:left; padding:.8em 1em; margin-bottom:8px; border:2px solid var(--line);
+  border-radius:8px; background:#fff; font-family:inherit; font-size:.92rem; cursor:pointer;
+}
+.quiz-opt.correct{ border-color:var(--good); background:#EFFAF2; }
+.quiz-opt.incorrect{ border-color:#C8102E; background:#FDEEEF; }
+.quiz-explain{ font-size:.85rem; color:var(--ink-soft); margin-top:10px; display:none; }
+.quiz-explain.show{ display:block; }
+.quiz-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:18px; }
+.quiz-result{ display:none; text-align:center; padding:20px; }
+.quiz-result.show{ display:block; }
+.quiz-result .score{ font-family:var(--mono); font-size:2.2rem; font-weight:700; color:var(--navy); }
+
+/* ---- Terminology ---- */
+.term-grid{ display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
+.term-card{ background:#fff; border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+.term-card dt{ font-weight:700; color:var(--navy); font-size:.92rem; margin-bottom:.25em; }
+.term-card dd{ margin:0; font-size:.86rem; color:var(--ink-soft); }
+
+/* ---- Session footer nav ---- */
+.session-footer-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:3em; padding-top:1.6em; border-top:1px solid var(--line); gap:12px; flex-wrap:wrap; }
+
+.reveal-btn{ background:none; border:2px solid var(--navy); color:var(--navy); border-radius:999px; padding:.5em 1.1em; font-family:var(--display); font-weight:700; font-size:.82rem; cursor:pointer; }
+.reveal-btn:hover{ background:var(--navy); color:#fff; }
+
+</style>
+</head>
+<body>
+
+<div class="portal-progress-bar"><div class="portal-progress-fill" style="width:30%;"></div></div>
+<header class="portal-header">
+  <a href="portal-home.html" class="brand">
+    <svg width="28" height="28" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#F2971B"/><path d="M8 26L14 12H26L32 26" stroke="#071A33" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M8 26H32" stroke="#071A33" stroke-width="2.6" stroke-linecap="round"/></svg>
+    GTA Driving Academy — Student Portal
+  </a>
+  <div class="portal-user">
+    <span>Module 3 of 10</span>
+    <span class="avatar">S</span>
+  </div>
+</header>
+
+<div class="session-shell">
+  <div class="session-crumb"><a href="portal-home.html">All modules</a> &nbsp;/&nbsp; Module 3</div>
+  <div class="tag">CC3 · Vehicle Handling</div>
+  <h1 class="session-title">Vehicle Handling: Space, Turns and Low-Speed Manoeuvres</h1>
+  <div class="session-meta-row">
+    <span class="tag">120 minutes</span>
+    <span class="tag">Digital classroom</span>
+  </div>
+
+  <div class="session-block">
+    <h2>What you'll be able to do</h2>
+    <ul class="obj-list">
+      <li>Select safe speed and lane position for current conditions.</li>
+<li>Apply the observation-signal-position-speed-look sequence to turns.</li>
+<li>Plan safe reversing, parking and turnaround manoeuvres, and recognize when evasive action is needed.</li>
+    </ul>
+    <p>This session moves from knowing the vehicle to actually placing it — in a lane, through a turn, into a parking space. The physical skills matter, but so does the decision-making underneath them: why you chose that lane position, that following distance, that moment to turn.</p>
+  </div>
+
+  <div class="session-block">
+    <h2>Session content</h2>
+    <div class="teach-block"><h3>Space and following distance</h3><p>Following distance is measured in time, not metres, because time scales automatically with speed. The standard method: pick a fixed point on the road, and count the seconds from when the vehicle ahead passes it to when you reach it. A minimum safe gap in good conditions still needs to grow for rain, snow, darkness, heavy traffic, towing, or fatigue — any one of those on its own is a reason to open the gap further.</p><p>Lane position isn't just about staying inside the lines. Positioning slightly toward one side of your lane can increase your visibility around a vehicle ahead, keep you further from a hazard on one side, or make you more visible to a driver waiting to turn out of a side street.</p></div>
+<div class="teach-block"><h3>Turns: the OSPSL sequence</h3><p>Every turn follows the same structure: Observe (check mirrors and blind spot), Signal (early, so others can react), Position (move into the correct lane position for the turn), Speed (adjust before you're in the turn, not during it), and Look (a final check of the path you're turning into, including pedestrians and cyclists who may not be where you expect).</p><p>The most common mistake isn't forgetting to signal — it's braking mid-turn because speed wasn't adjusted beforehand. Slow before the turn, on a straight line, so the vehicle is stable and predictable through the turn itself.</p><div class="callout"><strong>Watch for:</strong> a right turn on red requires a full stop first, then checking for pedestrians and cyclists who have the right to continue straight through the crosswalk.</div></div>
+<div class="teach-block"><h3>Reversing, parking, and evasive manoeuvres</h3><p>Reversing is the manoeuvre most likely to involve a collision with something you didn't see, because your natural field of view is smaller looking backward. Turn and look through the rear window for the actual manoeuvre; a backup camera or mirrors alone aren't a substitute for a physical head turn.</p><p>Parallel, perpendicular and angle parking each use reference points — consistent spots on your own vehicle that line up with the space you're aiming for. The exact reference points vary by vehicle, which is why the first few attempts in a new vehicle should be slow and deliberate. Hill parking adds another step: angle your wheels toward the curb facing downhill, or away from the curb facing uphill with no curb, so a rolling vehicle is stopped by the curb rather than rolling into traffic.</p><p>Sometimes there isn't time to brake to a stop — a child steps out, an object appears in the lane. Basic evasive manoeuvres (steering around versus braking, or both together within traction limits) are a last resort, not a first plan. Specific situations call for specific responses: for a potential head-on collision, steer right toward the shoulder rather than crossing further into oncoming lanes; for a rear-end risk, cover the brake early and increase following distance rather than waiting for the moment you need to stop hard; if your wheels drop off the paved surface, ease off the accelerator, grip firmly, and steer straight back onto the pavement gradually — a sharp, sudden correction is what causes a rollover, not the initial drop itself. In any of these, threshold braking — braking as hard as possible just short of lock-up — gives you the shortest stopping distance while keeping some steering control.</p></div>
+<div class="teach-block"><h3>Traffic circles and roundabouts</h3><p>Roundabouts are becoming more common across the GTA, and they work differently from a normal intersection: traffic already circulating has the right-of-way, and vehicles entering must yield to it, not the other way around. Slow down on approach, look left for a safe gap (traffic circulates counter-clockwise in Ontario), and enter without stopping if the way is clear.</p><p>Choose your lane based on your exit before you enter — stay in the outer lane for the first exit, use an inner lane if you're going further around, and signal right just before your exit, not while still circulating. Never stop inside a roundabout except to avoid a collision.</p></div>
+  </div>
+
+  
+
+  <div class="session-block">
+          <h2>Try it: decision scenario</h2>
+          <div class="scenario-shell" id="scenario-3"></div>
+        </div>
+
+  <div class="session-block">
+    <h2>Knowledge check</h2>
+    <div class="quiz-shell" id="quiz-3"></div>
+  </div>
+
+  <div class="session-block">
+    <h2>Key terminology</h2>
+    <dl class="term-grid"><div class="term-card"><dt>Following distance</dt><dd>The time gap kept between your vehicle and the one ahead, measured in seconds using a fixed reference point.</dd></div><div class="term-card"><dt>OSPSL</dt><dd>Observe, Signal, Position, Speed, Look — the sequence used for safe turns.</dd></div><div class="term-card"><dt>Reference point</dt><dd>A consistent spot on your own vehicle used to judge position during parking or reversing manoeuvres.</dd></div><div class="term-card"><dt>Evasive manoeuvre</dt><dd>A last-resort steering and/or braking response to an unavoidable, sudden hazard.</dd></div><div class="term-card"><dt>Lane position</dt><dd>Where you place the vehicle within its lane, adjusted for visibility, hazards and other road users.</dd></div><div class="term-card"><dt>Tire inflation</dt><dd>Correct tire pressure, which directly affects handling, traction and stopping distance.</dd></div><div class="term-card"><dt>Roundabout</dt><dd>A circular intersection where entering traffic yields to vehicles already circulating.</dd></div><div class="term-card"><dt>Threshold braking</dt><dd>Braking as hard as possible just short of wheel lock-up, for the shortest stopping distance with steering control retained.</dd></div></dl>
+  </div>
+
+  <div class="session-block">
+    <button class="reveal-btn" data-reveal-btn="timeline-3" data-show-label="Show the instructor's session timeline" data-hide-label="Hide the session timeline">Show the instructor's session timeline</button>
+    <div id="timeline-3" style="display:none; margin-top:16px;">
+      <ul class="lesson-timeline"><li><div class="t-min">10 min</div><div class="t-title">Space-and-speed warm-up poll</div><div class="t-desc">Active learner response + recorded feedback</div></li><li><div class="t-min">20 min</div><div class="t-title">Guided multimedia: OSPSL and lane position</div><div class="t-desc">Guided instruction</div></li><li><div class="t-min">25 min</div><div class="t-title">Interactive turn-sequence simulation</div><div class="t-desc">Active learner response + recorded feedback</div></li><li><div class="t-min">20 min</div><div class="t-title">Parking and reversing reference-point lesson</div><div class="t-desc">Guided instruction</div></li><li><div class="t-min">25 min</div><div class="t-title">Decision scenario: pedestrians and evasive choices</div><div class="t-desc">Active learner response + recorded feedback</div></li><li><div class="t-min">15 min</div><div class="t-title">Knowledge check and corrective feedback</div><div class="t-desc">Active learner response + recorded feedback</div></li><li><div class="t-min">5 min</div><div class="t-title">Reflection and exit ticket</div><div class="t-desc">Active learner response + recorded feedback</div></li></ul>
+    </div>
+  </div>
+
+  <div class="session-footer-nav">
+    <a href="session-02.html" class="btn btn-ghost" style="color:var(--navy); border-color:var(--navy);">← Module 2</a>
+    <a href="session-04.html" class="btn btn-primary">Module 4 →</a>
+  </div>
+</div>
+
+<script>
+// =========================================================================
+// STUDENT PORTAL — interaction engine
+// In-memory only (no localStorage/sessionStorage per artifact constraints).
+// Progress resets on reload — a real deployment needs a backend to persist
+// this per-student, as the Digital Learning Standard requires.
+// =========================================================================
+
+(function(){
+  var btn = document.querySelector('.nav-toggle');
+  var links = document.querySelector('.nav-links');
+  if(btn && links){
+    btn.addEventListener('click', function(){
+      var open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+})();
+
+/* ---------------- Scenario (single branching decision) ---------------- */
+function renderScenario(containerId, data){
+  var el = document.getElementById(containerId);
+  if(!el) return;
+  var html = '<div class="scenario-prompt">' + data.prompt + '</div><div class="scenario-options">';
+  data.options.forEach(function(opt, i){
+    html += '<button class="scenario-option" data-i="' + i + '">' + opt.text + '</button>';
+  });
+  html += '</div><div class="scenario-feedback" data-fb></div>';
+  el.innerHTML = html;
+
+  var buttons = el.querySelectorAll('.scenario-option');
+  var fb = el.querySelector('[data-fb]');
+  var answered = false;
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){
+      if(answered) return;
+      answered = true;
+      var i = parseInt(b.getAttribute('data-i'), 10);
+      var opt = data.options[i];
+      buttons.forEach(function(bb, ii){
+        bb.classList.add(data.options[ii].correct ? 'correct' : (ii === i ? 'incorrect' : ''));
+      });
+      fb.textContent = opt.feedback;
+      fb.className = 'scenario-feedback show ' + (opt.correct ? 'good' : 'bad');
+    });
+  });
+}
+
+/* ---------------- Matching / sort activity (click-to-place) ---------------- */
+function renderMatching(containerId, data){
+  var el = document.getElementById(containerId);
+  if(!el) return;
+  var poolHtml = '<div class="chip-pool" data-pool>';
+  data.items.forEach(function(item, i){
+    poolHtml += '<button class="chip" data-item="' + i + '">' + item.label + '</button>';
+  });
+  poolHtml += '</div>';
+
+  var zonesHtml = '<div class="drop-zones">';
+  data.zones.forEach(function(zone, zi){
+    zonesHtml += '<div class="drop-zone" data-zone="' + zi + '"><span class="zone-label">' + zone + '</span><span data-placed></span></div>';
+  });
+  zonesHtml += '</div>';
+
+  el.innerHTML = '<div class="activity-instructions">' + data.instructions + '</div>' + poolHtml + zonesHtml +
+    '<div class="scenario-feedback" data-fb></div>';
+
+  var selected = null;
+  var pool = el.querySelector('[data-pool]');
+  var fb = el.querySelector('[data-fb]');
+  var placedCount = 0;
+
+  pool.addEventListener('click', function(e){
+    var chip = e.target.closest('.chip');
+    if(!chip || chip.classList.contains('placed')) return;
+    pool.querySelectorAll('.chip').forEach(function(c){ c.style.outline = ''; });
+    selected = chip;
+    chip.style.outline = '3px solid var(--orange)';
+  });
+
+  el.querySelectorAll('.drop-zone').forEach(function(zone){
+    zone.addEventListener('click', function(){
+      if(!selected) return;
+      var itemIndex = parseInt(selected.getAttribute('data-item'), 10);
+      var zoneIndex = parseInt(zone.getAttribute('data-zone'), 10);
+      var item = data.items[itemIndex];
+      var correct = item.zone === zoneIndex;
+      var placedEl = zone.querySelector('[data-placed]');
+      var tag = document.createElement('span');
+      tag.className = 'chip placed';
+      tag.style.borderColor = correct ? 'var(--good)' : '#C8102E';
+      tag.style.color = correct ? 'var(--good)' : '#C8102E';
+      tag.textContent = item.label + (correct ? ' \u2713' : ' \u2717');
+      placedEl.appendChild(tag);
+      selected.classList.add('placed');
+      selected.style.outline = '';
+      selected.disabled = true;
+      selected = null;
+      placedCount++;
+      if(placedCount === data.items.length){
+        fb.textContent = data.completeMessage || 'All items placed. Review any marked incorrect, then continue.';
+        fb.className = 'scenario-feedback show good';
+      }
+    });
+  });
+}
+
+/* ---------------- Quiz (multi-question, scored) ---------------- */
+function renderQuiz(containerId, data){
+  var el = document.getElementById(containerId);
+  if(!el) return;
+  var current = 0;
+  var score = 0;
+  var answered = new Array(data.questions.length).fill(false);
+
+  var qHtml = '';
+  data.questions.forEach(function(q, qi){
+    qHtml += '<div class="quiz-q' + (qi === 0 ? ' active' : '') + '" data-q="' + qi + '">' +
+      '<div class="q-text">' + (qi + 1) + '. ' + q.text + '</div><div data-opts>';
+    q.options.forEach(function(opt, oi){
+      qHtml += '<button class="quiz-opt" data-o="' + oi + '">' + opt.text + '</button>';
+    });
+    qHtml += '</div><div class="quiz-explain" data-explain>' + q.explain + '</div></div>';
+  });
+
+  el.innerHTML =
+    '<h3>' + data.title + '</h3>' +
+    '<div class="quiz-progress" data-progress>Question 1 of ' + data.questions.length + '</div>' +
+    qHtml +
+    '<div class="quiz-result" data-result><div class="score" data-score></div><p data-scoretext></p></div>' +
+    '<div class="quiz-nav"><span></span><button class="btn btn-dark btn-sm" data-next disabled>Answer to continue</button></div>';
+
+  var progressEl = el.querySelector('[data-progress]');
+  var nextBtn = el.querySelector('[data-next]');
+  var resultEl = el.querySelector('[data-result]');
+
+  function showQuestion(i){
+    el.querySelectorAll('.quiz-q').forEach(function(q){ q.classList.remove('active'); });
+    el.querySelector('.quiz-q[data-q="' + i + '"]').classList.add('active');
+    progressEl.textContent = 'Question ' + (i + 1) + ' of ' + data.questions.length;
+    nextBtn.disabled = !answered[i];
+    nextBtn.textContent = (i === data.questions.length - 1) ? 'See results' : 'Next question';
+  }
+
+  data.questions.forEach(function(q, qi){
+    var qEl = el.querySelector('.quiz-q[data-q="' + qi + '"]');
+    var opts = qEl.querySelectorAll('.quiz-opt');
+    var explain = qEl.querySelector('[data-explain]');
+    opts.forEach(function(optBtn, oi){
+      optBtn.addEventListener('click', function(){
+        if(answered[qi]) return;
+        answered[qi] = true;
+        var correctIndex = q.correct;
+        opts.forEach(function(ob, oii){
+          ob.classList.add(oii === correctIndex ? 'correct' : (oii === oi ? 'incorrect' : ''));
+        });
+        if(oi === correctIndex) score++;
+        explain.classList.add('show');
+        nextBtn.disabled = false;
+      });
+    });
+  });
+
+  nextBtn.addEventListener('click', function(){
+    if(current < data.questions.length - 1){
+      current++;
+      showQuestion(current);
+    } else {
+      el.querySelectorAll('.quiz-q').forEach(function(q){ q.classList.remove('active'); });
+      progressEl.style.display = 'none';
+      nextBtn.style.display = 'none';
+      resultEl.classList.add('show');
+      var pct = Math.round((score / data.questions.length) * 100);
+      el.querySelector('[data-score]').textContent = score + ' / ' + data.questions.length + ' (' + pct + '%)';
+      el.querySelector('[data-scoretext]').textContent = pct >= 70
+        ? 'Passing score for this knowledge check (70% or higher).'
+        : 'Below the 70% pass mark used elsewhere in this course \u2014 review the explanations above and try again.';
+    }
+  });
+}
+
+/* ---------------- Reveal / accordion ---------------- */
+document.addEventListener('click', function(e){
+  var btn = e.target.closest('[data-reveal-btn]');
+  if(!btn) return;
+  var targetId = btn.getAttribute('data-reveal-btn');
+  var target = document.getElementById(targetId);
+  if(!target) return;
+  var showing = target.style.display === 'block';
+  target.style.display = showing ? 'none' : 'block';
+  btn.textContent = showing ? btn.getAttribute('data-show-label') : btn.getAttribute('data-hide-label');
+});
+
+</script>
+<script>
+renderQuiz("quiz-3", {"title": "Module 3 knowledge check", "questions": [{"text": "What's the correct method for judging a safe following distance?", "options": [{"text": "A fixed number of car lengths"}, {"text": "Count seconds from a fixed point using a time gap"}, {"text": "Whatever feels comfortable"}, {"text": "Match the speed of the vehicle ahead exactly"}], "correct": 1, "explain": "Time-based following distance automatically scales with speed, unlike a fixed car-length count."}, {"text": "In the OSPSL sequence for turns, when should you adjust your speed?", "options": [{"text": "During the turn itself"}, {"text": "Before the turn, while still going straight"}, {"text": "After completing the turn"}, {"text": "Speed doesn't need adjusting for turns"}], "correct": 1, "explain": "Adjusting speed before the turn keeps the vehicle stable and predictable through the turn."}, {"text": "When reversing, what should you rely on primarily?", "options": [{"text": "The backup camera only"}, {"text": "Mirrors only"}, {"text": "A physical head turn to look through the rear window"}, {"text": "Sound cues from other vehicles"}], "correct": 2, "explain": "A physical head turn gives the widest, most reliable field of view for reversing; cameras and mirrors alone leave gaps."}, {"text": "Proper tire inflation primarily affects which of the following during a turn or stop?", "options": [{"text": "Radio reception"}, {"text": "Handling, traction and stopping distance"}, {"text": "Interior noise level only"}, {"text": "Nothing significant"}], "correct": 1, "explain": "Correctly inflated tires maintain the contact patch needed for predictable handling and shorter stopping distances."}, {"text": "You need to turn right on a red light. What must you do first?", "options": [{"text": "Slow down but keep rolling"}, {"text": "Come to a full stop, then check for pedestrians/cyclists before proceeding"}, {"text": "Proceed if no cars are visible"}, {"text": "Right turns on red are never allowed in Ontario"}], "correct": 1, "explain": "A full stop is required before a right turn on red, followed by checking for pedestrians and cyclists who may be crossing."}, {"text": "Basic evasive manoeuvres (steering around a hazard, sometimes combined with braking) should be treated as:", "options": [{"text": "Your first choice whenever a hazard appears"}, {"text": "A last resort when there isn't time to stop"}, {"text": "Only relevant on highways"}, {"text": "Something to avoid learning entirely"}], "correct": 1, "explain": "Evasive manoeuvres are a last-resort response to a sudden hazard, not a routine driving technique."}, {"text": "At a roundabout, who has the right-of-way?", "options": [{"text": "Vehicles entering, since they're already moving"}, {"text": "Traffic already circulating in the roundabout"}, {"text": "Whoever arrives first, like a four-way stop"}, {"text": "The larger vehicle"}], "correct": 1, "explain": "Circulating traffic in a roundabout has the right-of-way; entering vehicles must yield to it."}]});
+
+renderScenario("scenario-3", {"prompt": "You're approaching a right turn at an intersection. A pedestrian is standing at the corner, not yet in the crosswalk, looking at their phone. What's the safest approach?", "options": [{"text": "Proceed with your turn since they haven't stepped off the curb", "correct": false, "feedback": "A pedestrian who hasn't looked up may step into the crosswalk without warning \u2014 treat this as a hazard in progress, not a cleared path."}, {"text": "Slow further, cover the brake, and be ready to yield if they step into the crosswalk", "correct": true, "feedback": "Correct. Distracted pedestrians are unpredictable by definition \u2014 the safe assumption is that they might step out, so you adjust speed and stay ready to stop."}, {"text": "Honk to get their attention before turning", "correct": false, "feedback": "A horn can startle a pedestrian into stepping the wrong way. Slowing and preparing to yield is safer than relying on getting their attention."}]});
+</script>
+</body>
+</html>
