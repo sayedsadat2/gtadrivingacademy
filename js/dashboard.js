@@ -44,7 +44,9 @@ if (modules && modules.length) {
     const link = document.createElement('a');
     link.href = module.content_url;
     link.textContent = 'Module ' + module.module_number + ': ' + module.title;
+    link.style.display = 'block';
     moduleList.appendChild(link);
+    
   });
 }
     
