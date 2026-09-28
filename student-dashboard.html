@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard | GTA Driving Academy</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/lms.css?v=1">
+</head>
+<body class="lms-body">
+  <main class="dashboard-shell">
+    <header class="dashboard-topbar">
+      <a href="index.html"><img src="images/logo-full.png" alt="GTA Driving Academy" class="dashboard-logo"></a>
+      <button id="logoutButton" class="btn btn-outline-primary btn-sm" type="button">Log out</button>
+    </header>
+
+    <section id="dashboardLoading" class="dashboard-panel"><p>Loading your student portal…</p></section>
+
+    <section id="dashboardContent" class="dashboard-content" hidden>
+      <div class="dashboard-welcome">
+        <p class="auth-eyebrow">Student Dashboard</p>
+        <h1>Welcome to your learning portal</h1>
+        <p id="studentEmail"></p>
+      </div>
+
+      <div class="dashboard-grid">
+        <article class="dashboard-panel">
+          <span class="dashboard-label">Program</span>
+          <h2 id="courseTitle">GTA Driving Academy Beginner Driver Education</h2>
+          <p id="courseDescription">Your course information will appear here.</p>
+        </article>
+        <article class="dashboard-panel">
+          <span class="dashboard-label">Digital classroom</span>
+          <strong id="digitalHours">20 hours</strong>
+          <p>Module content and progress tracking are being connected next.</p>
+        </article>
+        <article class="dashboard-panel">
+          <span class="dashboard-label">Account</span>
+          <strong id="studentRole">Student</strong>
+          <p>Authenticated through the GTA Driving Academy student portal.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
