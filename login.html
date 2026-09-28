@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Login | GTA Driving Academy</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/lms.css?v=1">
+</head>
+<body class="lms-body">
+  <main class="auth-shell">
+    <section class="auth-card" aria-labelledby="login-title">
+      <a href="index.html" class="auth-logo"><img src="images/logo-full.png" alt="GTA Driving Academy"></a>
+      <p class="auth-eyebrow">Student Portal</p>
+      <h1 id="login-title">Welcome back</h1>
+      <p class="auth-intro">Sign in to continue your GTA Driving Academy learning program.</p>
+
+      <form id="loginForm" class="auth-form">
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+
+        <button id="loginButton" class="btn btn-primary btn-block" type="submit">Sign in</button>
+        <p id="loginMessage" class="auth-message" role="alert" aria-live="polite"></p>
+      </form>
+
+      <p class="auth-help">Having trouble signing in? Contact GTA Driving Academy.</p>
+      <a class="auth-back" href="index.html">← Back to website</a>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
