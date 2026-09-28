@@ -14,12 +14,16 @@
       return;
     }
 
-    document.getElementById('studentEmail').textContent = user.email || '';
+  
 
     const [{ data: profile }, { data: courses }] = await Promise.all([
-      client.from('profiles').select('role').eq('id', user.id).maybeSingle(),
+     client.from('profiles').select('first_name, role').eq('id', user.id).maybeSingle(),
       client.from('courses').select('title,description,digital_hours').eq('active', true).limit(1)
     ]);
+    if (profile && profile.first_name) {
+  document.getElementById('studentName').textContent =
+    'Welcome back, ' + profile.first_name;
+}
 
     if (profile && profile.role) {
       document.getElementById('studentRole').textContent =
