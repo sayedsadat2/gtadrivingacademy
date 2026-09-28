@@ -37,6 +37,17 @@
       document.getElementById('courseDescription').textContent = course.description || '';
       document.getElementById('digitalHours').textContent = (course.digital_hours || 20) + ' hours';
     }
+if (modules && modules.length) {
+  const moduleList = document.getElementById('moduleList');
+
+  modules.forEach((module) => {
+    const link = document.createElement('a');
+    link.href = module.content_url;
+    link.textContent = 'Module ' + module.module_number + ': ' + module.title;
+    moduleList.appendChild(link);
+  });
+}
+    
 
     loading.hidden = true;
     content.hidden = false;
