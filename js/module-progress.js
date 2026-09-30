@@ -113,8 +113,11 @@
     );
   }
 
-  // Wait until the page and its scripts have completely loaded.
-  window.addEventListener('load', () => {
-    startModuleProgress();
-  });
+ // Start immediately if the page is already loaded.
+// Otherwise wait for the page to finish loading.
+if (document.readyState === 'complete') {
+  startModuleProgress();
+} else {
+  window.addEventListener('load', startModuleProgress);
+}
 })();
