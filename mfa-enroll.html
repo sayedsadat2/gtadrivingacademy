@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Set Up Multi-Factor Authentication | GTA Driving Academy</title>
+
+  <style>
+    :root {
+      --navy-deep: #071A33;
+      --navy: #0B2545;
+      --orange: #F2971B;
+      --paper: #FFFFFF;
+      --fog: #F7F8FA;
+      --line: #D8DEE4;
+      --ink: #16202C;
+      --ink-soft: #46505C;
+      --danger: #A3132A;
+      --success: #1F6B3A;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(
+          120% 140% at 50% -10%,
+          #123561 0%,
+          var(--navy-deep) 55%,
+          #050F20 100%
+        );
+    }
+
+    .card {
+      width: 100%;
+      max-width: 520px;
+      background: var(--paper);
+      border-radius: 16px;
+      padding: 36px;
+      box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.45);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy-deep);
+      font-weight: 800;
+      font-size: 20px;
+    }
+
+    .brand-text {
+      color: var(--navy);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 1.55rem;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: 1.05rem;
+      margin: 24px 0 10px;
+    }
+
+    p {
+      margin: 0 0 18px;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+
+    .steps {
+      margin: 0 0 22px;
+      padding-left: 22px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .qr-container {
+      min-height: 220px;
+      padding: 18px;
+      margin: 20px 0;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--fog);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    #mfa-qr {
+      display: none;
+      width: 210px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    #qr-loading {
+      color: var(--ink-soft);
+    }
+
+    .manual {
+      margin-top: 18px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--fog);
+    }
+
+    .manual-title {
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    #mfa-secret {
+      display: block;
+      overflow-wrap: anywhere;
+      font-family: monospace;
+      font-size: 0.95rem;
+      color: var(--ink);
+      user-select: all;
+    }
+
+    label {
+      display: block;
+      margin-top: 24px;
+      margin-bottom: 7px;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      font-size: 1.05rem;
+      letter-spacing: 0.15em;
+      text-align: center;
+    }
+
+    input:focus {
+      outline: 3px solid rgba(242, 151, 27, 0.25);
+      border-color: var(--orange);
+    }
+
+    button {
+      width: 100%;
+      margin-top: 18px;
+      padding: 14px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--orange);
+      color: var(--navy-deep);
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .message {
+      display: none;
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.error {
+      background: #FDEEEF;
+      color: var(--danger);
+    }
+
+    .message.success {
+      background: #EFFAF2;
+      color: var(--success);
+    }
+
+    .security-note {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card" aria-labelledby="page-title">
+
+    <div class="brand">
+      <div class="brand-mark">G</div>
+
+      <div class="brand-text">
+        GTA Driving Academy<br>
+        Student Portal
+      </div>
+    </div>
+
+    <h1 id="page-title">
+      Secure your student account
+    </h1>
+
+    <p>
+      Before beginning online training, set up multi-factor authentication
+      using an authenticator app.
+    </p>
+
+    <ol class="steps">
+      <li>Open an authenticator app on your phone.</li>
+      <li>Scan the QR code below.</li>
+      <li>Enter the 6-digit code generated by the app.</li>
+    </ol>
+
+    <div class="qr-container">
+      <div id="qr-loading">
+        Preparing secure authenticator setup...
+      </div>
+
+      <img
+        id="mfa-qr"
+        alt="QR code for GTA Driving Academy multi-factor authentication setup"
+      >
+    </div>
+
+    <div class="manual">
+      <div class="manual-title">
+        Can't scan the QR code?
+      </div>
+
+      <p>
+        Enter this setup key manually in your authenticator app:
+      </p>
+
+      <code id="mfa-secret">
+        Preparing setup key...
+      </code>
+    </div>
+
+    <form id="mfa-enroll-form" novalidate>
+
+      <label for="mfa-code">
+        6-digit authenticator code
+      </label>
+
+      <input
+        id="mfa-code"
+        name="mfa-code"
+        type="text"
+        inputmode="numeric"
+        autocomplete="one-time-code"
+        maxlength="6"
+        pattern="[0-9]{6}"
+        required
+      >
+
+      <button
+        id="mfa-enroll-submit"
+        type="submit"
+        disabled
+      >
+        Verify and secure my account
+      </button>
+
+      <div
+        id="mfa-enroll-message"
+        class="message"
+        role="status"
+        aria-live="polite"
+      ></div>
+
+    </form>
+
+    <div class="security-note">
+      Your authenticator setup key should be kept private. GTA Driving
+      Academy will never ask you to send your authenticator code or setup
+      key by email, text message, or chat.
+    </div>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/mfa-enroll.js"></script>
+</body>
+</html>
