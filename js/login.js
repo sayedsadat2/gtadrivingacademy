@@ -25,6 +25,9 @@
       return false;
     }
 
+    /*
+     * Determine the actual assurance level of the authenticated session.
+     */
     const { data: aalData, error: aalError } =
       await client.auth.mfa.getAuthenticatorAssuranceLevel();
 
@@ -36,7 +39,8 @@
     }
 
     /*
-     * Only an AAL2 session may enter the learning portal.
+     * AAL2 means password + second factor have already been verified.
+     * The student may enter the portal.
      */
     if (aalData.currentLevel === 'aal2') {
       window.location.replace('student-dashboard.html');
@@ -44,36 +48,44 @@
     }
 
     /*
-     * The student has a verified MFA factor available,
-     * but this session has not completed MFA yet.
+     * The student is authenticated with the password but has not
+     * completed MFA for this session.
+     *
+     * Inspect MFA factors to determine whether the student needs:
+     *
+     * 1. normal MFA verification, or
+     * 2. first-time MFA enrollment.
      */
-    if (
-      aalData.currentLevel === 'aal1' &&
-      aalData.nextLevel === 'aal2'
-    ) {
+    const { data: factorsData, error: factorsError } =
+      await client.auth.mfa.listFactors();
+
+    if (factorsError) {
+      showMessage(
+        'We could not check your account security configuration. Please try again.'
+      );
+      return false;
+    }
+
+    const verifiedTotpFactors = (factorsData?.totp || []).filter(
+      (factor) => factor.status === 'verified'
+    );
+
+    /*
+     * Existing verified TOTP factor:
+     * require the student to prove possession of that factor.
+     */
+    if (verifiedTotpFactors.length > 0) {
       window.location.replace('mfa.html');
       return true;
     }
 
     /*
-     * AAL1 with no path to AAL2 means this account does not
-     * currently have a verified MFA factor available.
-     *
-     * Do not allow access to the learning portal because the
-     * protected LMS RPCs require AAL2.
+     * No verified TOTP factor:
+     * send the authenticated student through secure first-time
+     * authenticator enrollment.
      */
-    if (aalData.currentLevel === 'aal1') {
-      showMessage(
-        'Multi-factor authentication is not configured for this account. Please contact GTA Driving Academy.'
-      );
-      return false;
-    }
-
-    showMessage(
-      'Your secure session could not be verified. Please try again.'
-    );
-
-    return false;
+    window.location.replace('mfa-enroll.html');
+    return true;
   }
 
   async function initializeLogin() {
@@ -84,9 +96,14 @@
     }
 
     try {
+      /*
+       * An existing authenticated session must still pass through
+       * the same MFA/AAL routing controls.
+       */
       await routeAuthenticatedUser();
     } catch (error) {
       console.error('Login initialization error:', error);
+
       showMessage(
         'We could not verify your existing session. Please try signing in.'
       );
@@ -117,14 +134,14 @@
       }
 
       /*
-       * Do not redirect directly to the dashboard.
-       * Determine the authenticated session's actual AAL first.
+       * Password authentication alone is not enough to enter
+       * GTA Driving Academy's protected learning environment.
        */
       const routed = await routeAuthenticatedUser();
 
       if (!routed && !message.textContent) {
         showMessage(
-          'Your account requires additional security configuration before training can begin.'
+          'Your secure student session could not be established. Please try again.'
         );
       }
     } catch (error) {
